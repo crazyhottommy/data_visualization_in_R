@@ -268,8 +268,10 @@ p1 <- DimPlot(pbmc3k, reduction = "pca", dims = c(1, 2)) +
 pca_embeddings <- as.data.frame(pbmc3k@reductions$pca@cell.embeddings[, 1:2])
 colnames(pca_embeddings) <- c("PC1", "PC2")
 
+pca_embeddings<- cbind(pca_embeddings, pbmc3k@meta.data)
+
 p2 <- ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
-  geom_point(alpha = 0.5, size = 0.8, color = "steelblue") +
+  geom_point(alpha = 0.5, size = 0.8, color = "red") +
   labs(title = "ggplot2 version",
        x = "PC 1", y = "PC 2") +
   theme_bw() +
@@ -295,7 +297,6 @@ pbmc3k <- FindClusters(pbmc3k, resolution = 0.5)
 # Run UMAP
 pbmc3k <- RunUMAP(pbmc3k, dims = 1:10)
 ```
-
 ### Visualization 6: UMAP with Clusters
 
 This is one of the most common scRNA-seq visualizations.
@@ -338,6 +339,7 @@ p1 + p2
 - Cluster assignments are in `@meta.data$seurat_clusters`
 - We can combine data from different slots
 - Calculated cluster centroids for label placement
+
 
 ### Visualization 7: Feature Expression on UMAP
 
@@ -499,7 +501,7 @@ p1 <- DoHeatmap(pbmc3k, features = top3_markers$gene, size = 3, angle = 90) +
 # GGPLOT2 VERSION
 # Key concept: We need the scaled expression matrix
 # Get scaled data for the marker genes
-scaled_expr <- GetAssayData(pbmc3k, slot = "scale.data")
+scaled_expr <- GetAssayData(pbmc3k, layer = "scale.data")
 markers_to_plot <- top3_markers$gene[top3_markers$gene %in% rownames(scaled_expr)]
 
 # Extract scaled expression for these genes
@@ -603,44 +605,18 @@ p1 / p2
 
 ## Assign Cell Type Identity
 
-Based on canonical markers, we can assign cell types to clusters.
-
-```{r assign-celltypes}
-# Define cell types based on marker expression
-new_cluster_ids <- c(
-  "0" = "Naive CD4 T",
-  "1" = "Memory CD4 T",
-  "2" = "CD14+ Mono",
-  "3" = "B",
-  "4" = "CD8 T",
-  "5" = "FCGR3A+ Mono",
-  "6" = "NK",
-  "7" = "DC",
-  "8" = "Platelet"
-)
-
-# Add cell type annotations
-pbmc3k$celltype <- new_cluster_ids[as.character(pbmc3k$seurat_clusters)]
-
-# Reorder for plotting
-pbmc3k$celltype <- factor(pbmc3k$celltype,
-                          levels = c("Naive CD4 T", "Memory CD4 T", "CD8 T",
-                                     "B", "NK", "CD14+ Mono", "FCGR3A+ Mono",
-                                     "DC", "Platelet"))
-```
-
 ### Visualization 12: UMAP with Cell Type Labels
 
 ```{r umap-celltypes, fig.width=12, fig.height=5}
 # SEURAT WRAPPER VERSION
-p1 <- DimPlot(pbmc3k, reduction = "umap", group.by = "celltype", label = TRUE, repel = TRUE) +
+p1 <- DimPlot(pbmc3k, reduction = "umap", group.by = "seurat_annotations", label = TRUE, repel = TRUE) +
   labs(title = "Seurat wrapper") +
   NoLegend()
 
 # GGPLOT2 VERSION
 umap_celltype <- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
 colnames(umap_celltype) <- c("UMAP1", "UMAP2")
-umap_celltype$celltype <- pbmc3k$celltype
+umap_celltype$celltype <- pbmc3k$seurat_annotations
 
 # Calculate centroids for labels
 celltype_centers <- umap_celltype %>%
@@ -656,7 +632,8 @@ p2 <- ggplot(umap_celltype, aes(x = UMAP1, y = UMAP2, color = celltype)) +
   labs(title = "ggplot2 version") +
   theme_bw() +
   theme(legend.position = "right") +
-  coord_fixed()
+  coord_fixed() +
+  NoLegend()
 
 # Display
 p1 + p2

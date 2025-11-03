@@ -9,10 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Your Name" />
 
 <meta name="date" content="2025-10-08" />
 
-<title>04_practical_scRNAseq_viz</title>
+<title>Practical Single-Cell RNA-seq Visualization with ggplot2</title>
 
 <script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -350,7 +351,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">04_practical_scRNAseq_viz</h1>
+<h1 class="title toc-ignore">Practical Single-Cell RNA-seq Visualization
+with ggplot2</h1>
+<h4 class="author">Your Name</h4>
 <h4 class="date">2025-10-08</h4>
 
 </div>
@@ -380,7 +383,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-10-15
+<strong>Last updated:</strong> 2025-11-02
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -418,10 +421,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -514,15 +517,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree9e1856ebf86b04f5c4ee85a9ad613046b1037c42targetblank9e1856ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree8c9b351c376cb6d863fa368c275865a6ceeec5b6targetblank8c9b351a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/9e1856ebf86b04f5c4ee85a9ad613046b1037c42" target="_blank">9e1856e</a>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/8c9b351c376cb6d863fa368c275865a6ceeec5b6" target="_blank">8c9b351</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree9e1856ebf86b04f5c4ee85a9ad613046b1037c42targetblank9e1856ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree8c9b351c376cb6d863fa368c275865a6ceeec5b6targetblank8c9b351a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -532,7 +535,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/9e1856ebf86b04f5c4ee85a9ad613046b1037c42" target="_blank">9e1856e</a>.
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/8c9b351c376cb6d863fa368c275865a6ceeec5b6" target="_blank">8c9b351</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -546,15 +549,13 @@ depends on. Below is the status of the Git repository when the results
 were generated:
 </p>
 <pre><code>
-Untracked files:
-    Untracked:  analysis/01_intro_data_viz.Rmd
-    Untracked:  analysis/02_intro_to_ggplot2.Rmd
-    Untracked:  analysis/03_heatmap_demystified.Rmd
-    Untracked:  analysis/04_practical_scRNAseq_viz.Rmd
+Ignored files:
+    Ignored:    .Rproj.user/
+    Ignored:    .claude/
+    Ignored:    analysis/figure/
 
 Unstaged changes:
-    Modified:   analysis/about.Rmd
-    Modified:   analysis/index.Rmd
+    Modified:   analysis/04_practical_scRNAseq_viz.Rmd
 
 </code></pre>
 <p>
@@ -570,39 +571,935 @@ have uncommitted changes.
 </div>
 <div id="versions" class="tab-pane fade">
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown
+(<code>analysis/04_practical_scRNAseq_viz.Rmd</code>) and HTML
+(<code>docs/04_practical_scRNAseq_viz.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/analysis/04_practical_scRNAseq_viz.Rmd" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+first commit
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/crazyhottommy/data_visualization_in_R/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/04_practical_scRNAseq_viz.html" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+first commit
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
 </div>
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more details
-on using R Markdown see <a href="http://rmarkdown.rstudio.com"
-class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be
-generated that includes both content as well as the output of any
-embedded R code chunks within the document. You can embed an R code
-chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  </code></pre>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Single-cell RNA-seq analysis packages like Seurat provide convenient
+wrapper functions for creating visualizations. While these wrappers are
+quick and easy to use, they can be limiting when you need to customize
+plots for publications or create novel visualizations.</p>
+<p><strong>The key insight:</strong> All Seurat wrapper functions are
+ultimately accessing data stored in the Seurat object and passing it to
+plotting functions. Once you understand how to extract this data into
+tidy dataframes, you can use ggplot2 to create any visualization you
+want with complete control.</p>
+<p>In this tutorial, we’ll:</p>
+<ol style="list-style-type: decimal">
+<li>Analyze the classic PBMC 3k dataset following the <a
+href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html">Seurat
+tutorial</a></li>
+<li>Compare Seurat’s wrapper functions with custom ggplot2
+implementations</li>
+<li>Show you <strong>how to access the underlying data</strong> from
+Seurat objects</li>
+<li>Demonstrate the flexibility you gain with ggplot2</li>
+</ol>
+<p><strong>Learning objectives:</strong></p>
+<ul>
+<li>Understand where different data types are stored in Seurat
+objects</li>
+<li>Extract metadata, expression data, and dimensional reductions into
+dataframes</li>
+<li>Recreate common scRNA-seq plots using ggplot2</li>
+<li>Gain the flexibility to create custom visualizations</li>
+</ul>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="figure/04_practical_scRNAseq_viz.Rmd/pressure-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.width = 10, fig.height = 5)
+
+# Load required packages
+library(Seurat)
+library(SeuratData)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(patchwork)  # For combining plots side-by-side
+
+# Set a theme for consistent ggplot2 styling
+theme_set(theme_bw(base_size = 12))</code></pre>
+</div>
+<div id="load-the-pbmc-3k-dataset" class="section level2">
+<h2>Load the PBMC 3k Dataset</h2>
+<p>The pbmc3k dataset contains 2,700 Peripheral Blood Mononuclear Cells
+(PBMCs) sequenced on the Illumina NextSeq 500. This is a widely-used
+example dataset for learning scRNA-seq analysis.</p>
+<pre class="r"><code># Install the dataset if needed (uncomment the next line on first run)
+# InstallData(&quot;pbmc3k&quot;)
+
+# Load the dataset
+data(&quot;pbmc3k&quot;)
+
+# The object comes pre-loaded but let&#39;s look at it
+#pbmc3k
+
+pbmc3k&lt;- UpdateSeuratObject(pbmc3k)</code></pre>
+<p><strong>Understanding the Seurat object structure:</strong></p>
+<ul>
+<li><code>pbmc3k@assays</code> - Contains expression matrices (counts,
+normalized data, scaled data)</li>
+<li><code>pbmc3k@meta.data</code> - Cell-level metadata (QC metrics,
+cluster assignments, etc.)</li>
+<li><code>pbmc3k@reductions</code> - Dimensional reductions (PCA, UMAP,
+etc.)</li>
+</ul>
+</div>
+<div id="quality-control-metrics" class="section level2">
+<h2>Quality Control Metrics</h2>
+<p>First, let’s calculate QC metrics. We’ll compute the percentage of
+mitochondrial genes per cell, which is a common QC metric.</p>
+<pre class="r"><code># Calculate percentage of mitochondrial genes
+pbmc3k[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(pbmc3k, pattern = &quot;^MT-&quot;)
+
+# View the metadata where QC metrics are stored
+head(pbmc3k@meta.data)</code></pre>
+<pre><code>               orig.ident nCount_RNA nFeature_RNA seurat_annotations percent.mt
+AAACATACAACCAC     pbmc3k       2419          779       Memory CD4 T  3.0177759
+AAACATTGAGCTAC     pbmc3k       4903         1352                  B  3.7935958
+AAACATTGATCAGC     pbmc3k       3147         1129       Memory CD4 T  0.8897363
+AAACCGTGCTTCCG     pbmc3k       2639          960         CD14+ Mono  1.7430845
+AAACCGTGTATGCG     pbmc3k        980          521                 NK  1.2244898
+AAACGCACTGGTAC     pbmc3k       2163          781       Memory CD4 T  1.6643551</code></pre>
+<div id="visualization-1-qc-violin-plots" class="section level3">
+<h3>Visualization 1: QC Violin Plots</h3>
+<p>Let’s compare Seurat’s <code>VlnPlot()</code> with a custom ggplot2
+version.</p>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- VlnPlot(pbmc3k, features = c(&quot;nCount_RNA&quot;, &quot;nFeature_RNA&quot;, &quot;percent.mt&quot;),
+              ncol = 3, pt.size = 0.1)
+
+# GGPLOT2 VERSION - Extracting data from Seurat object
+# Key concept: Metadata is stored in pbmc3k@meta.data
+qc_data &lt;- pbmc3k@meta.data %&gt;%
+  select(nCount_RNA, nFeature_RNA, percent.mt) %&gt;%
+  mutate(cell_id = rownames(.)) %&gt;%
+  # Convert to long format for ggplot2
+  pivot_longer(cols = c(nCount_RNA, nFeature_RNA, percent.mt),
+               names_to = &quot;metric&quot;,
+               values_to = &quot;value&quot;)
+
+p2 &lt;- ggplot(qc_data, aes(x = metric, y = value, fill = metric)) +
+  geom_violin(scale = &quot;width&quot;, trim = TRUE) +
+  geom_jitter(size = 0.1, alpha = 0.3, width = 0.2) +
+  facet_wrap(~ metric, scales = &quot;free&quot;, ncol = 3) +
+  labs(title = &quot;QC Metrics (ggplot2 version)&quot;,
+       x = NULL, y = &quot;Value&quot;) +
+  theme(legend.position = &quot;none&quot;,
+        axis.text.x = element_blank())
+
+# Display side by side
+p1/p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/qc-violin-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>QC metrics are stored in <code>pbmc3k@meta.data</code> as
+columns</li>
+<li>We extracted the data, reshaped it to long format with
+<code>pivot_longer()</code></li>
+<li>Created violin plots with <code>geom_violin()</code> and overlaid
+points with <code>geom_jitter()</code></li>
+<li>Used <code>facet_wrap()</code> to create separate panels</li>
+</ul>
+</div>
+<div id="visualization-2-qc-scatter-plots" class="section level3">
+<h3>Visualization 2: QC Scatter Plots</h3>
+<p>Feature-feature relationships help identify potential issues (e.g.,
+correlation between UMI count and gene count).</p>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- FeatureScatter(pbmc3k, feature1 = &quot;nCount_RNA&quot;, feature2 = &quot;nFeature_RNA&quot;) +
+  labs(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Again, we extract from metadata
+scatter_data &lt;- pbmc3k@meta.data %&gt;%
+  select(nCount_RNA, nFeature_RNA, percent.mt)
+
+p2 &lt;- ggplot(scatter_data, aes(x = nCount_RNA, y = nFeature_RNA)) +
+  geom_point(alpha = 0.5, size = 0.5, color = &quot;steelblue&quot;) +
+  geom_smooth(method = &quot;lm&quot;, color = &quot;red&quot;, se = FALSE) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;Total UMI Counts&quot;,
+       y = &quot;Number of Genes Detected&quot;) +
+  theme_bw()
+
+# Display side by side
+p1 + p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/qc-scatter-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Simple scatter plots require data from <code>@meta.data</code></li>
+<li>We can add trend lines with <code>geom_smooth()</code></li>
+<li>The patchwork package (<code>+</code>) makes side-by-side comparison
+easy</li>
+</ul>
+</div>
+</div>
+<div id="filter-normalize-and-find-variable-features"
+class="section level2">
+<h2>Filter, Normalize, and Find Variable Features</h2>
+<p>Now let’s continue with the standard Seurat workflow.</p>
+<pre class="r"><code># Filter cells based on QC metrics
+pbmc3k &lt;- subset(pbmc3k, subset = nFeature_RNA &gt; 200 &amp; nFeature_RNA &lt; 2500 &amp; percent.mt &lt; 5)
+
+# Normalize the data
+pbmc3k &lt;- NormalizeData(pbmc3k)
+
+# Find variable features
+pbmc3k &lt;- FindVariableFeatures(pbmc3k, selection.method = &quot;vst&quot;, nfeatures = 2000)</code></pre>
+<div id="visualization-3-variable-feature-plot" class="section level3">
+<h3>Visualization 3: Variable Feature Plot</h3>
+<p>This plot shows the most variable genes, which drive heterogeneity in
+the dataset.</p>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- VariableFeaturePlot(pbmc3k) +
+  labs(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Key concept: Variable feature info is stored in pbmc3k@assays$RNA@meta.features
+# or we can access it with HVFInfo()
+hvf_data &lt;- HVFInfo(pbmc3k) %&gt;%
+  mutate(gene = rownames(.),
+         variable = gene %in% VariableFeatures(pbmc3k))
+
+# Get top 10 variable genes to label
+top10_genes &lt;- head(VariableFeatures(pbmc3k), 10)
+
+p2 &lt;- ggplot(hvf_data, aes(x = mean, y = variance.standardized)) +
+  geom_point(aes(color = variable), alpha = 0.5, size = 0.8) +
+  scale_color_manual(values = c(&quot;grey70&quot;, &quot;red&quot;),
+                     labels = c(&quot;Non-variable&quot;, &quot;Variable&quot;)) +
+  geom_text(data = hvf_data %&gt;% filter(gene %in% top10_genes),
+            aes(label = gene), size = 3, nudge_y = 0.5) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;Average Expression&quot;,
+       y = &quot;Standardized Variance&quot;,
+       color = &quot;Feature Type&quot;) +
+  theme_bw()
+
+# Display side by side
+p1 + p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/variable-features-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Variable feature information is accessed with
+<code>HVFInfo()</code></li>
+<li>Top variable genes are retrieved with
+<code>VariableFeatures()</code></li>
+<li>We can label specific genes with <code>geom_text()</code></li>
+<li>Color coding highlights different gene sets</li>
+</ul>
+</div>
+</div>
+<div id="scaling-and-pca" class="section level2">
+<h2>Scaling and PCA</h2>
+<pre class="r"><code># Scale the data
+pbmc3k &lt;- ScaleData(pbmc3k)
+
+# Run PCA
+pbmc3k &lt;- RunPCA(pbmc3k, features = VariableFeatures(pbmc3k))</code></pre>
+<div id="visualization-4-elbow-plot" class="section level3">
+<h3>Visualization 4: Elbow Plot</h3>
+<p>The elbow plot helps determine how many PCs to use for downstream
+analysis.</p>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- ElbowPlot(pbmc3k, ndims = 30) +
+  labs(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Key concept: PCA results are stored in pbmc3k@reductions$pca
+# Standard deviations are in pbmc3k@reductions$pca@stdev
+pca_variance &lt;- data.frame(
+  PC = 1:30,
+  stdev = pbmc3k@reductions$pca@stdev[1:30]
+) %&gt;%
+  mutate(variance_explained = stdev^2)
+
+p2 &lt;- ggplot(pca_variance, aes(x = PC, y = stdev)) +
+  geom_point(size = 2, color = &quot;steelblue&quot;) +
+  geom_line(color = &quot;steelblue&quot;) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;Principal Component&quot;,
+       y = &quot;Standard Deviation&quot;) +
+  theme_bw()
+
+# Display side by side
+p1 + p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/elbow-plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>PCA results are stored in <code>pbmc3k@reductions$pca</code></li>
+<li>Standard deviations are in the <code>@stdev</code> slot</li>
+<li>We extracted PC variance and plotted it with
+<code>geom_point()</code> + <code>geom_line()</code></li>
+</ul>
+</div>
+<div id="visualization-5-pca-dim-plot" class="section level3">
+<h3>Visualization 5: PCA Dim Plot</h3>
+<p>Visualize cells in PC space to see data structure.</p>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- DimPlot(pbmc3k, reduction = &quot;pca&quot;, dims = c(1, 2)) +
+  labs(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Key concept: Cell embeddings are in pbmc3k@reductions$pca@cell.embeddings
+pca_embeddings &lt;- as.data.frame(pbmc3k@reductions$pca@cell.embeddings[, 1:2])
+colnames(pca_embeddings) &lt;- c(&quot;PC1&quot;, &quot;PC2&quot;)
+
+pca_embeddings&lt;- cbind(pca_embeddings, pbmc3k@meta.data)
+
+p2 &lt;- ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
+  geom_point(alpha = 0.5, size = 0.8, color = &quot;red&quot;) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;PC 1&quot;, y = &quot;PC 2&quot;) +
+  theme_bw() +
+  coord_fixed()  # Equal aspect ratio
+
+# Display side by side
+p1 + p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/pca-dimplot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Cell embeddings (coordinates in reduced dimensions) are in
+<code>@reductions$pca@cell.embeddings</code></li>
+<li>Each row is a cell, each column is a PC</li>
+<li>We can easily switch which PCs to plot by selecting different
+columns</li>
+</ul>
+</div>
+</div>
+<div id="clustering-and-umap" class="section level2">
+<h2>Clustering and UMAP</h2>
+<pre class="r"><code># Build nearest neighbor graph and cluster
+pbmc3k &lt;- FindNeighbors(pbmc3k, dims = 1:10)
+pbmc3k &lt;- FindClusters(pbmc3k, resolution = 0.5)</code></pre>
+<pre><code>Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 2638
+Number of edges: 95927
+
+Running Louvain algorithm...
+Maximum modularity in 10 random starts: 0.8728
+Number of communities: 9
+Elapsed time: 0 seconds</code></pre>
+<pre class="r"><code># Run UMAP
+pbmc3k &lt;- RunUMAP(pbmc3k, dims = 1:10)</code></pre>
+<div id="visualization-6-umap-with-clusters" class="section level3">
+<h3>Visualization 6: UMAP with Clusters</h3>
+<p>This is one of the most common scRNA-seq visualizations.</p>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- DimPlot(pbmc3k, reduction = &quot;umap&quot;, label = TRUE) +
+  labs(title = &quot;Seurat wrapper&quot;) +
+  NoLegend()
+
+# GGPLOT2 VERSION
+# Key concept: UMAP coordinates are in @reductions$umap@cell.embeddings
+# Cluster assignments are in @meta.data$seurat_clusters
+umap_data &lt;- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
+colnames(umap_data) &lt;- c(&quot;UMAP1&quot;, &quot;UMAP2&quot;)
+umap_data$cluster &lt;- pbmc3k@meta.data$seurat_clusters
+
+# Calculate cluster centroids for labels
+cluster_centers &lt;- umap_data %&gt;%
+  group_by(cluster) %&gt;%
+  summarize(UMAP1 = median(UMAP1),
+            UMAP2 = median(UMAP2))
+
+p2 &lt;- ggplot(umap_data, aes(x = UMAP1, y = UMAP2, color = cluster)) +
+  geom_point(alpha = 0.6, size = 0.8) +
+  geom_text(data = cluster_centers, aes(label = cluster),
+            size = 5, color = &quot;black&quot;, fontface = &quot;bold&quot;) +
+  labs(title = &quot;ggplot2 version&quot;) +
+  theme_bw() +
+  theme(legend.position = &quot;none&quot;) +
+  coord_fixed()
+
+# Display side by side
+p1 + p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/umap-clusters-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>UMAP coordinates are in
+<code>@reductions$umap@cell.embeddings</code></li>
+<li>Cluster assignments are in
+<code>@meta.data$seurat_clusters</code></li>
+<li>We can combine data from different slots</li>
+<li>Calculated cluster centroids for label placement</li>
+</ul>
+</div>
+<div id="visualization-7-feature-expression-on-umap"
+class="section level3">
+<h3>Visualization 7: Feature Expression on UMAP</h3>
+<p>Show gene expression levels overlaid on UMAP.</p>
+<pre class="r"><code># Let&#39;s look at some marker genes
+genes &lt;- c(&quot;CD3D&quot;, &quot;CD14&quot;, &quot;CD79A&quot;)
+
+# SEURAT WRAPPER VERSION
+p1 &lt;- FeaturePlot(pbmc3k, features = genes, ncol = 1) +
+  plot_annotation(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Key concept: Expression data is in the assay, accessed with GetAssayData() or FetchData()
+# FetchData() is convenient - it can pull from multiple sources at once
+
+# Get UMAP coordinates and expression values
+feature_data &lt;- FetchData(pbmc3k, vars = c(&quot;umap_1&quot;, &quot;umap_2&quot;, genes))
+
+# Reshape for faceting
+feature_long &lt;- feature_data %&gt;%
+  pivot_longer(cols = all_of(genes),
+               names_to = &quot;gene&quot;,
+               values_to = &quot;expression&quot;)
+
+p2 &lt;- ggplot(feature_long, aes(x = umap_1, y = umap_2, color = expression)) +
+  geom_point(alpha = 0.6, size = 0.5) +
+  facet_wrap(~ gene, ncol = 1) +
+  scale_color_gradientn(colors = c(&quot;lightgrey&quot;, &quot;blue&quot;, &quot;red&quot;, &quot;darkred&quot;)) +
+  labs(title = &quot;ggplot2 version&quot;, color = &quot;Expression&quot;) +
+  theme_bw() +
+  coord_fixed()
+
+# Display side by side
+p1 | p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/umap-features-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li><code>FetchData()</code> is a powerful function that can retrieve:
+<ul>
+<li>Dimensional reduction coordinates (UMAP_1, UMAP_2, PC_1, etc.)</li>
+<li>Gene expression values</li>
+<li>Metadata columns</li>
+<li>All in one convenient dataframe!</li>
+</ul></li>
+<li>We reshaped the data to long format for faceting</li>
+<li>Custom color scales with <code>scale_color_gradientn()</code></li>
+</ul>
+</div>
+<div id="visualization-8-split-visualization-by-metadata"
+class="section level3">
+<h3>Visualization 8: Split Visualization by Metadata</h3>
+<p>Sometimes you want to split visualizations by a metadata variable.
+Let’s add a mock “treatment” variable to demonstrate.</p>
+<pre class="r"><code># Add a mock treatment variable (just for demonstration)
+set.seed(42)
+pbmc3k$treatment &lt;- sample(c(&quot;Control&quot;, &quot;Treated&quot;), ncol(pbmc3k), replace = TRUE)
+
+# SEURAT WRAPPER VERSION
+p1 &lt;- DimPlot(pbmc3k, reduction = &quot;umap&quot;, split.by = &quot;treatment&quot;) +
+  plot_annotation(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Extract UMAP coordinates, clusters, and metadata
+umap_split &lt;- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
+colnames(umap_split) &lt;- c(&quot;UMAP1&quot;, &quot;UMAP2&quot;)
+umap_split$cluster &lt;- pbmc3k@meta.data$seurat_clusters
+umap_split$treatment &lt;- pbmc3k@meta.data$treatment
+
+p2 &lt;- ggplot(umap_split, aes(x = UMAP1, y = UMAP2, color = cluster)) +
+  geom_point(alpha = 0.6, size = 0.5) +
+  facet_wrap(~ treatment) +
+  labs(title = &quot;ggplot2 version&quot;) +
+  theme_bw() +
+  coord_fixed()
+
+# Display
+p1 / p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/split-viz-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Can combine multiple metadata columns with embedding
+coordinates</li>
+<li><code>facet_wrap()</code> enables splitting by any variable</li>
+<li>Full control over layout and appearance</li>
+</ul>
+</div>
+</div>
+<div id="finding-marker-genes" class="section level2">
+<h2>Finding Marker Genes</h2>
+<pre class="r"><code># Find markers for cluster 0
+cluster0_markers &lt;- FindMarkers(pbmc3k, ident.1 = 0, min.pct = 0.25)
+
+# Find all markers
+pbmc_markers &lt;- FindAllMarkers(pbmc3k, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+
+# Get top 5 markers per cluster
+top5_markers &lt;- pbmc_markers %&gt;%
+  group_by(cluster) %&gt;%
+  top_n(n = 5, wt = avg_log2FC)
+
+head(top5_markers, 15)</code></pre>
+<pre><code># A tibble: 15 × 7
+# Groups:   cluster [3]
+       p_val avg_log2FC pct.1 pct.2 p_val_adj cluster gene     
+       &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt;    
+ 1 9.57e- 88       2.40 0.447 0.108 1.31e- 83 0       CCR7     
+ 2 1.35e- 51       2.14 0.342 0.103 1.86e- 47 0       LEF1     
+ 3 2.81e- 44       1.53 0.443 0.185 3.85e- 40 0       PIK3IP1  
+ 4 6.27e- 43       1.99 0.33  0.112 8.60e- 39 0       PRKCQ-AS1
+ 5 1.34e- 34       1.96 0.268 0.087 1.84e- 30 0       MAL      
+ 6 0               6.65 0.975 0.121 0         1       S100A8   
+ 7 0               6.18 0.996 0.215 0         1       S100A9   
+ 8 1.03e-295       5.98 0.667 0.027 1.42e-291 1       CD14     
+ 9 7.07e-139       7.28 0.299 0.004 9.70e-135 1       FOLR3    
+10 3.38e-121       6.74 0.277 0.006 4.64e-117 1       S100A12  
+11 3.44e- 59       1.63 0.651 0.245 4.71e- 55 2       CD2      
+12 2.97e- 58       2.09 0.42  0.111 4.07e- 54 2       AQP3     
+13 2.92e- 42       1.52 0.397 0.124 4.00e- 38 2       TRAT1    
+14 5.03e- 34       1.87 0.263 0.07  6.90e- 30 2       CD40LG   
+15 2.65e- 20       1.60 0.305 0.136 3.63e- 16 2       CORO1B   </code></pre>
+<div id="visualization-9-violin-plot-by-cluster" class="section level3">
+<h3>Visualization 9: Violin Plot by Cluster</h3>
+<p>Show expression of marker genes across clusters.</p>
+<pre class="r"><code># Select a few top marker genes
+selected_genes &lt;- c(&quot;IL7R&quot;, &quot;CCR7&quot;, &quot;CD14&quot;, &quot;LYZ&quot;, &quot;MS4A1&quot;, &quot;CD8A&quot;)
+
+# SEURAT WRAPPER VERSION
+p1 &lt;- VlnPlot(pbmc3k, features = selected_genes, ncol = 2, pt.size = 0.1) +
+  plot_annotation(title = &quot;Seurat wrapper&quot;)
+
+# GGPLOT2 VERSION
+# Use FetchData to get cluster assignments and gene expression
+violin_data &lt;- FetchData(pbmc3k, vars = c(&quot;seurat_clusters&quot;, selected_genes))
+
+# Reshape to long format
+violin_long &lt;- violin_data %&gt;%
+  pivot_longer(cols = all_of(selected_genes),
+               names_to = &quot;gene&quot;,
+               values_to = &quot;expression&quot;)
+
+p2 &lt;- ggplot(violin_long, aes(x = seurat_clusters, y = expression, fill = seurat_clusters)) +
+  geom_violin(scale = &quot;width&quot;, trim = TRUE) +
+  facet_wrap(~ gene, scales = &quot;free_y&quot;, ncol = 2) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;Cluster&quot;, y = &quot;Expression Level&quot;) +
+  theme_bw() +
+  theme(legend.position = &quot;none&quot;)
+
+# Display
+print(p1)</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-violin-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>print(p2)</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-violin-2.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Combined cluster identity with gene expression using
+<code>FetchData()</code></li>
+<li>Used <code>pivot_longer()</code> to reshape for faceting</li>
+<li><code>scales = "free_y"</code> allows different y-axis scales per
+facet (useful when genes have different expression ranges)</li>
+</ul>
+</div>
+<div id="visualization-10-marker-gene-heatmap" class="section level3">
+<h3>Visualization 10: Marker Gene Heatmap</h3>
+<p>Heatmaps show expression patterns of marker genes across
+clusters.</p>
+<pre class="r"><code># Get top 3 markers per cluster for a cleaner visualization
+top3_markers &lt;- pbmc_markers %&gt;%
+  group_by(cluster) %&gt;%
+  top_n(n = 3, wt = avg_log2FC)
+
+# SEURAT WRAPPER VERSION
+p1 &lt;- DoHeatmap(pbmc3k, features = top3_markers$gene, size = 3, angle = 90) +
+  labs(title = &quot;Seurat wrapper&quot;) +
+  theme(axis.text.y = element_text(size = 8))
+
+# GGPLOT2 VERSION
+# Key concept: We need the scaled expression matrix
+# Get scaled data for the marker genes
+scaled_expr &lt;- GetAssayData(pbmc3k, layer = &quot;scale.data&quot;)
+markers_to_plot &lt;- top3_markers$gene[top3_markers$gene %in% rownames(scaled_expr)]
+
+# Extract scaled expression for these genes
+heatmap_data &lt;- as.data.frame(t(as.matrix(scaled_expr[markers_to_plot, ])))
+heatmap_data$cluster &lt;- pbmc3k@meta.data$seurat_clusters
+heatmap_data$cell &lt;- rownames(heatmap_data)
+
+# Order cells by cluster
+heatmap_data &lt;- heatmap_data %&gt;%
+  arrange(cluster)
+
+# Reshape to long format
+heatmap_long &lt;- heatmap_data %&gt;%
+  pivot_longer(cols = all_of(markers_to_plot),
+               names_to = &quot;gene&quot;,
+               values_to = &quot;expression&quot;)
+
+# Create ordered factors for proper display
+heatmap_long$cell &lt;- factor(heatmap_long$cell, levels = unique(heatmap_data$cell))
+heatmap_long$gene &lt;- factor(heatmap_long$gene, levels = markers_to_plot)
+
+p2 &lt;- ggplot(heatmap_long, aes(x = cell, y = gene, fill = expression)) +
+  geom_tile() +
+  scale_fill_gradient2(low = &quot;blue&quot;, mid = &quot;white&quot;, high = &quot;red&quot;,
+                       midpoint = 0, limits = c(-2, 2)) +
+  labs(title = &quot;ggplot2 version&quot;, x = &quot;Cells&quot;, y = &quot;Genes&quot;, fill = &quot;Scaled\nExpression&quot;) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 8),
+        panel.grid = element_blank())
+
+# Display
+print(p1)</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-heatmap-1.png" width="960" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>print(p2)</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-heatmap-2.png" width="960" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Scaled expression data is in
+<code>GetAssayData(object, slot = "scale.data")</code></li>
+<li>Genes are rows, cells are columns in the expression matrix</li>
+<li>We transposed and reshaped the data for ggplot2</li>
+<li><code>geom_tile()</code> creates heatmaps</li>
+<li><code>scale_fill_gradient2()</code> creates a diverging color
+scale</li>
+</ul>
+</div>
+<div id="visualization-11-dot-plot" class="section level3">
+<h3>Visualization 11: Dot Plot</h3>
+<p>Dot plots efficiently show both expression level (color) and
+percentage of cells expressing (size) a gene.</p>
+<pre class="r"><code># Select genes to visualize
+selected_genes &lt;- c(&quot;IL7R&quot;, &quot;CCR7&quot;, &quot;CD14&quot;, &quot;LYZ&quot;, &quot;S100A4&quot;, &quot;MS4A1&quot;,
+                    &quot;CD8A&quot;, &quot;FCGR3A&quot;, &quot;MS4A7&quot;, &quot;GNLY&quot;, &quot;NKG7&quot;)
+
+# SEURAT WRAPPER VERSION
+p1 &lt;- DotPlot(pbmc3k, features = selected_genes) +
+  labs(title = &quot;Seurat wrapper&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# GGPLOT2 VERSION
+# We need to calculate:
+# 1. Average expression per cluster
+# 2. Percentage of cells expressing per cluster
+
+# Get expression data and cluster assignments
+dotplot_data &lt;- FetchData(pbmc3k, vars = c(&quot;seurat_clusters&quot;, selected_genes))
+
+# Calculate summary statistics
+dotplot_summary &lt;- dotplot_data %&gt;%
+  pivot_longer(cols = all_of(selected_genes),
+               names_to = &quot;gene&quot;,
+               values_to = &quot;expression&quot;) %&gt;%
+  group_by(seurat_clusters, gene) %&gt;%
+  summarize(
+    avg_expression = mean(expression),
+    pct_expressed = sum(expression &gt; 0) / n() * 100,
+    .groups = &quot;drop&quot;
+  )
+
+p2 &lt;- ggplot(dotplot_summary, aes(x = gene, y = seurat_clusters)) +
+  geom_point(aes(size = pct_expressed, color = avg_expression)) +
+  scale_color_gradient(low = &quot;lightgrey&quot;, high = &quot;red&quot;) +
+  scale_size_continuous(range = c(0, 6)) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;Gene&quot;, y = &quot;Cluster&quot;,
+       color = &quot;Average\nExpression&quot;,
+       size = &quot;% Expressed&quot;) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Display
+p1 / p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/dotplot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Dot plots require calculating summary statistics per group</li>
+<li>Used <code>group_by()</code> and <code>summarize()</code> to compute
+averages and percentages</li>
+<li>Mapped two variables to aesthetics: <code>size</code> and
+<code>color</code></li>
+<li>This demonstrates how ggplot2 gives you control over the
+calculation</li>
+</ul>
+</div>
+</div>
+<div id="assign-cell-type-identity" class="section level2">
+<h2>Assign Cell Type Identity</h2>
+<div id="visualization-12-umap-with-cell-type-labels"
+class="section level3">
+<h3>Visualization 12: UMAP with Cell Type Labels</h3>
+<pre class="r"><code># SEURAT WRAPPER VERSION
+p1 &lt;- DimPlot(pbmc3k, reduction = &quot;umap&quot;, group.by = &quot;seurat_annotations&quot;, label = TRUE, repel = TRUE) +
+  labs(title = &quot;Seurat wrapper&quot;) +
+  NoLegend()
+
+# GGPLOT2 VERSION
+umap_celltype &lt;- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
+colnames(umap_celltype) &lt;- c(&quot;UMAP1&quot;, &quot;UMAP2&quot;)
+umap_celltype$celltype &lt;- pbmc3k$seurat_annotations
+
+# Calculate centroids for labels
+celltype_centers &lt;- umap_celltype %&gt;%
+  group_by(celltype) %&gt;%
+  summarize(UMAP1 = median(UMAP1),
+            UMAP2 = median(UMAP2))
+
+p2 &lt;- ggplot(umap_celltype, aes(x = UMAP1, y = UMAP2, color = celltype)) +
+  geom_point(alpha = 0.6, size = 0.8) +
+  geom_text(data = celltype_centers, aes(label = celltype),
+            size = 3, color = &quot;black&quot;, fontface = &quot;bold&quot;,
+            check_overlap = TRUE) +
+  labs(title = &quot;ggplot2 version&quot;) +
+  theme_bw() +
+  theme(legend.position = &quot;right&quot;) +
+  coord_fixed() +
+  NoLegend()
+
+# Display
+p1 + p2</code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/umap-celltypes-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><strong>What we learned:</strong></p>
+<ul>
+<li>Cell type annotations are just another metadata column</li>
+<li>We accessed it the same way as cluster assignments</li>
+<li>Full control over colors, label placement, and legend</li>
+</ul>
+</div>
+</div>
+<div id="summary-key-takeaways" class="section level2">
+<h2>Summary: Key Takeaways</h2>
+<div id="data-access-cheat-sheet" class="section level3">
+<h3>Data Access Cheat Sheet</h3>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="27%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Location</th>
+<th>Access Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metadata</strong> (QC metrics, clusters, etc.)</td>
+<td><code>object@meta.data</code></td>
+<td>Direct access or <code>FetchData()</code></td>
+</tr>
+<tr>
+<td><strong>Raw counts</strong></td>
+<td><code>object@assays$RNA@counts</code></td>
+<td><code>GetAssayData(slot = "counts")</code></td>
+</tr>
+<tr>
+<td><strong>Normalized expression</strong></td>
+<td><code>object@assays$RNA@data</code></td>
+<td><code>GetAssayData(slot = "data")</code></td>
+</tr>
+<tr>
+<td><strong>Scaled expression</strong></td>
+<td><code>object@assays$RNA@scale.data</code></td>
+<td><code>GetAssayData(slot = "scale.data")</code></td>
+</tr>
+<tr>
+<td><strong>PCA embeddings</strong></td>
+<td><code>object@reductions$pca@cell.embeddings</code></td>
+<td>Direct access or <code>FetchData("PC_1", "PC_2", ...)</code></td>
+</tr>
+<tr>
+<td><strong>UMAP embeddings</strong></td>
+<td><code>object@reductions$umap@cell.embeddings</code></td>
+<td>Direct access or <code>FetchData("UMAP_1", "UMAP_2")</code></td>
+</tr>
+<tr>
+<td><strong>Variable features</strong></td>
+<td>Internal</td>
+<td><code>VariableFeatures()</code> or <code>HVFInfo()</code></td>
+</tr>
+<tr>
+<td><strong>Combined data</strong></td>
+<td>Multiple sources</td>
+<td><code>FetchData()</code> - most convenient!</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="when-to-use-seurat-wrappers-vs-ggplot2" class="section level3">
+<h3>When to Use Seurat Wrappers vs ggplot2</h3>
+<p><strong>Use Seurat wrappers when:</strong></p>
+<ul>
+<li>You need a quick exploratory visualization</li>
+<li>The default styling meets your needs</li>
+<li>You’re in the early stages of analysis</li>
+</ul>
+<p><strong>Use ggplot2 when:</strong></p>
+<ul>
+<li>You need publication-quality figures with specific styling</li>
+<li>You want to combine data from multiple sources</li>
+<li>You need custom calculations or transformations</li>
+<li>You want to create novel visualizations not provided by Seurat</li>
+<li>You need fine-grained control over every aspect of the plot</li>
+</ul>
+</div>
+<div id="final-thoughts" class="section level3">
+<h3>Final Thoughts</h3>
+<p>The power of understanding how to extract data from Seurat objects
+means you’re not limited to the visualizations provided by the package.
+You can:</p>
+<ol style="list-style-type: decimal">
+<li>Create entirely new plot types</li>
+<li>Combine multiple data types in creative ways</li>
+<li>Apply advanced statistical visualizations</li>
+<li>Match journal or institutional style guidelines exactly</li>
+<li>Integrate with other R packages and workflows</li>
+</ol>
+<p><strong>Practice exercise:</strong> Try recreating other Seurat plots
+we didn’t cover, such as:</p>
+<ul>
+<li><code>RidgePlot()</code> - Ridge plots for gene expression</li>
+<li><code>VizDimLoadings()</code> - Top genes in PC loadings</li>
+<li>Custom multi-panel figures combining different data types</li>
+</ul>
+<p>The key is always the same: <strong>understand where the data lives,
+extract it to a tidy dataframe, and use ggplot2 to visualize
+it!</strong></p>
+</div>
+</div>
+<div id="session-info" class="section level2">
+<h2>Session Info</h2>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sonoma 14.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] patchwork_1.2.0         tidyr_1.3.1             dplyr_1.1.4            
+ [4] ggplot2_3.5.1           pbmc3k.SeuratData_3.1.4 SeuratData_0.2.2.9001  
+ [7] Seurat_5.1.0            SeuratObject_5.0.2      sp_2.1-4               
+[10] workflowr_1.7.1        
+
+loaded via a namespace (and not attached):
+  [1] RColorBrewer_1.1-3     rstudioapi_0.16.0      jsonlite_1.8.8        
+  [4] magrittr_2.0.3         ggbeeswarm_0.7.2       spatstat.utils_3.1-0  
+  [7] farver_2.1.2           rmarkdown_2.27         fs_1.6.4              
+ [10] vctrs_0.6.5            ROCR_1.0-11            spatstat.explore_3.3-2
+ [13] htmltools_0.5.8.1      sass_0.4.9             sctransform_0.4.1     
+ [16] parallelly_1.38.0      KernSmooth_2.23-24     bslib_0.8.0           
+ [19] htmlwidgets_1.6.4      ica_1.0-3              plyr_1.8.9            
+ [22] plotly_4.10.4          zoo_1.8-12             cachem_1.1.0          
+ [25] whisker_0.4.1          igraph_2.0.3           mime_0.12             
+ [28] lifecycle_1.0.4        pkgconfig_2.0.3        Matrix_1.7-0          
+ [31] R6_2.5.1               fastmap_1.2.0          fitdistrplus_1.2-1    
+ [34] future_1.34.0          shiny_1.9.0            digest_0.6.36         
+ [37] colorspace_2.1-1       ps_1.7.7               rprojroot_2.0.4       
+ [40] tensor_1.5             RSpectra_0.16-2        irlba_2.3.5.1         
+ [43] labeling_0.4.3         progressr_0.14.0       fansi_1.0.6           
+ [46] spatstat.sparse_3.1-0  mgcv_1.9-1             httr_1.4.7            
+ [49] polyclip_1.10-7        abind_1.4-5            compiler_4.4.1        
+ [52] withr_3.0.0            fastDummies_1.7.4      highr_0.11            
+ [55] MASS_7.3-60.2          rappdirs_0.3.3         tools_4.4.1           
+ [58] vipor_0.4.7            lmtest_0.9-40          beeswarm_0.4.0        
+ [61] httpuv_1.6.15          future.apply_1.11.2    goftest_1.2-3         
+ [64] glue_1.8.0             callr_3.7.6            nlme_3.1-164          
+ [67] promises_1.3.0         grid_4.4.1             Rtsne_0.17            
+ [70] getPass_0.2-4          cluster_2.1.6          reshape2_1.4.4        
+ [73] generics_0.1.3         gtable_0.3.5           spatstat.data_3.1-2   
+ [76] data.table_1.15.4      utf8_1.2.4             spatstat.geom_3.3-2   
+ [79] RcppAnnoy_0.0.22       ggrepel_0.9.5          RANN_2.6.1            
+ [82] pillar_1.9.0           stringr_1.5.1          limma_3.60.4          
+ [85] spam_2.10-0            RcppHNSW_0.6.0         later_1.3.2           
+ [88] splines_4.4.1          lattice_0.22-6         survival_3.6-4        
+ [91] deldir_2.0-4           tidyselect_1.2.1       miniUI_0.1.1.1        
+ [94] pbapply_1.7-2          knitr_1.48             git2r_0.35.0          
+ [97] gridExtra_2.3          scattermore_1.2        xfun_0.52             
+[100] statmod_1.5.0          matrixStats_1.3.0      stringi_1.8.4         
+[103] lazyeval_0.2.2         yaml_2.3.10            evaluate_0.24.0       
+[106] codetools_0.2-20       tibble_3.2.1           cli_3.6.3             
+[109] uwot_0.2.2             xtable_1.8-4           reticulate_1.38.0     
+[112] munsell_0.5.1          processx_3.8.4         jquerylib_0.1.4       
+[115] Rcpp_1.0.13            globals_0.16.3         spatstat.random_3.3-1 
+[118] png_0.1-8              ggrastr_1.0.2          spatstat.univar_3.0-0 
+[121] parallel_4.4.1         presto_1.0.0           dotCall64_1.1-1       
+[124] listenv_0.9.1          viridisLite_0.4.2      scales_1.3.0          
+[127] ggridges_0.5.6         crayon_1.5.3           leiden_0.4.3.1        
+[130] purrr_1.0.2            rlang_1.1.4            cowplot_1.1.3         </code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -630,20 +1527,56 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.7.1
+ [1] patchwork_1.2.0         tidyr_1.3.1             dplyr_1.1.4            
+ [4] ggplot2_3.5.1           pbmc3k.SeuratData_3.1.4 SeuratData_0.2.2.9001  
+ [7] Seurat_5.1.0            SeuratObject_5.0.2      sp_2.1-4               
+[10] workflowr_1.7.1        
 
 loaded via a namespace (and not attached):
- [1] jsonlite_1.8.8    compiler_4.4.1    highr_0.11        promises_1.3.0   
- [5] Rcpp_1.0.13       stringr_1.5.1     git2r_0.35.0      callr_3.7.6      
- [9] later_1.3.2       jquerylib_0.1.4   yaml_2.3.10       fastmap_1.2.0    
-[13] R6_2.5.1          knitr_1.48        tibble_3.2.1      rprojroot_2.0.4  
-[17] bslib_0.8.0       pillar_1.9.0      rlang_1.1.4       utf8_1.2.4       
-[21] cachem_1.1.0      stringi_1.8.4     httpuv_1.6.15     xfun_0.52        
-[25] getPass_0.2-4     fs_1.6.4          sass_0.4.9        cli_3.6.3        
-[29] magrittr_2.0.3    ps_1.7.7          digest_0.6.36     processx_3.8.4   
-[33] rstudioapi_0.16.0 lifecycle_1.0.4   vctrs_0.6.5       evaluate_0.24.0  
-[37] glue_1.8.0        whisker_0.4.1     fansi_1.0.6       rmarkdown_2.27   
-[41] httr_1.4.7        tools_4.4.1       pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
+  [1] RColorBrewer_1.1-3     rstudioapi_0.16.0      jsonlite_1.8.8        
+  [4] magrittr_2.0.3         ggbeeswarm_0.7.2       spatstat.utils_3.1-0  
+  [7] farver_2.1.2           rmarkdown_2.27         fs_1.6.4              
+ [10] vctrs_0.6.5            ROCR_1.0-11            spatstat.explore_3.3-2
+ [13] htmltools_0.5.8.1      sass_0.4.9             sctransform_0.4.1     
+ [16] parallelly_1.38.0      KernSmooth_2.23-24     bslib_0.8.0           
+ [19] htmlwidgets_1.6.4      ica_1.0-3              plyr_1.8.9            
+ [22] plotly_4.10.4          zoo_1.8-12             cachem_1.1.0          
+ [25] whisker_0.4.1          igraph_2.0.3           mime_0.12             
+ [28] lifecycle_1.0.4        pkgconfig_2.0.3        Matrix_1.7-0          
+ [31] R6_2.5.1               fastmap_1.2.0          fitdistrplus_1.2-1    
+ [34] future_1.34.0          shiny_1.9.0            digest_0.6.36         
+ [37] colorspace_2.1-1       ps_1.7.7               rprojroot_2.0.4       
+ [40] tensor_1.5             RSpectra_0.16-2        irlba_2.3.5.1         
+ [43] labeling_0.4.3         progressr_0.14.0       fansi_1.0.6           
+ [46] spatstat.sparse_3.1-0  mgcv_1.9-1             httr_1.4.7            
+ [49] polyclip_1.10-7        abind_1.4-5            compiler_4.4.1        
+ [52] withr_3.0.0            fastDummies_1.7.4      highr_0.11            
+ [55] MASS_7.3-60.2          rappdirs_0.3.3         tools_4.4.1           
+ [58] vipor_0.4.7            lmtest_0.9-40          beeswarm_0.4.0        
+ [61] httpuv_1.6.15          future.apply_1.11.2    goftest_1.2-3         
+ [64] glue_1.8.0             callr_3.7.6            nlme_3.1-164          
+ [67] promises_1.3.0         grid_4.4.1             Rtsne_0.17            
+ [70] getPass_0.2-4          cluster_2.1.6          reshape2_1.4.4        
+ [73] generics_0.1.3         gtable_0.3.5           spatstat.data_3.1-2   
+ [76] data.table_1.15.4      utf8_1.2.4             spatstat.geom_3.3-2   
+ [79] RcppAnnoy_0.0.22       ggrepel_0.9.5          RANN_2.6.1            
+ [82] pillar_1.9.0           stringr_1.5.1          limma_3.60.4          
+ [85] spam_2.10-0            RcppHNSW_0.6.0         later_1.3.2           
+ [88] splines_4.4.1          lattice_0.22-6         survival_3.6-4        
+ [91] deldir_2.0-4           tidyselect_1.2.1       miniUI_0.1.1.1        
+ [94] pbapply_1.7-2          knitr_1.48             git2r_0.35.0          
+ [97] gridExtra_2.3          scattermore_1.2        xfun_0.52             
+[100] statmod_1.5.0          matrixStats_1.3.0      stringi_1.8.4         
+[103] lazyeval_0.2.2         yaml_2.3.10            evaluate_0.24.0       
+[106] codetools_0.2-20       tibble_3.2.1           cli_3.6.3             
+[109] uwot_0.2.2             xtable_1.8-4           reticulate_1.38.0     
+[112] munsell_0.5.1          processx_3.8.4         jquerylib_0.1.4       
+[115] Rcpp_1.0.13            globals_0.16.3         spatstat.random_3.3-1 
+[118] png_0.1-8              ggrastr_1.0.2          spatstat.univar_3.0-0 
+[121] parallel_4.4.1         presto_1.0.0           dotCall64_1.1-1       
+[124] listenv_0.9.1          viridisLite_0.4.2      scales_1.3.0          
+[127] ggridges_0.5.6         crayon_1.5.3           leiden_0.4.3.1        
+[130] purrr_1.0.2            rlang_1.1.4            cowplot_1.1.3         </code></pre>
 </div>
 </div>
 </div>
