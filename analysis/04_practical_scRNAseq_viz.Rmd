@@ -1,0 +1,724 @@
+---
+title: "Practical Single-Cell RNA-seq Visualization with ggplot2"
+author: "Your Name"
+date: "2025-10-08"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+Single-cell RNA-seq analysis packages like Seurat provide convenient wrapper functions for creating visualizations. While these wrappers are quick and easy to use, they can be limiting when you need to customize plots for publications or create novel visualizations.
+
+**The key insight:** All Seurat wrapper functions are ultimately accessing data stored in the Seurat object and passing it to plotting functions. Once you understand how to extract this data into tidy dataframes, you can use ggplot2 to create any visualization you want with complete control.
+
+In this tutorial, we'll:
+
+1. Analyze the classic PBMC 3k dataset following the [Seurat tutorial](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html)
+2. Compare Seurat's wrapper functions with custom ggplot2 implementations
+3. Show you **how to access the underlying data** from Seurat objects
+4. Demonstrate the flexibility you gain with ggplot2
+
+**Learning objectives:**
+
+- Understand where different data types are stored in Seurat objects
+- Extract metadata, expression data, and dimensional reductions into dataframes
+- Recreate common scRNA-seq plots using ggplot2
+- Gain the flexibility to create custom visualizations
+
+## Setup
+
+```{r setup, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.width = 10, fig.height = 5)
+
+# Load required packages
+library(Seurat)
+library(SeuratData)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(patchwork)  # For combining plots side-by-side
+
+# Set a theme for consistent ggplot2 styling
+theme_set(theme_bw(base_size = 12))
+```
+
+## Load the PBMC 3k Dataset
+
+The pbmc3k dataset contains 2,700 Peripheral Blood Mononuclear Cells (PBMCs) sequenced on the Illumina NextSeq 500. This is a widely-used example dataset for learning scRNA-seq analysis.
+
+```{r load-data}
+# Install the dataset if needed (uncomment the next line on first run)
+# InstallData("pbmc3k")
+
+# Load the dataset
+data("pbmc3k")
+
+# The object comes pre-loaded but let's look at it
+#pbmc3k
+
+pbmc3k<- UpdateSeuratObject(pbmc3k)
+```
+
+**Understanding the Seurat object structure:**
+
+- `pbmc3k@assays` - Contains expression matrices (counts, normalized data, scaled data)
+- `pbmc3k@meta.data` - Cell-level metadata (QC metrics, cluster assignments, etc.)
+- `pbmc3k@reductions` - Dimensional reductions (PCA, UMAP, etc.)
+
+## Quality Control Metrics
+
+First, let's calculate QC metrics. We'll compute the percentage of mitochondrial genes per cell, which is a common QC metric.
+
+```{r calculate-qc}
+# Calculate percentage of mitochondrial genes
+pbmc3k[["percent.mt"]] <- PercentageFeatureSet(pbmc3k, pattern = "^MT-")
+
+# View the metadata where QC metrics are stored
+head(pbmc3k@meta.data)
+```
+
+### Visualization 1: QC Violin Plots
+
+Let's compare Seurat's `VlnPlot()` with a custom ggplot2 version.
+
+```{r qc-violin, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- VlnPlot(pbmc3k, features = c("nCount_RNA", "nFeature_RNA", "percent.mt"),
+              ncol = 3, pt.size = 0.1)
+
+# GGPLOT2 VERSION - Extracting data from Seurat object
+# Key concept: Metadata is stored in pbmc3k@meta.data
+qc_data <- pbmc3k@meta.data %>%
+  select(nCount_RNA, nFeature_RNA, percent.mt) %>%
+  mutate(cell_id = rownames(.)) %>%
+  # Convert to long format for ggplot2
+  pivot_longer(cols = c(nCount_RNA, nFeature_RNA, percent.mt),
+               names_to = "metric",
+               values_to = "value")
+
+p2 <- ggplot(qc_data, aes(x = metric, y = value, fill = metric)) +
+  geom_violin(scale = "width", trim = TRUE) +
+  geom_jitter(size = 0.1, alpha = 0.3, width = 0.2) +
+  facet_wrap(~ metric, scales = "free", ncol = 3) +
+  labs(title = "QC Metrics (ggplot2 version)",
+       x = NULL, y = "Value") +
+  theme(legend.position = "none",
+        axis.text.x = element_blank())
+
+# Display side by side
+p1/p2
+```
+
+**What we learned:**
+
+- QC metrics are stored in `pbmc3k@meta.data` as columns
+- We extracted the data, reshaped it to long format with `pivot_longer()`
+- Created violin plots with `geom_violin()` and overlaid points with `geom_jitter()`
+- Used `facet_wrap()` to create separate panels
+
+### Visualization 2: QC Scatter Plots
+
+Feature-feature relationships help identify potential issues (e.g., correlation between UMI count and gene count).
+
+```{r qc-scatter, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- FeatureScatter(pbmc3k, feature1 = "nCount_RNA", feature2 = "nFeature_RNA") +
+  labs(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Again, we extract from metadata
+scatter_data <- pbmc3k@meta.data %>%
+  select(nCount_RNA, nFeature_RNA, percent.mt)
+
+p2 <- ggplot(scatter_data, aes(x = nCount_RNA, y = nFeature_RNA)) +
+  geom_point(alpha = 0.5, size = 0.5, color = "steelblue") +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  labs(title = "ggplot2 version",
+       x = "Total UMI Counts",
+       y = "Number of Genes Detected") +
+  theme_bw()
+
+# Display side by side
+p1 + p2
+```
+
+**What we learned:**
+
+- Simple scatter plots require data from `@meta.data`
+- We can add trend lines with `geom_smooth()`
+- The patchwork package (`+`) makes side-by-side comparison easy
+
+## Filter, Normalize, and Find Variable Features
+
+Now let's continue with the standard Seurat workflow.
+
+```{r preprocess}
+# Filter cells based on QC metrics
+pbmc3k <- subset(pbmc3k, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+
+# Normalize the data
+pbmc3k <- NormalizeData(pbmc3k)
+
+# Find variable features
+pbmc3k <- FindVariableFeatures(pbmc3k, selection.method = "vst", nfeatures = 2000)
+```
+
+### Visualization 3: Variable Feature Plot
+
+This plot shows the most variable genes, which drive heterogeneity in the dataset.
+
+```{r variable-features, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- VariableFeaturePlot(pbmc3k) +
+  labs(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Key concept: Variable feature info is stored in pbmc3k@assays$RNA@meta.features
+# or we can access it with HVFInfo()
+hvf_data <- HVFInfo(pbmc3k) %>%
+  mutate(gene = rownames(.),
+         variable = gene %in% VariableFeatures(pbmc3k))
+
+# Get top 10 variable genes to label
+top10_genes <- head(VariableFeatures(pbmc3k), 10)
+
+p2 <- ggplot(hvf_data, aes(x = mean, y = variance.standardized)) +
+  geom_point(aes(color = variable), alpha = 0.5, size = 0.8) +
+  scale_color_manual(values = c("grey70", "red"),
+                     labels = c("Non-variable", "Variable")) +
+  geom_text(data = hvf_data %>% filter(gene %in% top10_genes),
+            aes(label = gene), size = 3, nudge_y = 0.5) +
+  labs(title = "ggplot2 version",
+       x = "Average Expression",
+       y = "Standardized Variance",
+       color = "Feature Type") +
+  theme_bw()
+
+# Display side by side
+p1 + p2
+```
+
+**What we learned:**
+
+- Variable feature information is accessed with `HVFInfo()`
+- Top variable genes are retrieved with `VariableFeatures()`
+- We can label specific genes with `geom_text()`
+- Color coding highlights different gene sets
+
+## Scaling and PCA
+
+```{r pca}
+# Scale the data
+pbmc3k <- ScaleData(pbmc3k)
+
+# Run PCA
+pbmc3k <- RunPCA(pbmc3k, features = VariableFeatures(pbmc3k))
+```
+
+### Visualization 4: Elbow Plot
+
+The elbow plot helps determine how many PCs to use for downstream analysis.
+
+```{r elbow-plot, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- ElbowPlot(pbmc3k, ndims = 30) +
+  labs(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Key concept: PCA results are stored in pbmc3k@reductions$pca
+# Standard deviations are in pbmc3k@reductions$pca@stdev
+pca_variance <- data.frame(
+  PC = 1:30,
+  stdev = pbmc3k@reductions$pca@stdev[1:30]
+) %>%
+  mutate(variance_explained = stdev^2)
+
+p2 <- ggplot(pca_variance, aes(x = PC, y = stdev)) +
+  geom_point(size = 2, color = "steelblue") +
+  geom_line(color = "steelblue") +
+  labs(title = "ggplot2 version",
+       x = "Principal Component",
+       y = "Standard Deviation") +
+  theme_bw()
+
+# Display side by side
+p1 + p2
+```
+
+**What we learned:**
+
+- PCA results are stored in `pbmc3k@reductions$pca`
+- Standard deviations are in the `@stdev` slot
+- We extracted PC variance and plotted it with `geom_point()` + `geom_line()`
+
+### Visualization 5: PCA Dim Plot
+
+Visualize cells in PC space to see data structure.
+
+```{r pca-dimplot, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- DimPlot(pbmc3k, reduction = "pca", dims = c(1, 2)) +
+  labs(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Key concept: Cell embeddings are in pbmc3k@reductions$pca@cell.embeddings
+pca_embeddings <- as.data.frame(pbmc3k@reductions$pca@cell.embeddings[, 1:2])
+colnames(pca_embeddings) <- c("PC1", "PC2")
+
+p2 <- ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
+  geom_point(alpha = 0.5, size = 0.8, color = "steelblue") +
+  labs(title = "ggplot2 version",
+       x = "PC 1", y = "PC 2") +
+  theme_bw() +
+  coord_fixed()  # Equal aspect ratio
+
+# Display side by side
+p1 + p2
+```
+
+**What we learned:**
+
+- Cell embeddings (coordinates in reduced dimensions) are in `@reductions$pca@cell.embeddings`
+- Each row is a cell, each column is a PC
+- We can easily switch which PCs to plot by selecting different columns
+
+## Clustering and UMAP
+
+```{r clustering}
+# Build nearest neighbor graph and cluster
+pbmc3k <- FindNeighbors(pbmc3k, dims = 1:10)
+pbmc3k <- FindClusters(pbmc3k, resolution = 0.5)
+
+# Run UMAP
+pbmc3k <- RunUMAP(pbmc3k, dims = 1:10)
+```
+
+### Visualization 6: UMAP with Clusters
+
+This is one of the most common scRNA-seq visualizations.
+
+```{r umap-clusters, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- DimPlot(pbmc3k, reduction = "umap", label = TRUE) +
+  labs(title = "Seurat wrapper") +
+  NoLegend()
+
+# GGPLOT2 VERSION
+# Key concept: UMAP coordinates are in @reductions$umap@cell.embeddings
+# Cluster assignments are in @meta.data$seurat_clusters
+umap_data <- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
+colnames(umap_data) <- c("UMAP1", "UMAP2")
+umap_data$cluster <- pbmc3k@meta.data$seurat_clusters
+
+# Calculate cluster centroids for labels
+cluster_centers <- umap_data %>%
+  group_by(cluster) %>%
+  summarize(UMAP1 = median(UMAP1),
+            UMAP2 = median(UMAP2))
+
+p2 <- ggplot(umap_data, aes(x = UMAP1, y = UMAP2, color = cluster)) +
+  geom_point(alpha = 0.6, size = 0.8) +
+  geom_text(data = cluster_centers, aes(label = cluster),
+            size = 5, color = "black", fontface = "bold") +
+  labs(title = "ggplot2 version") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  coord_fixed()
+
+# Display side by side
+p1 + p2
+```
+
+**What we learned:**
+
+- UMAP coordinates are in `@reductions$umap@cell.embeddings`
+- Cluster assignments are in `@meta.data$seurat_clusters`
+- We can combine data from different slots
+- Calculated cluster centroids for label placement
+
+### Visualization 7: Feature Expression on UMAP
+
+Show gene expression levels overlaid on UMAP.
+
+```{r umap-features, fig.width=12, fig.height=10}
+# Let's look at some marker genes
+genes <- c("CD3D", "CD14", "CD79A")
+
+# SEURAT WRAPPER VERSION
+p1 <- FeaturePlot(pbmc3k, features = genes, ncol = 1) +
+  plot_annotation(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Key concept: Expression data is in the assay, accessed with GetAssayData() or FetchData()
+# FetchData() is convenient - it can pull from multiple sources at once
+
+# Get UMAP coordinates and expression values
+feature_data <- FetchData(pbmc3k, vars = c("umap_1", "umap_2", genes))
+
+# Reshape for faceting
+feature_long <- feature_data %>%
+  pivot_longer(cols = all_of(genes),
+               names_to = "gene",
+               values_to = "expression")
+
+p2 <- ggplot(feature_long, aes(x = umap_1, y = umap_2, color = expression)) +
+  geom_point(alpha = 0.6, size = 0.5) +
+  facet_wrap(~ gene, ncol = 1) +
+  scale_color_gradientn(colors = c("lightgrey", "blue", "red", "darkred")) +
+  labs(title = "ggplot2 version", color = "Expression") +
+  theme_bw() +
+  coord_fixed()
+
+# Display side by side
+p1 | p2
+```
+
+**What we learned:**
+
+- `FetchData()` is a powerful function that can retrieve:
+  - Dimensional reduction coordinates (UMAP_1, UMAP_2, PC_1, etc.)
+  - Gene expression values
+  - Metadata columns
+  - All in one convenient dataframe!
+- We reshaped the data to long format for faceting
+- Custom color scales with `scale_color_gradientn()`
+
+### Visualization 8: Split Visualization by Metadata
+
+Sometimes you want to split visualizations by a metadata variable. Let's add a mock "treatment" variable to demonstrate.
+
+```{r split-viz, fig.width=12, fig.height=5}
+# Add a mock treatment variable (just for demonstration)
+set.seed(42)
+pbmc3k$treatment <- sample(c("Control", "Treated"), ncol(pbmc3k), replace = TRUE)
+
+# SEURAT WRAPPER VERSION
+p1 <- DimPlot(pbmc3k, reduction = "umap", split.by = "treatment") +
+  plot_annotation(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Extract UMAP coordinates, clusters, and metadata
+umap_split <- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
+colnames(umap_split) <- c("UMAP1", "UMAP2")
+umap_split$cluster <- pbmc3k@meta.data$seurat_clusters
+umap_split$treatment <- pbmc3k@meta.data$treatment
+
+p2 <- ggplot(umap_split, aes(x = UMAP1, y = UMAP2, color = cluster)) +
+  geom_point(alpha = 0.6, size = 0.5) +
+  facet_wrap(~ treatment) +
+  labs(title = "ggplot2 version") +
+  theme_bw() +
+  coord_fixed()
+
+# Display
+p1 / p2
+```
+
+**What we learned:**
+
+- Can combine multiple metadata columns with embedding coordinates
+- `facet_wrap()` enables splitting by any variable
+- Full control over layout and appearance
+
+## Finding Marker Genes
+
+```{r find-markers}
+# Find markers for cluster 0
+cluster0_markers <- FindMarkers(pbmc3k, ident.1 = 0, min.pct = 0.25)
+
+# Find all markers
+pbmc_markers <- FindAllMarkers(pbmc3k, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+
+# Get top 5 markers per cluster
+top5_markers <- pbmc_markers %>%
+  group_by(cluster) %>%
+  top_n(n = 5, wt = avg_log2FC)
+
+head(top5_markers, 15)
+```
+
+### Visualization 9: Violin Plot by Cluster
+
+Show expression of marker genes across clusters.
+
+```{r marker-violin, fig.width=12, fig.height=8}
+# Select a few top marker genes
+selected_genes <- c("IL7R", "CCR7", "CD14", "LYZ", "MS4A1", "CD8A")
+
+# SEURAT WRAPPER VERSION
+p1 <- VlnPlot(pbmc3k, features = selected_genes, ncol = 2, pt.size = 0.1) +
+  plot_annotation(title = "Seurat wrapper")
+
+# GGPLOT2 VERSION
+# Use FetchData to get cluster assignments and gene expression
+violin_data <- FetchData(pbmc3k, vars = c("seurat_clusters", selected_genes))
+
+# Reshape to long format
+violin_long <- violin_data %>%
+  pivot_longer(cols = all_of(selected_genes),
+               names_to = "gene",
+               values_to = "expression")
+
+p2 <- ggplot(violin_long, aes(x = seurat_clusters, y = expression, fill = seurat_clusters)) +
+  geom_violin(scale = "width", trim = TRUE) +
+  facet_wrap(~ gene, scales = "free_y", ncol = 2) +
+  labs(title = "ggplot2 version",
+       x = "Cluster", y = "Expression Level") +
+  theme_bw() +
+  theme(legend.position = "none")
+
+# Display
+print(p1)
+print(p2)
+```
+
+**What we learned:**
+
+- Combined cluster identity with gene expression using `FetchData()`
+- Used `pivot_longer()` to reshape for faceting
+- `scales = "free_y"` allows different y-axis scales per facet (useful when genes have different expression ranges)
+
+### Visualization 10: Marker Gene Heatmap
+
+Heatmaps show expression patterns of marker genes across clusters.
+
+```{r marker-heatmap, fig.width=10, fig.height=10}
+# Get top 3 markers per cluster for a cleaner visualization
+top3_markers <- pbmc_markers %>%
+  group_by(cluster) %>%
+  top_n(n = 3, wt = avg_log2FC)
+
+# SEURAT WRAPPER VERSION
+p1 <- DoHeatmap(pbmc3k, features = top3_markers$gene, size = 3, angle = 90) +
+  labs(title = "Seurat wrapper") +
+  theme(axis.text.y = element_text(size = 8))
+
+# GGPLOT2 VERSION
+# Key concept: We need the scaled expression matrix
+# Get scaled data for the marker genes
+scaled_expr <- GetAssayData(pbmc3k, slot = "scale.data")
+markers_to_plot <- top3_markers$gene[top3_markers$gene %in% rownames(scaled_expr)]
+
+# Extract scaled expression for these genes
+heatmap_data <- as.data.frame(t(as.matrix(scaled_expr[markers_to_plot, ])))
+heatmap_data$cluster <- pbmc3k@meta.data$seurat_clusters
+heatmap_data$cell <- rownames(heatmap_data)
+
+# Order cells by cluster
+heatmap_data <- heatmap_data %>%
+  arrange(cluster)
+
+# Reshape to long format
+heatmap_long <- heatmap_data %>%
+  pivot_longer(cols = all_of(markers_to_plot),
+               names_to = "gene",
+               values_to = "expression")
+
+# Create ordered factors for proper display
+heatmap_long$cell <- factor(heatmap_long$cell, levels = unique(heatmap_data$cell))
+heatmap_long$gene <- factor(heatmap_long$gene, levels = markers_to_plot)
+
+p2 <- ggplot(heatmap_long, aes(x = cell, y = gene, fill = expression)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+                       midpoint = 0, limits = c(-2, 2)) +
+  labs(title = "ggplot2 version", x = "Cells", y = "Genes", fill = "Scaled\nExpression") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_text(size = 8),
+        panel.grid = element_blank())
+
+# Display
+print(p1)
+print(p2)
+```
+
+**What we learned:**
+
+- Scaled expression data is in `GetAssayData(object, slot = "scale.data")`
+- Genes are rows, cells are columns in the expression matrix
+- We transposed and reshaped the data for ggplot2
+- `geom_tile()` creates heatmaps
+- `scale_fill_gradient2()` creates a diverging color scale
+
+### Visualization 11: Dot Plot
+
+Dot plots efficiently show both expression level (color) and percentage of cells expressing (size) a gene.
+
+```{r dotplot, fig.width=12, fig.height=8}
+# Select genes to visualize
+selected_genes <- c("IL7R", "CCR7", "CD14", "LYZ", "S100A4", "MS4A1",
+                    "CD8A", "FCGR3A", "MS4A7", "GNLY", "NKG7")
+
+# SEURAT WRAPPER VERSION
+p1 <- DotPlot(pbmc3k, features = selected_genes) +
+  labs(title = "Seurat wrapper") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# GGPLOT2 VERSION
+# We need to calculate:
+# 1. Average expression per cluster
+# 2. Percentage of cells expressing per cluster
+
+# Get expression data and cluster assignments
+dotplot_data <- FetchData(pbmc3k, vars = c("seurat_clusters", selected_genes))
+
+# Calculate summary statistics
+dotplot_summary <- dotplot_data %>%
+  pivot_longer(cols = all_of(selected_genes),
+               names_to = "gene",
+               values_to = "expression") %>%
+  group_by(seurat_clusters, gene) %>%
+  summarize(
+    avg_expression = mean(expression),
+    pct_expressed = sum(expression > 0) / n() * 100,
+    .groups = "drop"
+  )
+
+p2 <- ggplot(dotplot_summary, aes(x = gene, y = seurat_clusters)) +
+  geom_point(aes(size = pct_expressed, color = avg_expression)) +
+  scale_color_gradient(low = "lightgrey", high = "red") +
+  scale_size_continuous(range = c(0, 6)) +
+  labs(title = "ggplot2 version",
+       x = "Gene", y = "Cluster",
+       color = "Average\nExpression",
+       size = "% Expressed") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Display
+p1 / p2
+```
+
+**What we learned:**
+
+- Dot plots require calculating summary statistics per group
+- Used `group_by()` and `summarize()` to compute averages and percentages
+- Mapped two variables to aesthetics: `size` and `color`
+- This demonstrates how ggplot2 gives you control over the calculation
+
+## Assign Cell Type Identity
+
+Based on canonical markers, we can assign cell types to clusters.
+
+```{r assign-celltypes}
+# Define cell types based on marker expression
+new_cluster_ids <- c(
+  "0" = "Naive CD4 T",
+  "1" = "Memory CD4 T",
+  "2" = "CD14+ Mono",
+  "3" = "B",
+  "4" = "CD8 T",
+  "5" = "FCGR3A+ Mono",
+  "6" = "NK",
+  "7" = "DC",
+  "8" = "Platelet"
+)
+
+# Add cell type annotations
+pbmc3k$celltype <- new_cluster_ids[as.character(pbmc3k$seurat_clusters)]
+
+# Reorder for plotting
+pbmc3k$celltype <- factor(pbmc3k$celltype,
+                          levels = c("Naive CD4 T", "Memory CD4 T", "CD8 T",
+                                     "B", "NK", "CD14+ Mono", "FCGR3A+ Mono",
+                                     "DC", "Platelet"))
+```
+
+### Visualization 12: UMAP with Cell Type Labels
+
+```{r umap-celltypes, fig.width=12, fig.height=5}
+# SEURAT WRAPPER VERSION
+p1 <- DimPlot(pbmc3k, reduction = "umap", group.by = "celltype", label = TRUE, repel = TRUE) +
+  labs(title = "Seurat wrapper") +
+  NoLegend()
+
+# GGPLOT2 VERSION
+umap_celltype <- as.data.frame(pbmc3k@reductions$umap@cell.embeddings)
+colnames(umap_celltype) <- c("UMAP1", "UMAP2")
+umap_celltype$celltype <- pbmc3k$celltype
+
+# Calculate centroids for labels
+celltype_centers <- umap_celltype %>%
+  group_by(celltype) %>%
+  summarize(UMAP1 = median(UMAP1),
+            UMAP2 = median(UMAP2))
+
+p2 <- ggplot(umap_celltype, aes(x = UMAP1, y = UMAP2, color = celltype)) +
+  geom_point(alpha = 0.6, size = 0.8) +
+  geom_text(data = celltype_centers, aes(label = celltype),
+            size = 3, color = "black", fontface = "bold",
+            check_overlap = TRUE) +
+  labs(title = "ggplot2 version") +
+  theme_bw() +
+  theme(legend.position = "right") +
+  coord_fixed()
+
+# Display
+p1 + p2
+```
+
+**What we learned:**
+
+- Cell type annotations are just another metadata column
+- We accessed it the same way as cluster assignments
+- Full control over colors, label placement, and legend
+
+## Summary: Key Takeaways
+
+### Data Access Cheat Sheet
+
+| Data Type | Location | Access Method |
+|-----------|----------|---------------|
+| **Metadata** (QC metrics, clusters, etc.) | `object@meta.data` | Direct access or `FetchData()` |
+| **Raw counts** | `object@assays$RNA@counts` | `GetAssayData(slot = "counts")` |
+| **Normalized expression** | `object@assays$RNA@data` | `GetAssayData(slot = "data")` |
+| **Scaled expression** | `object@assays$RNA@scale.data` | `GetAssayData(slot = "scale.data")` |
+| **PCA embeddings** | `object@reductions$pca@cell.embeddings` | Direct access or `FetchData("PC_1", "PC_2", ...)` |
+| **UMAP embeddings** | `object@reductions$umap@cell.embeddings` | Direct access or `FetchData("UMAP_1", "UMAP_2")` |
+| **Variable features** | Internal | `VariableFeatures()` or `HVFInfo()` |
+| **Combined data** | Multiple sources | `FetchData()` - most convenient! |
+
+### When to Use Seurat Wrappers vs ggplot2
+
+**Use Seurat wrappers when:**
+
+- You need a quick exploratory visualization
+- The default styling meets your needs
+- You're in the early stages of analysis
+
+**Use ggplot2 when:**
+
+- You need publication-quality figures with specific styling
+- You want to combine data from multiple sources
+- You need custom calculations or transformations
+- You want to create novel visualizations not provided by Seurat
+- You need fine-grained control over every aspect of the plot
+
+### Final Thoughts
+
+The power of understanding how to extract data from Seurat objects means you're not limited to the visualizations provided by the package. You can:
+
+1. Create entirely new plot types
+2. Combine multiple data types in creative ways
+3. Apply advanced statistical visualizations
+4. Match journal or institutional style guidelines exactly
+5. Integrate with other R packages and workflows
+
+**Practice exercise:** Try recreating other Seurat plots we didn't cover, such as:
+
+- `RidgePlot()` - Ridge plots for gene expression
+- `VizDimLoadings()` - Top genes in PC loadings
+- Custom multi-panel figures combining different data types
+
+The key is always the same: **understand where the data lives, extract it to a tidy dataframe, and use ggplot2 to visualize it!**
+
+## Session Info
+
+```{r session-info}
+sessionInfo()
+```

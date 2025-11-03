@@ -1,0 +1,231 @@
+---
+title: "Introduction to Data Visualization"
+output: 
+  workflowr::wflow_html:
+    toc: true
+    toc_float: true
+date: "2025-10-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# The Power of Data Visualization
+
+Data visualization is the graphical representation of information and data. In an age where we generate data at an unprecedented rate, the ability to create clear, compelling visualizations has become crucial for understanding patterns, communicating findings, and making data-driven decisions.
+
+> "A picture is worth a thousand words" - especially when that picture represents complex data patterns that would be nearly impossible to detect in tables of numbers.
+
+## Why Visualize Data?
+
+### 1. **Pattern Recognition**
+Human brains are exceptionally good at processing visual information. We can quickly spot trends, outliers, and relationships in graphical data that might take hours to detect in numerical tables.
+
+### 2. **Communication**
+Visualizations can communicate complex findings to diverse audiences - from fellow researchers to policymakers to the general public.
+
+### 3. **Exploration** 
+Visualization is a powerful tool for exploratory data analysis, helping researchers discover unexpected patterns and generate new hypotheses.
+
+### 4. **Validation**
+Visual inspection can help identify data quality issues, outliers, and assumptions that might not be obvious from summary statistics alone.
+
+## The Genomics Visualization Landscape
+
+If you read genomics papers regularly, you'll notice that most figures fall into just six categories:
+
+1. **Scatter plots** - for correlation analysis and gene expression relationships
+2. **Bar plots** - for comparing quantities across groups
+3. **Line plots** - for showing trends over time or conditions
+4. **Box plots/Violin plots** - for comparing distributions across groups
+5. **Histograms** - for understanding data distributions
+6. **Heatmaps** - for visualizing large matrices of data (gene expression, etc.)
+
+Mastering these six types will enable you to reproduce approximately 90% of figures in genomics literature.
+
+## Principles of Effective Data Visualization
+
+### 1. **Know Your Audience**
+- **Scientific peers**: Detailed, precise, with statistical information
+- **General public**: Simple, clear, with minimal jargon
+- **Policymakers**: Focused on actionable insights
+
+### 2. **Choose the Right Chart Type**
+
+| Data Type | Relationship | Best Chart Type |
+|-----------|--------------|-----------------|
+| Continuous vs Continuous | Correlation | Scatter plot |
+| Categorical vs Continuous | Distribution comparison | Box plot, Violin plot |
+| Single continuous variable | Distribution | Histogram |
+| Categories vs Quantities | Comparison | Bar plot |
+| Time series | Trends | Line plot |
+| Matrix data | Patterns in 2D | Heatmap |
+
+### 3. **Design Principles**
+
+#### **Clarity Over Beauty**
+- Prioritize understanding over aesthetics
+- Remove unnecessary elements (chartjunk)
+- Use consistent styling
+
+#### **Accessibility**
+- Use colorblind-friendly palettes
+- Include proper legends and labels
+- Ensure sufficient contrast
+
+#### **Accuracy**
+- Start axes at zero when appropriate
+- Use appropriate scales
+- Don't distort data relationships
+
+### 4. **Color Usage**
+
+#### **Sequential Colors** (for ordered data)
+- Light to dark of single hue
+- Good for: heatmaps, choropleth maps
+- Example: gene expression levels
+
+#### **Diverging Colors** (for data with meaningful center)
+- Two hues meeting at neutral center
+- Good for: correlation matrices, fold changes
+- Example: up/down regulated genes
+
+#### **Categorical Colors** (for distinct groups)
+- Distinct, equally prominent hues
+- Good for: different cancer types, treatment groups
+- Avoid: red/green combinations (colorblind unfriendly)
+
+## Common Visualization Mistakes
+
+### 1. **The Misleading Y-Axis**
+Starting bar charts at non-zero values can exaggerate differences.
+
+### 2. **Too Many Categories**
+More than 7-8 categories become difficult to distinguish, especially with color.
+
+### 3. **Pie Chart Overuse**
+Pie charts are difficult to interpret precisely. Bar charts are usually better.
+
+### 4. **3D Effects**
+3D charts are often harder to read and can distort data perception.
+
+### 5. **Poor Color Choices**
+- Using red/green for comparisons (colorblind issues)
+- Not enough contrast
+- Too many similar colors
+
+## The Grammar of Graphics
+
+The **Grammar of Graphics** is a theoretical framework for data visualization that underlies ggplot2. It breaks down visualizations into fundamental components:
+
+### Core Components:
+
+1. **Data**: The dataset you want to visualize
+2. **Aesthetics (aes)**: How data variables map to visual properties
+   - Position (x, y)
+   - Color, fill
+   - Size, shape
+   - Transparency (alpha)
+3. **Geometries (geom)**: The visual elements that represent data
+   - Points, lines, bars, boxes
+4. **Statistics (stat)**: Statistical transformations of data
+   - Counts, means, regression lines
+5. **Scales**: Control how aesthetics map to data values
+   - Color scales, axis scales
+6. **Coordinate systems**: How data is mapped to the plane
+   - Cartesian, polar, map projections
+7. **Facets**: Subplots for different subsets of data
+8. **Themes**: Overall visual appearance
+
+### The Layered Approach
+
+ggplot2 builds visualizations by adding layers:
+
+```r
+ggplot(data = mydata, aes(x = var1, y = var2)) +  # Base layer
+  geom_point() +                                   # Geometry layer
+  geom_smooth(method = "lm") +                     # Additional geometry
+  scale_color_brewer(type = "qual") +              # Scale layer
+  theme_minimal() +                                # Theme layer
+  labs(title = "My Plot")                          # Labels layer
+```
+
+This modular approach makes ggplot2 extremely flexible and powerful.
+
+## Data Visualization in Scientific Research
+
+### Pre-Analysis Visualization
+- **Data exploration**: Understanding distributions, identifying outliers
+- **Quality control**: Spotting data collection issues
+- **Hypothesis generation**: Discovering unexpected patterns
+
+### Analysis Visualization  
+- **Results presentation**: Showing statistical findings
+- **Model diagnostics**: Checking assumptions, residuals
+- **Sensitivity analysis**: Exploring robustness of findings
+
+### Communication Visualization
+- **Publication figures**: Journal-ready visualizations
+- **Presentations**: Conference talks, seminars
+- **Reports**: Technical documentation
+
+## Best Practices for Scientific Visualization
+
+### 1. **Reproducibility**
+- Use code-based tools (like R) rather than point-and-click software
+- Document your visualization code
+- Use version control for your analysis scripts
+
+### 2. **Statistical Honesty**
+- Show uncertainty (error bars, confidence intervals)
+- Don't cherry-pick flattering visualizations
+- Include sample sizes and statistical tests when relevant
+
+### 3. **Ethical Considerations**
+- Don't manipulate scales to exaggerate effects
+- Be transparent about data filtering or transformations
+- Consider the broader implications of your visualizations
+
+## Tools and Resources
+
+### R Ecosystem for Visualization
+- **ggplot2**: The gold standard for statistical graphics
+- **plotly**: Interactive visualizations
+- **gganimate**: Animated plots
+- **patchwork**: Combining multiple plots
+
+### Color Resources
+- **ColorBrewer**: Scientifically-designed color palettes
+- **Viridis**: Perceptually uniform, colorblind-friendly palettes
+- **RColorBrewer**: R implementation of ColorBrewer
+
+### Inspiration and Learning
+- [R Graph Gallery](https://www.r-graph-gallery.com/): Hundreds of chart examples
+- [From Data to Viz](https://www.data-to-viz.com/): Choose the right chart type
+- [Storytelling with Data](http://www.storytellingwithdata.com/): Effective communication principles
+
+# References
+
+Essential reading for mastering data visualization:
+
+1. **[Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)** by Claus O. Wilke
+   - Comprehensive guide to visualization principles
+   - Covers theory and practical applications
+   - Excellent for understanding when to use different chart types
+
+2. **[Data Visualization](https://socviz.co/)** by Kieran Healy
+   - Practical approach with R and ggplot2
+   - Focus on social science applications
+   - Great for learning ggplot2 syntax and concepts
+
+3. **[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)** by Hadley Wickham
+   - The definitive guide to ggplot2
+   - Written by the package creator
+   - Essential reference for advanced ggplot2 techniques
+
+## Next Steps
+
+Now that you understand the principles of effective data visualization, you're ready to start creating your own visualizations. In the next lesson, we'll dive into practical ggplot2 programming using real cancer genomics data.
+
+**Continue to:** [Lesson 2: Practical ggplot2](02_intro_to_ggplot2.html)

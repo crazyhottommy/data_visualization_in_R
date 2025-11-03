@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About This Workshop"
 output:
   workflowr::wflow_html:
     toc: false
@@ -7,4 +7,67 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+## About This Workshop
+
+This **Data Visualization in R Workshop** is designed specifically for biology students, researchers, and data analysts who want to master the art and science of creating compelling visualizations using R and ggplot2.
+
+### Workshop Philosophy
+
+Most genomics papers rely on just six types of figures:
+- Scatter plots
+- Bar plots  
+- Line plots
+- Box plots or violin plots
+- Histograms
+- Heatmaps
+
+By mastering these six visualization types, you can reproduce 90% of the figures in any genomics paper. This workshop focuses on practical, hands-on learning using real cancer genomics data from The Cancer Genome Atlas (TCGA).
+
+### What Makes This Workshop Different
+
+- **Real Data**: We use actual TCGA cancer genomics datasets, not toy examples
+- **Practical Focus**: Every lesson builds skills you'll use in real research
+- **Publication Ready**: Learn to create figures suitable for scientific journals
+- **Reproducible**: Built using the `workflowr` framework for reproducible research
+
+### Target Audience
+
+This workshop is ideal for:
+- Biology and biomedical students
+- Researchers working with genomics data
+- Data analysts in life sciences
+- Anyone wanting to improve their R visualization skills
+
+### Prerequisites
+
+- Basic knowledge of R programming
+- Familiarity with data frames and basic data manipulation
+- Interest in biological data analysis
+
+### Technical Requirements
+
+- R (version 4.0 or higher)
+- RStudio or Positron IDE
+- Required R packages: `tidyverse`, `ggplot2`, `readr`, `dplyr`, `Polychrome`, `forcats`
+
+### Data Sources
+
+The workshop uses gene expression data from The Cancer Genome Atlas (TCGA), one of the largest and most comprehensive cancer genomics datasets available. This provides students with experience working with real-world, high-dimensional biological data.
+
+### Learning Outcomes
+
+After completing this workshop, participants will be able to:
+
+1. Apply data visualization best practices
+2. Create publication-quality figures using ggplot2
+3. Analyze and visualize cancer genomics data
+4. Customize plots with appropriate themes, colors, and annotations
+5. Choose the right visualization type for different data types and research questions
+
+### Workshop Structure
+
+The workshop is organized as a progressive series of lessons, each building on previous concepts while introducing new techniques. The modular structure allows participants to focus on specific topics or work through the entire curriculum.
+
+---
+
+**Happy visualizing!** 📊🧬

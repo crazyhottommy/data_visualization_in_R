@@ -1,0 +1,492 @@
+---
+title: "03_heatmap_demystified"
+output: html_document
+date: "2025-10-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Heatmap Demystified: Understanding the Critical Nuances
+
+Making heatmap is an essential skill for any computational biologist, but **most people don't truly understand heatmaps**. This tutorial will walk you through the critical nuances that can make or break your data interpretation.
+
+### The Golden Rule of Heatmaps
+
+> **CRITICAL INSIGHT**: The defaults of almost every heatmap function in R do hierarchical clustering FIRST, then scale the rows, then display the image. The `scale` parameter only affects color representation, NOT clustering!
+
+This is perhaps the most misunderstood aspect of heatmaps and can lead to completely wrong biological interpretations.
+
+### Load the libraries
+
+```{r}
+library(ComplexHeatmap)
+library(stats)        # for base heatmap()
+library(gplots)       # for heatmap.2()
+library(circlize)     # for color functions
+```
+
+### Create dummy data to illustrate key concepts
+
+```{r}
+# Four genes with different expression patterns and scales
+h1 <- c(10,20,10,20,10,20,10,20)  # High expression, oscillating pattern
+h2 <- c(20,10,20,10,20,10,20,10)  # High expression, opposite oscillation
+l1 <- c(1,3,1,3,1,3,1,3)          # Low expression, same pattern as h1
+l2 <- c(3,1,3,1,3,1,3,1)          # Low expression, same pattern as h2
+
+mat <- rbind(h1,h2,l1,l2)
+colnames(mat) <- paste0("timepoint_", 1:8)
+mat
+```
+
+### Visualize the expression patterns
+
+```{r}
+par(mfrow = c(1,1), mar = c(4,4,1,1))
+plot(1:8, rep(0,8), ylim = c(0,35), pch = "", xlab = "Time", ylab = "Gene Expression")
+
+for (i in 1:nrow(mat)) {
+  lines(1:8, mat[i,], lwd = 3, col = i)
+}
+
+legend(1, 35, rownames(mat), col = 1:4, lwd = 3, cex = 0.7)
+```
+
+**Key Observation**: Notice that h1 and l1 have the SAME pattern (just different scales), as do h2 and l2. Ideally, we want h1 and l1 to cluster together, and h2 and l2 to cluster together.
+
+## Understanding Distance and Clustering
+
+### Default Euclidean Distance
+
+```{r}
+# Calculate pairwise distances using default Euclidean distance
+d_euclidean <- dist(mat)
+d_euclidean
+```
+
+```{r}
+# Visualize the clustering based on Euclidean distance
+plot(hclust(d_euclidean), main = "Clustering with Euclidean Distance")
+```
+
+**Problem**: With Euclidean distance, h1 clusters with h2 (both high values) and l1 clusters with l2 (both low values), ignoring the actual expression patterns!
+
+## The Scaling Dilemma: When and How to Scale
+
+### Making a basic heatmap
+
+```{r}
+# ComplexHeatmap - no scaling by default
+Heatmap(mat, cluster_columns = FALSE, name = "Expression")
+```
+
+**Observation**: The clustering follows the Euclidean distance pattern we saw above.
+
+### Scaling the data BEFORE clustering
+
+```{r}
+# Scale rows (genes) - center and scale to unit variance
+scaled_mat <- t(scale(t(mat)))
+scaled_mat
+```
+
+```{r}
+# Now look at distances after scaling
+d_scaled <- dist(scaled_mat)
+d_scaled
+```
+
+```{r}
+# Clustering after scaling
+plot(hclust(d_scaled), main = "Clustering After Scaling")
+```
+
+**Magic!** Now h1 and l1 cluster together, and h2 and l2 cluster together because we've removed the scale differences and focused on patterns.
+
+```{r}
+# Heatmap with pre-scaled data
+Heatmap(scaled_mat, cluster_columns = FALSE, name = "Scaled\nExpression")
+```
+
+### Alternative: Using Correlation-based Distance
+
+Instead of scaling, we can use correlation-based distance to focus on patterns:
+
+```{r}
+# Calculate correlation between genes
+gene_cor <- cor(t(mat))
+gene_cor
+```
+
+```{r}
+# Use 1 - correlation as distance
+d_correlation <- as.dist(1 - cor(t(mat)))
+d_correlation
+```
+
+```{r}
+# Clustering with correlation distance
+hc_cor <- hclust(d_correlation)
+plot(hc_cor, main = "Clustering with Correlation Distance")
+```
+
+**Perfect!** Same result as scaling - genes with similar patterns cluster together.
+
+## Comparing Heatmap Functions
+
+### Base R heatmap() - DEFAULT: scale = "row"
+
+```{r}
+# Base heatmap with default scaling
+heatmap(mat, Colv = NA, scale = "row", main = "heatmap() with scale='row'")
+```
+
+```{r}
+# Base heatmap without scaling
+heatmap(mat, Colv = NA, scale = "none", main = "heatmap() with scale='none'")
+```
+
+**Critical Point**: The clustering is IDENTICAL in both heatmaps above! The `scale` parameter only affects the color representation.
+
+### gplots::heatmap.2() - DEFAULT: scale = "none"
+
+```{r}
+# heatmap.2 with default (no scaling)
+heatmap.2(mat, trace = "none", Colv = NA, dendrogram = "row", 
+          scale = "none", main = "heatmap.2() scale='none'")
+```
+
+```{r}
+# heatmap.2 with row scaling for colors only
+heatmap.2(mat, trace = "none", Colv = NA, dendrogram = "row", 
+          scale = "row", main = "heatmap.2() scale='row'")
+```
+
+### Using custom distance in heatmap.2()
+
+```{r}
+# Use correlation distance with heatmap.2
+heatmap.2(mat, trace = "none", Colv = NA, dendrogram = "row",
+          scale = "none",
+          hclust = function(x) hclust(x, method = 'complete'), 
+          distfun = function(x) as.dist(1 - cor(t(x))),
+          main = "Correlation Distance + No Scaling")
+```
+
+```{r}
+# Use correlation distance + row scaling for colors
+heatmap.2(mat, trace = "none", Colv = NA, dendrogram = "row",
+          scale = "row",
+          hclust = function(x) hclust(x, method = 'complete'), 
+          distfun = function(x) as.dist(1 - cor(t(x))),
+          main = "Correlation Distance + Row Scaling")
+```
+
+## ComplexHeatmap: The Modern Approach
+
+ComplexHeatmap does NOT scale by default and gives you full control:
+
+```{r}
+# Using pre-scaled data with ComplexHeatmap
+Heatmap(scaled_mat, cluster_columns = FALSE, name = "Pre-scaled")
+```
+
+```{r}
+# Using correlation distance with ComplexHeatmap
+Heatmap(mat, 
+        cluster_columns = FALSE,
+        clustering_distance_rows = function(x) as.dist(1 - cor(t(x))),
+        name = "Expression",
+        column_title = "Correlation-based Clustering")
+```
+
+## The Outlier Problem
+
+```{r}
+# Add an outlier to demonstrate color mapping issues
+mat_outlier <- mat
+mat_outlier[1,1] <- 1000  # Extreme outlier
+
+Heatmap(mat_outlier, cluster_columns = FALSE, name = "With Outlier")
+```
+
+**Problem**: The outlier dominates the color scale, making all other values look the same!
+
+### Solution: Custom color mapping
+
+```{r}
+# Check data quantiles to inform color mapping
+quantile(mat, c(0, 0.1, 0.5, 0.9, 1.0))
+```
+
+```{r}
+# Create custom color function based on data distribution
+col_fun <- colorRamp2(c(1, 10, 20), c("blue", "white", "red"))
+
+# Apply to outlier data
+Heatmap(mat_outlier, cluster_columns = FALSE, col = col_fun, name = "Fixed Colors")
+
+Heatmap(mat_outlier, cluster_columns = FALSE, col = col_fun, name = "Fixed Colors")
+
+
+```
+
+## Summary: Critical Decision Points
+
+### 1. **Scaling Strategy** (Choose ONE):
+   - **Pre-scale your data** if you want to focus on patterns rather than absolute values
+   - **Use correlation distance** if you want to preserve original scale but cluster by pattern
+   - **Use raw data** only if absolute values are meaningful for your analysis
+
+### 2. **Distance Measure**:
+   - **Euclidean**: Good for absolute differences (default)
+   - **Correlation**: Good for pattern similarity
+   - **Manhattan, others**: Depending on data characteristics
+
+### 3. **Color Mapping**:
+   - Always check your data distribution with `quantile()`
+   - Use custom color functions for outliers
+   - Consider whether colors should represent raw values or scaled values
+
+### 4. **Function Choice**:
+   - **ComplexHeatmap**: Most flexible, no hidden scaling
+   - **heatmap()**: Default row scaling, good for basic use
+   - **heatmap.2()**: No default scaling, more options
+
+## Key Takeaways
+
+1. **Clustering happens BEFORE scaling** in most R heatmap functions
+2. **The `scale` parameter only affects color representation, not clustering**
+3. **Always understand your data and what you want to visualize**
+4. **Pre-scaling or using correlation distance can reveal biological patterns hidden by scale differences**
+5. **Color mapping can make or break data interpretation**
+6. **Different heatmap functions have different defaults - know what they are!**
+
+> **Remember**: Making a heatmap is easy, but making a *meaningful* heatmap requires understanding these nuances. Your clustering and scaling choices can completely change the biological story your heatmap tells!
+
+
+## Heatmap with TCGA Data: Real-world Application
+
+Now let's apply what we've learned to real cancer genomics data from The Cancer Genome Atlas (TCGA). We'll visualize the expression of cancer-associated genes across different cancer types and samples.
+
+### Load the data
+
+The TCGA data contains TPM (transcripts per million) normalized gene expression values for multiple cancer-associated genes across thousands of samples from 33 cancer types.
+
+```{r, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ComplexHeatmap)
+library(circlize)
+
+# Load the TCGA gene expression data (TPM values)
+tcga_data <- read_csv("~/Downloads/TCGA_cancer_genes_expression.csv")
+
+# Explore the structure
+head(tcga_data)
+dim(tcga_data)
+```
+
+### Data preparation
+
+The data contains:
+- Gene expression values (TPM) for cancer-associated genes
+- Sample metadata including cancer type (`study`) and sample type (tumor vs. normal)
+- 11,348 samples across 25 columns (21 genes + 4 metadata columns)
+
+```{r}
+# Check the column names
+colnames(tcga_data)
+
+# Check unique cancer types
+unique(tcga_data$study) %>% length()
+
+# Check sample types
+table(tcga_data$sample_type)
+```
+
+### Focus on tumor samples only
+
+Let's filter to tumor samples and summarize expression by cancer type:
+
+```{r}
+# Filter to tumor samples only
+tumor_data <- tcga_data %>%
+  filter(sample_type == "cancer")
+
+# Check dimensions
+dim(tumor_data)
+```
+
+### Calculate median expression per gene per cancer type
+
+For visualization clarity, we'll calculate the median expression of each gene within each cancer type. This reduces the dimensionality and highlights cancer-type-specific expression patterns.
+
+```{r}
+# Get gene columns (exclude metadata columns)
+gene_cols <- setdiff(colnames(tumor_data),
+                     c("...1", "tcga.tcga_barcode", "tcga.cgc_sample_sample_type",
+                       "study", "sample_type"))
+
+# Calculate median expression per gene per cancer type
+median_expr <- tumor_data %>%
+  group_by(study) %>%
+  summarise(across(all_of(gene_cols), median, na.rm = TRUE)) %>%
+  tibble::column_to_rownames("study")
+
+# Check the result
+dim(median_expr)
+head(median_expr[, 1:5])
+```
+
+### Apply log2 transformation
+
+TPM values can span several orders of magnitude. Log transformation helps visualize patterns more clearly:
+
+```{r}
+# Add pseudocount and log2 transform
+# log2(TPM + 1) is common for RNA-seq data
+log2_expr <- log2(median_expr + 1)
+
+# Check the distribution
+summary(log2_expr[, 1:3])
+```
+
+### Create the heatmap
+
+```{r, fig.width=10, fig.height=8}
+# Create a color palette
+col_fun <- colorRamp2(c(0, 3, 6), c("blue", "white", "red"))
+
+# Basic heatmap of log2(TPM+1) values
+Heatmap(as.matrix(log2_expr),
+        name = "log2(TPM+1)",
+        col = col_fun,
+        column_title = "Cancer-Associated Genes",
+        row_title = "Cancer Type",
+        row_names_gp = gpar(fontsize = 8),
+        column_names_gp = gpar(fontsize = 9),
+        column_names_rot = 45,
+        heatmap_legend_param = list(
+          title = "Expression",
+          direction = "vertical"
+        ))
+```
+
+### Scale by gene for pattern comparison
+
+To compare expression patterns across genes with different baseline levels, we can scale each gene (column):
+
+```{r, fig.width=10, fig.height=8}
+# Scale columns (genes) - center and scale to unit variance
+scaled_expr <- scale(as.matrix(log2_expr))
+
+# Create scaled heatmap
+Heatmap(scaled_expr,
+        name = "Z-score",
+        col = colorRamp2(c(-2, 0, 2), c("blue", "white", "red")),
+        column_title = "Cancer-Associated Genes (Scaled)",
+        row_title = "Cancer Type",
+        row_names_gp = gpar(fontsize = 8),
+        column_names_gp = gpar(fontsize = 9),
+        column_names_rot = 45,
+        heatmap_legend_param = list(
+          title = "Z-score",
+          direction = "vertical"
+        ))
+```
+
+### Add annotations for biological context
+
+Let's annotate the heatmap with cancer categories to help interpretation:
+
+```{r, fig.width=11, fig.height=8}
+# Define broad cancer categories (simplified example)
+# You can customize this based on your biological knowledge
+cancer_categories <- data.frame(
+  study = rownames(log2_expr),
+  category = case_when(
+    grepl("BRCA|OV|UCEC|UCS|CESC", rownames(log2_expr)) ~ "Gynecologic",
+    grepl("PRAD|BLCA|KIRC|KIRP|KICH", rownames(log2_expr)) ~ "Urologic",
+    grepl("LUAD|LUSC|MESO", rownames(log2_expr)) ~ "Thoracic",
+    grepl("COAD|READ|STAD|ESCA", rownames(log2_expr)) ~ "Gastrointestinal",
+    grepl("GBM|LGG", rownames(log2_expr)) ~ "Brain",
+    grepl("HNSC|THCA", rownames(log2_expr)) ~ "Head & Neck",
+    TRUE ~ "Other"
+  )
+)
+
+# Create row annotation
+row_ha <- rowAnnotation(
+  Category = cancer_categories$category,
+  col = list(Category = c(
+    "Gynecologic" = "#E41A1C",
+    "Urologic" = "#377EB8",
+    "Thoracic" = "#4DAF4A",
+    "Gastrointestinal" = "#984EA3",
+    "Brain" = "#FF7F00",
+    "Head & Neck" = "#FFFF33",
+    "Other" = "#A65628"
+  ))
+)
+
+# Enhanced heatmap with annotation
+Heatmap(scaled_expr,
+        name = "Z-score",
+        col = colorRamp2(c(-2, 0, 2), c("blue", "white", "red")),
+        column_title = "Cancer-Associated Gene Expression Across TCGA",
+        row_title = "Cancer Type",
+        left_annotation = row_ha,
+        row_names_gp = gpar(fontsize = 8),
+        column_names_gp = gpar(fontsize = 9),
+        column_names_rot = 45,
+        heatmap_legend_param = list(
+          title = "Expression\nZ-score",
+          direction = "vertical"
+        ))
+```
+
+### Biological validation examples
+
+Let's verify some known biology in our heatmap:
+
+```{r}
+# FOLH1 (prostate-specific membrane antigen) - should be high in prostate cancer
+prostate_folh1 <- tumor_data %>%
+  filter(study == "TCGA-PRAD") %>%
+  summarise(median_FOLH1 = median(FOLH1, na.rm = TRUE))
+
+# MSLN (mesothelin) - should be high in mesothelioma
+meso_msln <- tumor_data %>%
+  filter(study == "TCGA-MESO") %>%
+  summarise(median_MSLN = median(MSLN, na.rm = TRUE))
+
+# ERBB2 (HER2) - often amplified in breast cancer
+breast_erbb2 <- tumor_data %>%
+  filter(study == "TCGA-BRCA") %>%
+  summarise(median_ERBB2 = median(ERBB2, na.rm = TRUE))
+
+cat("FOLH1 in Prostate Cancer:", prostate_folh1$median_FOLH1, "\n")
+cat("MSLN in Mesothelioma:", meso_msln$median_MSLN, "\n")
+cat("ERBB2 in Breast Cancer:", breast_erbb2$median_ERBB2, "\n")
+```
+
+### Key insights from TCGA heatmap
+
+1. **Hierarchical clustering** reveals cancer types with similar gene expression signatures
+2. **Gene-specific patterns** emerge: some genes are broadly expressed, others are cancer-type specific
+3. **Scaling matters**: The unscaled heatmap shows absolute expression levels, while the scaled version reveals relative patterns
+4. **Biological validation**: Known gene-cancer associations (FOLH1-prostate, MSLN-mesothelioma) should be visible
+
+### Practical considerations for TCGA data
+
+- **TPM normalization**: Already performed, allows cross-sample comparison
+- **Log transformation**: Essential for visualizing RNA-seq data due to wide dynamic range
+- **Sample size variation**: Different cancer types have different numbers of samples (affects median stability)
+- **Tumor heterogeneity**: Even within a cancer type, expression varies widely between samples
+- **Clinical context**: Always validate computational findings with biological knowledge
+
+> **Pro tip**: When working with large expression matrices like TCGA, always start with summary statistics (median/mean per group) before attempting to visualize individual samples. This makes patterns more interpretable and reduces computational burden.

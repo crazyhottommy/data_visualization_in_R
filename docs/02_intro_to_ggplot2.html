@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+<meta name="date" content="2025-10-08" />
+
+<title>02_practical_ggplot2</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">data_visualization_in_R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">02_practical_ggplot2</h1>
+<h4 class="date">2025-10-08</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2025-10-15
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong> <code>data_visualization_in_R/</code>
+<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20251007code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20251007)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20251007code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20251007)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree9e1856ebf86b04f5c4ee85a9ad613046b1037c42targetblank9e1856ea">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/9e1856ebf86b04f5c4ee85a9ad613046b1037c42" target="_blank">9e1856e</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree9e1856ebf86b04f5c4ee85a9ad613046b1037c42targetblank9e1856ea"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/9e1856ebf86b04f5c4ee85a9ad613046b1037c42" target="_blank">9e1856e</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Untracked files:
+    Untracked:  analysis/01_intro_data_viz.Rmd
+    Untracked:  analysis/02_intro_to_ggplot2.Rmd
+    Untracked:  analysis/03_heatmap_demystified.Rmd
+    Untracked:  analysis/04_practical_scRNAseq_viz.Rmd
+
+Unstaged changes:
+    Modified:   analysis/about.Rmd
+    Modified:   analysis/index.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
+</p>
+<hr>
+</div>
+</div>
+</div>
+<div id="data-visualization-with-ggplot2" class="section level1">
+<h1>Data visualization with ggplot2</h1>
+<p>In this lesson, we’ll learn how to create basic data visualizations
+in R using ggplot2. As a biology student, developing your data
+visualization skills is crucial for exploring trends and communicating
+findings.</p>
+<p>If you read genomics papers, most of the figures are fell into
+several categories:</p>
+<ul>
+<li><p>A bar plot</p></li>
+<li><p>A line plot</p></li>
+<li><p>A scatter plot</p></li>
+<li><p>A boxplot or violin plot</p></li>
+<li><p>A histogram</p></li>
+<li><p>A heatmap</p></li>
+</ul>
+<p>If you master those six types of figures, you can reproduce 90% of
+the figures in any genomics paper. Watch this:</p>
+<div class="vembedr">
+<div>
+<iframe src="https://www.youtube.com/embed/l0xueHaMY3A" width="533" height="300" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+<p>ggplot2 is a powerful R package for flexible and professional-quality
+graphics. The key is thinking about visualization in layers:</p>
+<ul>
+<li><p>The data layer - the data frame you want to plot</p></li>
+<li><p>The aesthetic mapping - how data columns map to visual properties
+like x/y position, color, size etc.</p></li>
+<li><p>Geometric objects like points, lines, boxes - the type of
+plot</p></li>
+<li><p>Facets - panels for subgrouping the data</p></li>
+<li><p>Stats transformations like group means, regressions etc.</p></li>
+<li><p>Themes to refine the final look</p></li>
+</ul>
+<p>Let’s walk through examples of common plot types.</p>
+<div id="creating-scatter-plots" class="section level2">
+<h2>Creating Scatter Plots</h2>
+<p>In this lesson, we will delve into data visualization and statistical
+analysis using R. We will work with a real-world dataset related to gene
+expression from The Cancer Genome Atlas (TCGA) and learn how to create
+scatter plots, calculate correlation coefficients, and visualize
+regression lines. These skills are fundamental for understanding
+relationships between variables in your data, which can be crucial for
+making data-driven conclusions.</p>
+<div id="prerequisites" class="section level3">
+<h3>Prerequisites</h3>
+<p>Before we begin, make sure you have R installed on your computer,
+along with the following R packages: readr, dplyr, and ggplot2. You can
+install these packages using the <code>install.packages()</code>
+function if you haven’t already.</p>
+<pre class="r"><code>install.packages(&quot;readr&quot;)
+install.packages(&quot;dplyr&quot;)
+install.packages(&quot;ggplot2&quot;)</code></pre>
+<p>Also, download the same TCGA gene expression data (CSV file) to your
+working directory or specify the correct file path.</p>
+<blockquote>
+<p>Download the file at <a href="https://osf.io/yeun5"
+class="uri">https://osf.io/yeun5</a></p>
+</blockquote>
+</div>
+<div id="loading-and-exploring-the-data" class="section level3">
+<h3>Loading and Exploring the Data</h3>
+<p>We’ll start by loading the TCGA gene expression data into R using the
+read_csv function from the readr package. This dataset contains
+information about various genes’ expression levels across different
+samples, including cancer, metastatic, and normal samples.</p>
+<pre class="r"><code>library(readr)
+library(dplyr)</code></pre>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code># Load the TCGA gene expression data
+tcga_data &lt;- read_csv(&quot;~/Downloads/TCGA_cancer_genes_expression.csv&quot;)</code></pre>
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+<pre><code>Rows: 11348 Columns: 25
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr  (5): ...1, tcga.tcga_barcode, tcga.cgc_sample_sample_type, study, sampl...
+dbl (20): TACSTD2, VTCN1, MUC1, NECTIN4, FOLH1, FOLR1, CD276, MSLN, CLDN6, E...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>Let’s take a look at the first few rows of the dataset to understand
+its structure.</p>
+<pre class="r"><code>head(tcga_data)</code></pre>
+<pre><code># A tibble: 6 × 25
+  ...1      TACSTD2  VTCN1   MUC1 NECTIN4 FOLH1  FOLR1 CD276   MSLN  CLDN6 ERBB2
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 43e715bf…   0.704 0      0.675   0.0862  7.21 0       52.8 0.0667 0.0970  1.88
+2 1a5db9fc…  25.4   0      2.02    0.0728 23.6  0.122   78.8 0.956  0.255   7.78
+3 93b382e4…   1.58  0      0.908   0.699   2.85 1.01   146.  0.0456 0.257   2.91
+4 1f39dadd…   0.270 0.0910 0.0429  0.0165  1.16 0.279   48.5 0.0315 0.247   4.91
+5 8c8c09b9…   0.412 0      0.115   0.0317  2.41 0.0492  42.3 0.270  0.126   1.49
+6 85a86b91…   4.55  4.86   0.0421  0.0683  1.01 0.0225  20.6 0.0134 0.0182 13.5 
+# ℹ 14 more variables: MUC16 &lt;dbl&gt;, DLL3 &lt;dbl&gt;, CEACAM5 &lt;dbl&gt;, PVR &lt;dbl&gt;,
+#   EPCAM &lt;dbl&gt;, PROM1 &lt;dbl&gt;, CD24 &lt;dbl&gt;, EGFR &lt;dbl&gt;, MET &lt;dbl&gt;,
+#   TNFRSF10B &lt;dbl&gt;, tcga.tcga_barcode &lt;chr&gt;,
+#   tcga.cgc_sample_sample_type &lt;chr&gt;, study &lt;chr&gt;, sample_type &lt;chr&gt;</code></pre>
+<p>Now, you should see a table with multiple columns, where each row
+represents a sample. The columns represent different genes’ expression
+levels, and we also have columns indicating the sample type, study, and
+more.</p>
+</div>
+<div id="filtering-the-data" class="section level3">
+<h3>Filtering the Data</h3>
+<p>For our analysis, we want to focus on cancer samples only. Let’s
+filter the dataset to include only these samples and exclude normal and
+metastatic samples.</p>
+<pre class="r"><code>table(tcga_data$sample_type)</code></pre>
+<pre><code>
+    cancer metastatic     normal 
+     10021        394        740 </code></pre>
+<pre class="r"><code># Filter the data to include only cancer samples
+tcga_cancer &lt;- tcga_data %&gt;%
+  filter(sample_type == &quot;cancer&quot;)</code></pre>
+<p>We use the <code>%&gt;%</code> operator to chain commands together.
+Here, we first filter the dataset to include only rows where sample_type
+is “cancer.”</p>
+</div>
+<div id="creating-a-scatter-plot" class="section level3">
+<h3>Creating a Scatter Plot</h3>
+<blockquote>
+<p>For docs check: <a
+href="https://ggplot2.tidyverse.org/reference/ggplot.html"
+class="uri">https://ggplot2.tidyverse.org/reference/ggplot.html</a></p>
+</blockquote>
+<p>Now, let’s create a scatter plot to visualize the relationship
+between two gene expression levels. We’ll plot the expression of the
+<code>EPCAM</code> gene on the x-axis and the <code>CEACAM5</code> gene
+(CEA) on the y-axis.</p>
+<blockquote>
+<p>Docs on geom_point: <a
+href="https://ggplot2.tidyverse.org/reference/geom_point.html"
+class="uri">https://ggplot2.tidyverse.org/reference/geom_point.html</a></p>
+</blockquote>
+<pre class="r"><code>library(ggplot2)
+
+# Create a scatter plot
+ggplot(tcga_cancer, aes(x = EPCAM, y = CEACAM5)) +
+  geom_point()</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In the code above:</p>
+<ul>
+<li><p>We use ggplot() to initialize a new ggplot2 plot.</p></li>
+<li><p>Inside aes(), we specify the aesthetic mappings, where x
+represents the <code>EPCAM</code> gene expression and y represents the
+<code>CEACAM5</code> gene expression.</p></li>
+<li><p>We add `<code>geom_point()</code> to plot the data points on the
+graph.</p></li>
+</ul>
+<div id="interpretation" class="section level4">
+<h4>Interpretation</h4>
+<p>The scatter plot visually represents the relationship between the
+<code>EPCAM</code> and <code>CEACAM5</code> gene expression levels. Each
+point on the plot corresponds to a cancer sample, with its EPCAM
+expression on the x-axis and CEACAM5 expression on the y-axis. If the
+points tend to fall on the diagonal line, it suggests a relationship
+between the two gene expressions.</p>
+</div>
+</div>
+<div id="calculating-correlation" class="section level3">
+<h3>Calculating Correlation</h3>
+<p>To quantify the relationship between <code>EPCAM</code> and
+<code>CEACAM5</code> gene expressions, we can calculate the Pearson
+correlation coefficient. This coefficient measures the strength and
+direction of the linear relationship between two variables.</p>
+<pre class="r"><code># Calculate the Pearson correlation coefficient
+correlation &lt;- cor(tcga_cancer$EPCAM, tcga_cancer$CEACAM5)
+correlation</code></pre>
+<pre><code>[1] 0.6324328</code></pre>
+<p>The output will be a value between -1 and 1, where:</p>
+<p><img src="images/cor.png" /></p>
+<ul>
+<li><p>A positive value (closer to 1) indicates a positive correlation
+(both variables increase together).</p></li>
+<li><p>A negative value (closer to -1) indicates a negative correlation
+(one variable increases as the other decreases).</p></li>
+<li><p>A value close to 0 indicates little to no linear
+correlation.</p></li>
+</ul>
+<p>In our example, the correlation coefficient (Pearson’s r) is
+approximately <code>0.6324</code>, which suggests a moderately positive
+correlation between <code>EPCAM</code> and <code>CEACAM5</code> gene
+expressions among cancer samples.</p>
+</div>
+<div id="hypothesis-testing" class="section level3">
+<h3>Hypothesis Testing</h3>
+<blockquote>
+<p>Check docs here: <a href="https://rdrr.io/r/stats/cor.test.html"
+class="uri">https://rdrr.io/r/stats/cor.test.html</a></p>
+</blockquote>
+<p>To determine if this correlation is statistically significant, we can
+perform a hypothesis test. In our case, we’re interested in testing
+whether the correlation is significantly different from zero.</p>
+<pre class="r"><code># Perform a correlation hypothesis test
+cor_test_result &lt;- cor.test(tcga_cancer$EPCAM, tcga_cancer$CEACAM5)
+cor_test_result</code></pre>
+<pre><code>
+    Pearson&#39;s product-moment correlation
+
+data:  tcga_cancer$EPCAM and tcga_cancer$CEACAM5
+t = 81.722, df = 10019, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.6205372 0.6440374
+sample estimates:
+      cor 
+0.6324328 </code></pre>
+<p>The output will provide various statistics, including the t-value,
+degrees of freedom, and the p-value.</p>
+<div id="interpretation-1" class="section level4">
+<h4>Interpretation</h4>
+<p>In the results, you’ll see:</p>
+<ul>
+<li><p>The t-value, which measures the number of standard errors the
+correlation coefficient is away from zero.</p></li>
+<li><p>The degrees of freedom (df), which are related to the sample
+size.</p></li>
+<li><p>The p-value, which tells us whether the correlation is
+statistically significant.</p></li>
+</ul>
+<p>In our case, the p-value is very close to zero
+(<code>p-value &lt; 2.2e-16</code>), indicating strong evidence against
+the null hypothesis (the true correlation is zero). Therefore, we can
+conclude that the correlation between EPCAM and CEACAM5 gene expressions
+is statistically significant. You need to keep in mind that in genomics
+data analysis, typically you have thousands of samples and you will
+inherently get tiny p values. In our case, focus on the effect size (in
+this case, the coefficient value which is 0.63).</p>
+</div>
+</div>
+<div id="adding-a-regression-line" class="section level3">
+<h3>Adding a Regression Line</h3>
+<blockquote>
+<p>Check docs on geom_smooth here: <a
+href="https://ggplot2.tidyverse.org/reference/geom_smooth.html"
+class="uri">https://ggplot2.tidyverse.org/reference/geom_smooth.html</a></p>
+</blockquote>
+<p>To further explore the relationship between the two gene expressions,
+we can add a linear regression line to our scatter plot using
+<code>geom_smooth()</code>.</p>
+<pre class="r"><code># Create a scatter plot with a regression line
+ggplot(tcga_cancer, aes(x = EPCAM, y = CEACAM5)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;)</code></pre>
+<pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The <code>geom_smooth()</code> function with
+<code>method = "lm"</code> fits a linear regression line to the data
+points, helping us visualize the trend more clearly.</p>
+<p>The regression line provides a visual representation of how one
+gene’s expression (EPCAM) changes concerning the other (CEACAM5). If the
+line slopes upward, it suggests a positive correlation, while a downward
+slope indicates a negative correlation.</p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>In this lesson, we’ve covered the basics of creating scatter plots,
+calculating correlation coefficients, and performing hypothesis tests
+using R. These skills are essential for exploring relationships between
+variables in your data, whether you’re analyzing gene expressions,
+financial data, or any other dataset. Remember that correlation does not
+imply causation, so it’s essential to interpret your findings carefully
+and consider the context of your analysis.</p>
+</div>
+</div>
+<div id="understanding-distributions-with-histograms"
+class="section level2">
+<h2>Understanding Distributions with Histograms</h2>
+<p>In this section, we will explore another powerful data visualization
+tool: histograms. Histograms are especially useful for understanding the
+distribution of a single numerical variable. We will use R and the
+ggplot2 package to create histograms and customize them to gain insights
+into the distribution of gene expression levels.</p>
+<p>For this course we’re using the data we generated in previous
+lesson.</p>
+<div id="creating-a-basic-histogram" class="section level3">
+<h3>Creating a Basic Histogram</h3>
+<p>Let’s start by creating a basic histogram to visualize the
+distribution of the EPCAM gene expression levels across all cancer
+samples.</p>
+<pre class="r"><code># Create a basic histogram for EPCAM gene expression
+ggplot(tcga_cancer, aes(x = EPCAM)) +
+  geom_histogram()</code></pre>
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this code:</p>
+<ul>
+<li><p>We use <code>ggplot()</code> to initialize a new ggplot2
+plot.</p></li>
+<li><p>Inside <code>aes()</code>, we specify that we want to map the
+<code>EPCAM</code> gene expression values to the x-axis.</p></li>
+<li><p>We add <code>geom_histogram()</code> to create the
+histogram.</p></li>
+</ul>
+<p>The resulting plot will display the EPCAM gene expression levels on
+the x-axis and the count of samples falling into each “bin” on the
+y-axis. A bin is a range of values, and the height of each bar
+represents how many samples have expression levels within that
+range.</p>
+</div>
+<div id="customizing-histogram-bins" class="section level3">
+<h3>Customizing Histogram Bins</h3>
+<p>You can customize the granularity of your histogram by changing the
+number of bins or specifying the bin size. This allows you to get a more
+detailed or broader view of the data distribution.</p>
+<div id="changing-the-number-of-bins" class="section level4">
+<h4>Changing the Number of Bins</h4>
+<p>To change the number of bins, you can use the bins parameter within
+geom_histogram(). Increasing the number of bins provides more
+detail.</p>
+<pre class="r"><code># Create a histogram with 50 bins
+ggplot(tcga_cancer, aes(x = EPCAM)) +
+  geom_histogram(bins = 50)</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="customizing-bin-borders" class="section level4">
+<h4>Customizing Bin Borders</h4>
+<p>By default, the borders of the bins in the histogram are not very
+visible. You can change the border color to white to make them more
+distinct.</p>
+<pre class="r"><code># Create a histogram with white bin borders
+ggplot(tcga_cancer, aes(x = EPCAM)) +
+  geom_histogram(bins = 50, color = &quot;white&quot;)</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Changing the bin border color to white makes it easier to distinguish
+between adjacent bins.</p>
+</div>
+</div>
+<div id="conclusion-1" class="section level3">
+<h3>Conclusion</h3>
+<p>Histograms are valuable tools for visualizing the distribution of a
+single numerical variable, helping you understand the underlying data
+structure. By customizing the number of bins, bin sizes, and bin
+borders, you can tailor your histograms to reveal the level of detail
+you need. Whether you are analyzing gene expression data or any other
+quantitative data, histograms are an essential part of your data
+exploration toolkit.</p>
+</div>
+</div>
+<div id="visualizing-data-distribution-with-boxplots-and-violin-plots"
+class="section level2">
+<h2>Visualizing Data Distribution with Boxplots and Violin Plots</h2>
+<p>In this lesson, we will explore how to visualize the distribution of
+gene expression data across different cancer types using boxplots and
+violin plots in R. These graphical tools are invaluable for gaining
+insights into the spread and central tendency of data within different
+categories.</p>
+<p>We will continue to work with the TCGA gene expression dataset,
+specifically focusing on cancer samples (tcga_cancer). This dataset
+contains various gene expression measurements across different cancer
+types.</p>
+<div id="creating-a-basic-boxplot" class="section level3">
+<h3>Creating a Basic Boxplot</h3>
+<p>Let’s start by creating a basic boxplot to visualize the distribution
+of the EPCAM gene expression across different cancer types.</p>
+<pre class="r"><code>library(ggplot2)
+
+ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
+  geom_boxplot()</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this code:</p>
+<ul>
+<li><p>We use <code>ggplot()</code> to initialize the plot.</p></li>
+<li><p>We map the x-axis to study (representing cancer types) and the
+y-axis to EPCAM gene expression.</p></li>
+<li><p>We add <code>geom_boxplot()</code> to create the
+boxplots.</p></li>
+</ul>
+</div>
+<div id="rotating-x-axis-labels" class="section level3">
+<h3>Rotating X-axis Labels</h3>
+<p>You may notice that the x-axis labels (cancer types) overlap. To make
+the plot more readable, we can rotate the x-axis labels by 90 degrees
+and remove the x-axis label using the <code>theme</code> function.</p>
+<pre class="r"><code>ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/test-1.png" width="672" style="display: block; margin: auto;" />
+Now, the x-axis labels are more legible.</p>
+</div>
+<div id="adding-color-to-boxplots" class="section level3">
+<h3>Adding Color to Boxplots</h3>
+<p>To distinguish between cancer types more effectively, let’s add color
+to the boxplots by mapping the color aesthetic to the study.</p>
+<pre class="r"><code>ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
+  geom_boxplot(aes(color = study)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Alternatively, you can use <code>fill</code> to color the boxes
+instead of the outlines:</p>
+<pre class="r"><code>ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
+  geom_boxplot(aes(fill = study)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>By default, ggplot2 uses a default color palette, but you can specify
+colors manually if needed.</p>
+</div>
+<div id="customizing-color-palettes" class="section level3">
+<h3>Customizing Color Palettes</h3>
+<p>In case you want to define your color palette for the cancer types,
+you can use the Polychrome package.</p>
+<pre class="r"><code># there are total 32 cancer types
+length(unique(tcga_cancer$study))</code></pre>
+<pre><code>[1] 32</code></pre>
+<p>Here’s how to create a custom color palette for 32 cancer types:</p>
+<pre class="r"><code># install.packages(&quot;Polychrome&quot;)
+library(Polychrome)
+
+# There are a total of 32 cancer types
+length(unique(tcga_cancer$study))</code></pre>
+<pre><code>[1] 32</code></pre>
+<pre class="r"><code># Create a custom color palette with Polychrome
+P32 &lt;- createPalette(32, c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), range = c(30, 80))
+
+P32</code></pre>
+<pre><code>      NC1       NC2       NC3       NC4       NC5       NC6       NC7       NC8 
+&quot;#FB0D3B&quot; &quot;#32E50D&quot; &quot;#2200FC&quot; &quot;#E8B8C4&quot; &quot;#FF00EC&quot; &quot;#16C8FA&quot; &quot;#FEBA0D&quot; &quot;#0D5A16&quot; 
+      NC9      NC10      NC11      NC12      NC13      NC14      NC15      NC16 
+&quot;#97162A&quot; &quot;#60358B&quot; &quot;#B9CE42&quot; &quot;#00DDC2&quot; &quot;#FD0D9F&quot; &quot;#FE7800&quot; &quot;#CE55AA&quot; &quot;#CA62FE&quot; 
+     NC17      NC18      NC19      NC20      NC21      NC22      NC23      NC24 
+&quot;#805616&quot; &quot;#5C8794&quot; &quot;#7E94FB&quot; &quot;#B6CDA3&quot; &quot;#E3B5FD&quot; &quot;#FD9F81&quot; &quot;#6D3551&quot; &quot;#53C469&quot; 
+     NC25      NC26      NC27      NC28      NC29      NC30      NC31      NC32 
+&quot;#FD5171&quot; &quot;#E4C27C&quot; &quot;#FD80A6&quot; &quot;#006CA8&quot; &quot;#FC81FC&quot; &quot;#661CBF&quot; &quot;#777162&quot; &quot;#A8C5F9&quot; </code></pre>
+<p>You see the <a href="https://en.wikipedia.org/wiki/Web_colors">hex
+code</a> for the colors.</p>
+<p>Now, we have a custom color palette P32 with 32 unique colors. You
+can visualize the colors using <code>swatch(P32)</code> in the polychrom
+package.</p>
+<pre class="r"><code>swatch(P32)</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="applying-custom-color-palette" class="section level3">
+<h3>Applying Custom Color Palette</h3>
+<p>To use the custom color palette with your boxplot, use
+<code>scale_fill_manual()</code> or <code>scale_color_manual()</code> to
+map the colors manually to the study variable.</p>
+<pre class="r"><code>ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
+  geom_boxplot(aes(fill = study)) +
+  scale_fill_manual(values = unname(P32)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" />
+Note, you need to remove the names of the named color vector using
+<code>unname</code>.</p>
+<p>Now, the boxplot colors are based on your custom palette, making it
+more visually appealing and distinct.</p>
+</div>
+<div id="reordering-boxplots" class="section level3">
+<h3>Reordering Boxplots</h3>
+<p>To reorder the boxes according to the median level of EPCAM
+expression, you can use the <code>forcats::fct_reorder()</code> function
+within your <code>aes()</code> mapping.</p>
+<pre class="r"><code>ggplot(tcga_cancer, aes(x = study %&gt;%
+                          forcats::fct_reorder(EPCAM, median), 
+                        y = EPCAM)) +
+  geom_boxplot(aes(fill = study)) +
+  scale_fill_manual(values = unname(P32)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The <code>forcats::fct_reorder()</code> function takes two
+arguments:</p>
+<ul>
+<li><p>The first argument (study) is the factor variable whose levels we
+want to reorder.</p></li>
+<li><p>The second argument (EPCAM) is the numeric variable based on
+which the reordering will be done (in this case, the median expression
+levels of EPCAM).</p></li>
+</ul>
+<p>As a result of this reordering, the levels of the study factor will
+be rearranged from low to high median EPCAM expression levels. Now, the
+boxes are arranged from low to high EPCAM expression levels, providing a
+clearer view of the data distribution.</p>
+</div>
+<div id="using-violin-plots" class="section level3">
+<h3>Using Violin Plots</h3>
+<p>Violin plots combine a boxplot with a kernel density plot, allowing
+you to visualize both the summary statistics and the entire data
+distribution.</p>
+<pre class="r"><code>ggplot(tcga_cancer, aes(x = study %&gt;%
+                          forcats::fct_reorder(EPCAM, median), 
+                        y = EPCAM)) +
+  geom_violin(aes(fill = study), scale = &quot;width&quot;) +
+  scale_fill_manual(values = unname(P32)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this code, we replaced <code>geom_boxplot</code> with
+<code>geom_violin</code> to create a violin plot. The width of the
+violin plots is scaled for better visibility.</p>
+</div>
+<div id="conclusion-2" class="section level3">
+<h3>Conclusion</h3>
+<p>In this lesson, we’ve explored how to visualize data distribution
+using boxplots and violin plots in R. These techniques are essential for
+understanding the spread and central tendencies of data within different
+categories or groups. By customizing colors, reordering boxes, and using
+violin plots, you can effectively communicate insights from your data to
+others.</p>
+</div>
+</div>
+<div
+id="creating-bar-plots-to-visualize-median-epcam-levels-by-cancer-type"
+class="section level2">
+<h2>Creating Bar Plots to Visualize Median EPCAM Levels by Cancer
+Type</h2>
+<p>In this section, we will learn how to create informative bar plots
+using R. Specifically, we’ll use bar plots to display the median levels
+of the EPCAM gene expression for different types of cancer. This
+visualization will help us understand how EPCAM expression varies across
+various cancer studies. We will also explore techniques to reorder and
+customize our bar plots for better data interpretation.</p>
+<div id="calculating-median-epcam-levels-by-cancer-type"
+class="section level3">
+<h3>Calculating Median EPCAM Levels by Cancer Type</h3>
+<p>The median EPCAM expression levels represent the middle value of
+EPCAM gene expression measurements for different types of cancer
+studies, providing a central measure to understand how this gene behaves
+in each type of cancer.</p>
+<p>To begin, we’ll calculate the median EPCAM expression levels for each
+cancer study type. We will create a summary table that includes the
+cancer study names and their corresponding median EPCAM values.</p>
+<pre class="r"><code># Calculate median EPCAM levels by cancer type
+EPCAM_median &lt;- tcga_cancer %&gt;%
+  group_by(study) %&gt;%
+  summarize(median_EPCAM = median(EPCAM))
+
+# Display the summary table
+EPCAM_median</code></pre>
+<pre><code># A tibble: 32 × 2
+   study median_EPCAM
+   &lt;chr&gt;        &lt;dbl&gt;
+ 1 ACC          4.83 
+ 2 BLCA        81.1  
+ 3 BRCA       162.   
+ 4 CESC        75.9  
+ 5 CHOL       251.   
+ 6 COAD       778.   
+ 7 DLBC         0.578
+ 8 ESCA       189.   
+ 9 GBM          0.307
+10 HNSC        24.7  
+# ℹ 22 more rows</code></pre>
+<p>This table now shows the median EPCAM expression levels for each
+cancer study type, making it easier to compare across different types of
+cancer.</p>
+</div>
+<div id="creating-a-basic-bar-plot" class="section level3">
+<h3>Creating a Basic Bar Plot</h3>
+<p>Now, let’s create a simple bar plot to visualize these median EPCAM
+levels. We will use <code>geom_bar()</code> to create bars representing
+the median values.</p>
+<pre class="r"><code>library(ggplot2)
+
+# Create a basic bar plot
+ggplot(EPCAM_median, aes(x = study, y = median_EPCAM)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this code:</p>
+<ul>
+<li><p>We use <code>ggplot()</code> to initialize the plot.</p></li>
+<li><p><code>aes()</code> specifies the aesthetic mappings, where
+<code>x</code> represents the cancer study names, and <code>y</code>
+represents the median EPCAM values.</p></li>
+<li><p><code>geom_bar(stat = "identity")</code> creates bars where the
+height of each bar corresponds to the median EPCAM value.</p></li>
+<li><p><code>theme()</code> is used to customize the appearance of the
+plot, including rotating the x-axis labels for better
+readability.</p></li>
+</ul>
+<p>The basic bar plot displays the median EPCAM levels for each cancer
+study type, but the bars are not ordered based on the values. We can
+improve the plot by reordering the bars according to the median EPCAM
+levels.</p>
+</div>
+<div id="reordering-the-bars" class="section level3">
+<h3>Reordering the Bars</h3>
+<p>To make our bar plot more informative, let’s reorder the bars based
+on the median EPCAM values. We can use the
+<code>forcats::fct_reorder()</code> function to achieve this.</p>
+<pre class="r"><code># Reorder the bars based on median EPCAM values
+ggplot(EPCAM_median, aes(x = study %&gt;%
+                           forcats::fct_reorder(median_EPCAM), 
+                         y = median_EPCAM)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In this code:</p>
+<p>We use <code>forcats::fct_reorder()</code> within <code>aes()</code>
+to reorder the study variable based on the <code>median_EPCAM</code>
+values.</p>
+<p>The <code>median_EPCAM</code> values determine the order of the bars
+from lowest to highest.</p>
+<p>Now, the bars are reordered based on the median EPCAM levels,
+allowing for easier comparison between different cancer study types.
+This visualization provides insights into which studies exhibit higher
+or lower median EPCAM expression levels.</p>
+</div>
+<div id="reversing-the-order" class="section level3">
+<h3>Reversing the Order</h3>
+<p>If you want to reverse the order of the bars, you can use the .desc =
+TRUE argument with <code>forcats::fct_reorder()</code>.</p>
+<pre class="r"><code># Reverse the order of the bars
+ggplot(EPCAM_median, aes(x = study %&gt;%
+                           forcats::fct_reorder(median_EPCAM, .desc = TRUE), 
+                         y = median_EPCAM)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>By specifying <code>.desc = TRUE</code>, the bars will be reordered
+in descending order based on the median EPCAM values.</p>
+</div>
+<div id="note-on-factor-levels" class="section level3">
+<h3>Note on factor levels</h3>
+<p>xxxx</p>
+</div>
+<div id="conclusion-3" class="section level3">
+<h3>Conclusion</h3>
+<p>In this lesson, we have learned how to create bar plots to visualize
+median EPCAM expression levels by different cancer study types. We
+explored the process of reordering bars based on values, allowing us to
+better compare and interpret the data. The order of the bar depends on
+the factor levels of the study and we used fct_reorder to accomplish
+that. Remember that effective data visualization can greatly enhance
+your ability to communicate insights and make data-driven decisions.</p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sonoma 14.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] Polychrome_1.5.4 ggplot2_3.5.1    dplyr_1.1.4      readr_2.1.5     
+[5] vembedr_0.1.5    workflowr_1.7.1 
+
+loaded via a namespace (and not attached):
+ [1] gtable_0.3.5         xfun_0.52            bslib_0.8.0         
+ [4] processx_3.8.4       lattice_0.22-6       callr_3.7.6         
+ [7] tzdb_0.4.0           vctrs_0.6.5          tools_4.4.1         
+[10] ps_1.7.7             generics_0.1.3       curl_5.2.1          
+[13] parallel_4.4.1       tibble_3.2.1         fansi_1.0.6         
+[16] highr_0.11           pkgconfig_2.0.3      Matrix_1.7-0        
+[19] scatterplot3d_0.3-44 assertthat_0.2.1     lifecycle_1.0.4     
+[22] compiler_4.4.1       farver_2.1.2         stringr_1.5.1       
+[25] git2r_0.35.0         munsell_0.5.1        getPass_0.2-4       
+[28] httpuv_1.6.15        htmltools_0.5.8.1    sass_0.4.9          
+[31] yaml_2.3.10          later_1.3.2          pillar_1.9.0        
+[34] crayon_1.5.3         jquerylib_0.1.4      whisker_0.4.1       
+[37] cachem_1.1.0         nlme_3.1-164         tidyselect_1.2.1    
+[40] digest_0.6.36        stringi_1.8.4        forcats_1.0.0       
+[43] labeling_0.4.3       splines_4.4.1        rprojroot_2.0.4     
+[46] fastmap_1.2.0        grid_4.4.1           colorspace_2.1-1    
+[49] cli_3.6.3            magrittr_2.0.3       utf8_1.2.4          
+[52] withr_3.0.0          scales_1.3.0         promises_1.3.0      
+[55] bit64_4.0.5          rmarkdown_2.27       httr_1.4.7          
+[58] bit_4.0.5            hms_1.1.3            evaluate_0.24.0     
+[61] knitr_1.48           mgcv_1.9-1           rlang_1.1.4         
+[64] Rcpp_1.0.13          glue_1.8.0           rstudioapi_0.16.0   
+[67] vroom_1.6.5          jsonlite_1.8.8       R6_2.5.1            
+[70] fs_1.6.4            </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
