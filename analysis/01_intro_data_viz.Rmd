@@ -1,5 +1,6 @@
 ---
 title: "Introduction to Data Visualization"
+author: "Tommy Tang"
 output: 
   workflowr::wflow_html:
     toc: true

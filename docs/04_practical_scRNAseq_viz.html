@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Your Name" />
+<meta name="author" content="Tommy Tang" />
 
 <meta name="date" content="2025-10-08" />
 
@@ -326,7 +326,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">data_visualization_in_R</a>
+      <a class="navbar-brand" href="index.html">Data visualization in R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -353,7 +353,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Practical Single-Cell RNA-seq Visualization
 with ggplot2</h1>
-<h4 class="author">Your Name</h4>
+<h4 class="author">Tommy Tang</h4>
 <h4 class="date">2025-10-08</h4>
 
 </div>
@@ -383,7 +383,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-11-02
+<strong>Last updated:</strong> 2025-12-23
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -517,15 +517,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree8c9b351c376cb6d863fa368c275865a6ceeec5b6targetblank8c9b351a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtreebf3d0619625d841f8929a0aba6a594d26a0ccfa8targetblankbf3d061a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/8c9b351c376cb6d863fa368c275865a6ceeec5b6" target="_blank">8c9b351</a>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/bf3d0619625d841f8929a0aba6a594d26a0ccfa8" target="_blank">bf3d061</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree8c9b351c376cb6d863fa368c275865a6ceeec5b6targetblank8c9b351a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtreebf3d0619625d841f8929a0aba6a594d26a0ccfa8targetblankbf3d061a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -535,7 +535,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/8c9b351c376cb6d863fa368c275865a6ceeec5b6" target="_blank">8c9b351</a>.
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/bf3d0619625d841f8929a0aba6a594d26a0ccfa8" target="_blank">bf3d061</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -550,12 +550,19 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    .claude/
-    Ignored:    analysis/figure/
 
 Unstaged changes:
+    Modified:   analysis/01_intro_data_viz.Rmd
+    Modified:   analysis/02_intro_to_ggplot2.Rmd
+    Modified:   analysis/03_heatmap_demystified.Rmd
     Modified:   analysis/04_practical_scRNAseq_viz.Rmd
+    Modified:   analysis/_site.yml
+    Modified:   analysis/about.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -601,6 +608,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/analysis/04_practical_scRNAseq_viz.Rmd" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+update lesson 4
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/crazyhottommy/data_visualization_in_R/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/04_practical_scRNAseq_viz.html" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+update lesson 4
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -724,13 +765,13 @@ pbmc3k[[&quot;percent.mt&quot;]] &lt;- PercentageFeatureSet(pbmc3k, pattern = &q
 
 # View the metadata where QC metrics are stored
 head(pbmc3k@meta.data)</code></pre>
-<pre><code>               orig.ident nCount_RNA nFeature_RNA seurat_annotations percent.mt
-AAACATACAACCAC     pbmc3k       2419          779       Memory CD4 T  3.0177759
-AAACATTGAGCTAC     pbmc3k       4903         1352                  B  3.7935958
-AAACATTGATCAGC     pbmc3k       3147         1129       Memory CD4 T  0.8897363
-AAACCGTGCTTCCG     pbmc3k       2639          960         CD14+ Mono  1.7430845
-AAACCGTGTATGCG     pbmc3k        980          521                 NK  1.2244898
-AAACGCACTGGTAC     pbmc3k       2163          781       Memory CD4 T  1.6643551</code></pre>
+<pre><code>#&gt;                orig.ident nCount_RNA nFeature_RNA seurat_annotations percent.mt
+#&gt; AAACATACAACCAC     pbmc3k       2419          779       Memory CD4 T  3.0177759
+#&gt; AAACATTGAGCTAC     pbmc3k       4903         1352                  B  3.7935958
+#&gt; AAACATTGATCAGC     pbmc3k       3147         1129       Memory CD4 T  0.8897363
+#&gt; AAACCGTGCTTCCG     pbmc3k       2639          960         CD14+ Mono  1.7430845
+#&gt; AAACCGTGTATGCG     pbmc3k        980          521                 NK  1.2244898
+#&gt; AAACGCACTGGTAC     pbmc3k       2163          781       Memory CD4 T  1.6643551</code></pre>
 <div id="visualization-1-qc-violin-plots" class="section level3">
 <h3>Visualization 1: QC Violin Plots</h3>
 <p>Let’s compare Seurat’s <code>VlnPlot()</code> with a custom ggplot2
@@ -749,7 +790,30 @@ qc_data &lt;- pbmc3k@meta.data %&gt;%
                names_to = &quot;metric&quot;,
                values_to = &quot;value&quot;)
 
-p2 &lt;- ggplot(qc_data, aes(x = metric, y = value, fill = metric)) +
+qc_data_wide&lt;- pbmc3k@meta.data %&gt;%
+  select(nCount_RNA, nFeature_RNA, percent.mt) %&gt;%
+  mutate(cell_id = rownames(.))
+
+  
+head(qc_data_wide)</code></pre>
+<pre><code>#&gt;                nCount_RNA nFeature_RNA percent.mt        cell_id
+#&gt; AAACATACAACCAC       2419          779  3.0177759 AAACATACAACCAC
+#&gt; AAACATTGAGCTAC       4903         1352  3.7935958 AAACATTGAGCTAC
+#&gt; AAACATTGATCAGC       3147         1129  0.8897363 AAACATTGATCAGC
+#&gt; AAACCGTGCTTCCG       2639          960  1.7430845 AAACCGTGCTTCCG
+#&gt; AAACCGTGTATGCG        980          521  1.2244898 AAACCGTGTATGCG
+#&gt; AAACGCACTGGTAC       2163          781  1.6643551 AAACGCACTGGTAC</code></pre>
+<pre class="r"><code>head(qc_data)</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 3
+#&gt;   cell_id        metric         value
+#&gt;   &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt;
+#&gt; 1 AAACATACAACCAC nCount_RNA   2419   
+#&gt; 2 AAACATACAACCAC nFeature_RNA  779   
+#&gt; 3 AAACATACAACCAC percent.mt      3.02
+#&gt; 4 AAACATTGAGCTAC nCount_RNA   4903   
+#&gt; 5 AAACATTGAGCTAC nFeature_RNA 1352   
+#&gt; 6 AAACATTGAGCTAC percent.mt      3.79</code></pre>
+<pre class="r"><code>p2 &lt;- ggplot(qc_data, aes(x = metric, y = value, fill = metric)) +
   geom_violin(scale = &quot;width&quot;, trim = TRUE) +
   geom_jitter(size = 0.1, alpha = 0.3, width = 0.2) +
   facet_wrap(~ metric, scales = &quot;free&quot;, ncol = 3) +
@@ -761,6 +825,43 @@ p2 &lt;- ggplot(qc_data, aes(x = metric, y = value, fill = metric)) +
 # Display side by side
 p1/p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/qc-violin-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qc-violin-1">
+Past versions of qc-violin-1.png
+</button>
+</p>
+<div id="fig-qc-violin-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/qc-violin-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>QC metrics are stored in <code>pbmc3k@meta.data</code> as
@@ -796,6 +897,43 @@ p2 &lt;- ggplot(scatter_data, aes(x = nCount_RNA, y = nFeature_RNA)) +
 # Display side by side
 p1 + p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/qc-scatter-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qc-scatter-1">
+Past versions of qc-scatter-1.png
+</button>
+</p>
+<div id="fig-qc-scatter-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/qc-scatter-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Simple scatter plots require data from <code>@meta.data</code></li>
@@ -839,6 +977,7 @@ p2 &lt;- ggplot(hvf_data, aes(x = mean, y = variance.standardized)) +
   geom_point(aes(color = variable), alpha = 0.5, size = 0.8) +
   scale_color_manual(values = c(&quot;grey70&quot;, &quot;red&quot;),
                      labels = c(&quot;Non-variable&quot;, &quot;Variable&quot;)) +
+  scale_x_log10() +
   geom_text(data = hvf_data %&gt;% filter(gene %in% top10_genes),
             aes(label = gene), size = 3, nudge_y = 0.5) +
   labs(title = &quot;ggplot2 version&quot;,
@@ -850,6 +989,43 @@ p2 &lt;- ggplot(hvf_data, aes(x = mean, y = variance.standardized)) +
 # Display side by side
 p1 + p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/variable-features-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-variable-features-1">
+Past versions of variable-features-1.png
+</button>
+</p>
+<div id="fig-variable-features-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/variable-features-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Variable feature information is accessed with
@@ -896,6 +1072,43 @@ p2 &lt;- ggplot(pca_variance, aes(x = PC, y = stdev)) +
 # Display side by side
 p1 + p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/elbow-plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-elbow-plot-1">
+Past versions of elbow-plot-1.png
+</button>
+</p>
+<div id="fig-elbow-plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/elbow-plot-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>PCA results are stored in <code>pbmc3k@reductions$pca</code></li>
@@ -928,6 +1141,50 @@ p2 &lt;- ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
 # Display side by side
 p1 + p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/pca-dimplot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pca-dimplot-1">
+Past versions of pca-dimplot-1.png
+</button>
+</p>
+<div id="fig-pca-dimplot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/pca-dimplot-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
+  geom_point(aes(color = seurat_annotations), alpha = 0.5, size = 0.8) +
+  labs(title = &quot;ggplot2 version&quot;,
+       x = &quot;PC 1&quot;, y = &quot;PC 2&quot;) +
+  theme_bw() +
+  coord_fixed() </code></pre>
+<p><img src="figure/04_practical_scRNAseq_viz.Rmd/pca-dimplot-2.png" width="1152" style="display: block; margin: auto;" /></p>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Cell embeddings (coordinates in reduced dimensions) are in
@@ -943,15 +1200,15 @@ columns</li>
 <pre class="r"><code># Build nearest neighbor graph and cluster
 pbmc3k &lt;- FindNeighbors(pbmc3k, dims = 1:10)
 pbmc3k &lt;- FindClusters(pbmc3k, resolution = 0.5)</code></pre>
-<pre><code>Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
-
-Number of nodes: 2638
-Number of edges: 95927
-
-Running Louvain algorithm...
-Maximum modularity in 10 random starts: 0.8728
-Number of communities: 9
-Elapsed time: 0 seconds</code></pre>
+<pre><code>#&gt; Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+#&gt; 
+#&gt; Number of nodes: 2638
+#&gt; Number of edges: 95927
+#&gt; 
+#&gt; Running Louvain algorithm...
+#&gt; Maximum modularity in 10 random starts: 0.8728
+#&gt; Number of communities: 9
+#&gt; Elapsed time: 0 seconds</code></pre>
 <pre class="r"><code># Run UMAP
 pbmc3k &lt;- RunUMAP(pbmc3k, dims = 1:10)</code></pre>
 <div id="visualization-6-umap-with-clusters" class="section level3">
@@ -987,6 +1244,43 @@ p2 &lt;- ggplot(umap_data, aes(x = UMAP1, y = UMAP2, color = cluster)) +
 # Display side by side
 p1 + p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/umap-clusters-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-umap-clusters-1">
+Past versions of umap-clusters-1.png
+</button>
+</p>
+<div id="fig-umap-clusters-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/umap-clusters-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>UMAP coordinates are in
@@ -1019,7 +1313,9 @@ feature_data &lt;- FetchData(pbmc3k, vars = c(&quot;umap_1&quot;, &quot;umap_2&q
 feature_long &lt;- feature_data %&gt;%
   pivot_longer(cols = all_of(genes),
                names_to = &quot;gene&quot;,
-               values_to = &quot;expression&quot;)
+               values_to = &quot;expression&quot;) %&gt;%
+  # change the levels according to the order we specified
+  mutate(gene = factor(gene, levels = genes)) 
 
 p2 &lt;- ggplot(feature_long, aes(x = umap_1, y = umap_2, color = expression)) +
   geom_point(alpha = 0.6, size = 0.5) +
@@ -1032,6 +1328,43 @@ p2 &lt;- ggplot(feature_long, aes(x = umap_1, y = umap_2, color = expression)) +
 # Display side by side
 p1 | p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/umap-features-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-umap-features-1">
+Past versions of umap-features-1.png
+</button>
+</p>
+<div id="fig-umap-features-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/umap-features-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li><code>FetchData()</code> is a powerful function that can retrieve:
@@ -1075,6 +1408,43 @@ p2 &lt;- ggplot(umap_split, aes(x = UMAP1, y = UMAP2, color = cluster)) +
 # Display
 p1 / p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/split-viz-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-split-viz-1">
+Past versions of split-viz-1.png
+</button>
+</p>
+<div id="fig-split-viz-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/split-viz-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Can combine multiple metadata columns with embedding
@@ -1098,25 +1468,25 @@ top5_markers &lt;- pbmc_markers %&gt;%
   top_n(n = 5, wt = avg_log2FC)
 
 head(top5_markers, 15)</code></pre>
-<pre><code># A tibble: 15 × 7
-# Groups:   cluster [3]
-       p_val avg_log2FC pct.1 pct.2 p_val_adj cluster gene     
-       &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt;    
- 1 9.57e- 88       2.40 0.447 0.108 1.31e- 83 0       CCR7     
- 2 1.35e- 51       2.14 0.342 0.103 1.86e- 47 0       LEF1     
- 3 2.81e- 44       1.53 0.443 0.185 3.85e- 40 0       PIK3IP1  
- 4 6.27e- 43       1.99 0.33  0.112 8.60e- 39 0       PRKCQ-AS1
- 5 1.34e- 34       1.96 0.268 0.087 1.84e- 30 0       MAL      
- 6 0               6.65 0.975 0.121 0         1       S100A8   
- 7 0               6.18 0.996 0.215 0         1       S100A9   
- 8 1.03e-295       5.98 0.667 0.027 1.42e-291 1       CD14     
- 9 7.07e-139       7.28 0.299 0.004 9.70e-135 1       FOLR3    
-10 3.38e-121       6.74 0.277 0.006 4.64e-117 1       S100A12  
-11 3.44e- 59       1.63 0.651 0.245 4.71e- 55 2       CD2      
-12 2.97e- 58       2.09 0.42  0.111 4.07e- 54 2       AQP3     
-13 2.92e- 42       1.52 0.397 0.124 4.00e- 38 2       TRAT1    
-14 5.03e- 34       1.87 0.263 0.07  6.90e- 30 2       CD40LG   
-15 2.65e- 20       1.60 0.305 0.136 3.63e- 16 2       CORO1B   </code></pre>
+<pre><code>#&gt; # A tibble: 15 × 7
+#&gt; # Groups:   cluster [3]
+#&gt;        p_val avg_log2FC pct.1 pct.2 p_val_adj cluster gene     
+#&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt;    
+#&gt;  1 9.57e- 88       2.40 0.447 0.108 1.31e- 83 0       CCR7     
+#&gt;  2 1.35e- 51       2.14 0.342 0.103 1.86e- 47 0       LEF1     
+#&gt;  3 2.81e- 44       1.53 0.443 0.185 3.85e- 40 0       PIK3IP1  
+#&gt;  4 6.27e- 43       1.99 0.33  0.112 8.60e- 39 0       PRKCQ-AS1
+#&gt;  5 1.34e- 34       1.96 0.268 0.087 1.84e- 30 0       MAL      
+#&gt;  6 0               6.65 0.975 0.121 0         1       S100A8   
+#&gt;  7 0               6.18 0.996 0.215 0         1       S100A9   
+#&gt;  8 1.03e-295       5.98 0.667 0.027 1.42e-291 1       CD14     
+#&gt;  9 7.07e-139       7.28 0.299 0.004 9.70e-135 1       FOLR3    
+#&gt; 10 3.38e-121       6.74 0.277 0.006 4.64e-117 1       S100A12  
+#&gt; 11 3.44e- 59       1.63 0.651 0.245 4.71e- 55 2       CD2      
+#&gt; 12 2.97e- 58       2.09 0.42  0.111 4.07e- 54 2       AQP3     
+#&gt; 13 2.92e- 42       1.52 0.397 0.124 4.00e- 38 2       TRAT1    
+#&gt; 14 5.03e- 34       1.87 0.263 0.07  6.90e- 30 2       CD40LG   
+#&gt; 15 2.65e- 20       1.60 0.305 0.136 3.63e- 16 2       CORO1B</code></pre>
 <div id="visualization-9-violin-plot-by-cluster" class="section level3">
 <h3>Visualization 9: Violin Plot by Cluster</h3>
 <p>Show expression of marker genes across clusters.</p>
@@ -1135,7 +1505,8 @@ violin_data &lt;- FetchData(pbmc3k, vars = c(&quot;seurat_clusters&quot;, select
 violin_long &lt;- violin_data %&gt;%
   pivot_longer(cols = all_of(selected_genes),
                names_to = &quot;gene&quot;,
-               values_to = &quot;expression&quot;)
+               values_to = &quot;expression&quot;) %&gt;%
+  mutate(gene = factor(gene, levels = selected_genes))
 
 p2 &lt;- ggplot(violin_long, aes(x = seurat_clusters, y = expression, fill = seurat_clusters)) +
   geom_violin(scale = &quot;width&quot;, trim = TRUE) +
@@ -1148,8 +1519,86 @@ p2 &lt;- ggplot(violin_long, aes(x = seurat_clusters, y = expression, fill = seu
 # Display
 print(p1)</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-violin-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-marker-violin-1">
+Past versions of marker-violin-1.png
+</button>
+</p>
+<div id="fig-marker-violin-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/marker-violin-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>print(p2)</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-violin-2.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-marker-violin-2">
+Past versions of marker-violin-2.png
+</button>
+</p>
+<div id="fig-marker-violin-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/marker-violin-2.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Note</strong> if you see inconsistence of the ggplot2 version
+vs the Seurat version, see this <a
+href="https://github.com/satijalab/seurat/issues/5756">github issue</a>.
+Seurat adds random noise before plotting the violin plot.</p>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Combined cluster identity with gene expression using
@@ -1196,7 +1645,7 @@ heatmap_long &lt;- heatmap_data %&gt;%
 
 # Create ordered factors for proper display
 heatmap_long$cell &lt;- factor(heatmap_long$cell, levels = unique(heatmap_data$cell))
-heatmap_long$gene &lt;- factor(heatmap_long$gene, levels = markers_to_plot)
+heatmap_long$gene &lt;- factor(heatmap_long$gene, levels = rev(top3_markers$gene))
 
 p2 &lt;- ggplot(heatmap_long, aes(x = cell, y = gene, fill = expression)) +
   geom_tile() +
@@ -1212,8 +1661,82 @@ p2 &lt;- ggplot(heatmap_long, aes(x = cell, y = gene, fill = expression)) +
 # Display
 print(p1)</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-heatmap-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-marker-heatmap-1">
+Past versions of marker-heatmap-1.png
+</button>
+</p>
+<div id="fig-marker-heatmap-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/marker-heatmap-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>print(p2)</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/marker-heatmap-2.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-marker-heatmap-2">
+Past versions of marker-heatmap-2.png
+</button>
+</p>
+<div id="fig-marker-heatmap-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/marker-heatmap-2.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Scaled expression data is in
@@ -1256,7 +1779,8 @@ dotplot_summary &lt;- dotplot_data %&gt;%
     avg_expression = mean(expression),
     pct_expressed = sum(expression &gt; 0) / n() * 100,
     .groups = &quot;drop&quot;
-  )
+  ) %&gt;%
+  mutate(gene = factor(gene, levels = selected_genes))
 
 p2 &lt;- ggplot(dotplot_summary, aes(x = gene, y = seurat_clusters)) +
   geom_point(aes(size = pct_expressed, color = avg_expression)) +
@@ -1272,6 +1796,43 @@ p2 &lt;- ggplot(dotplot_summary, aes(x = gene, y = seurat_clusters)) +
 # Display
 p1 / p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/dotplot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-dotplot-1">
+Past versions of dotplot-1.png
+</button>
+</p>
+<div id="fig-dotplot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/dotplot-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Dot plots require calculating summary statistics per group</li>
@@ -1282,6 +1843,22 @@ averages and percentages</li>
 <li>This demonstrates how ggplot2 gives you control over the
 calculation</li>
 </ul>
+<p><strong>Bonus</strong></p>
+<p>ggplot2 is great but lacks native clustering implementation. Instead,
+we can use <code>Complexheatmap</code> for the same visualization task
+but adding the clustering on the fly.</p>
+<p>read my blog posts:</p>
+<ul>
+<li><p><a
+href="https://divingintogeneticsandgenomics.com/post/clustered-dotplot-for-single-cell-rnaseq/">clustered
+dotplot for single-cell RNAseq</a></p></li>
+<li><p><a
+href="https://divingintogeneticsandgenomics.com/post/how-to-make-a-multi-group-dotplot-for-single-cell-rnaseq-data/">How
+to make a multi-group dotplot for single-cell RNAseq data</a></p></li>
+</ul>
+<p>You may also take a look at the R package <a
+href="https://samuel-marsh.github.io/scCustomize/articles/Gene_Expression_Plotting.html#custom-dotplots">scCustomize</a>
+which implements those functions.</p>
 </div>
 </div>
 <div id="assign-cell-type-identity" class="section level2">
@@ -1319,6 +1896,43 @@ p2 &lt;- ggplot(umap_celltype, aes(x = UMAP1, y = UMAP2, color = celltype)) +
 # Display
 p1 + p2</code></pre>
 <p><img src="figure/04_practical_scRNAseq_viz.Rmd/umap-celltypes-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-umap-celltypes-1">
+Past versions of umap-celltypes-1.png
+</button>
+</p>
+<div id="fig-umap-celltypes-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/04_practical_scRNAseq_viz.Rmd/umap-celltypes-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>What we learned:</strong></p>
 <ul>
 <li>Cell type annotations are just another metadata column</li>
@@ -1432,74 +2046,74 @@ it!</strong></p>
 <div id="session-info" class="section level2">
 <h2>Session Info</h2>
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.4.1 (2024-06-14)
-Platform: aarch64-apple-darwin20
-Running under: macOS Sonoma 14.1
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/New_York
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
- [1] patchwork_1.2.0         tidyr_1.3.1             dplyr_1.1.4            
- [4] ggplot2_3.5.1           pbmc3k.SeuratData_3.1.4 SeuratData_0.2.2.9001  
- [7] Seurat_5.1.0            SeuratObject_5.0.2      sp_2.1-4               
-[10] workflowr_1.7.1        
-
-loaded via a namespace (and not attached):
-  [1] RColorBrewer_1.1-3     rstudioapi_0.16.0      jsonlite_1.8.8        
-  [4] magrittr_2.0.3         ggbeeswarm_0.7.2       spatstat.utils_3.1-0  
-  [7] farver_2.1.2           rmarkdown_2.27         fs_1.6.4              
- [10] vctrs_0.6.5            ROCR_1.0-11            spatstat.explore_3.3-2
- [13] htmltools_0.5.8.1      sass_0.4.9             sctransform_0.4.1     
- [16] parallelly_1.38.0      KernSmooth_2.23-24     bslib_0.8.0           
- [19] htmlwidgets_1.6.4      ica_1.0-3              plyr_1.8.9            
- [22] plotly_4.10.4          zoo_1.8-12             cachem_1.1.0          
- [25] whisker_0.4.1          igraph_2.0.3           mime_0.12             
- [28] lifecycle_1.0.4        pkgconfig_2.0.3        Matrix_1.7-0          
- [31] R6_2.5.1               fastmap_1.2.0          fitdistrplus_1.2-1    
- [34] future_1.34.0          shiny_1.9.0            digest_0.6.36         
- [37] colorspace_2.1-1       ps_1.7.7               rprojroot_2.0.4       
- [40] tensor_1.5             RSpectra_0.16-2        irlba_2.3.5.1         
- [43] labeling_0.4.3         progressr_0.14.0       fansi_1.0.6           
- [46] spatstat.sparse_3.1-0  mgcv_1.9-1             httr_1.4.7            
- [49] polyclip_1.10-7        abind_1.4-5            compiler_4.4.1        
- [52] withr_3.0.0            fastDummies_1.7.4      highr_0.11            
- [55] MASS_7.3-60.2          rappdirs_0.3.3         tools_4.4.1           
- [58] vipor_0.4.7            lmtest_0.9-40          beeswarm_0.4.0        
- [61] httpuv_1.6.15          future.apply_1.11.2    goftest_1.2-3         
- [64] glue_1.8.0             callr_3.7.6            nlme_3.1-164          
- [67] promises_1.3.0         grid_4.4.1             Rtsne_0.17            
- [70] getPass_0.2-4          cluster_2.1.6          reshape2_1.4.4        
- [73] generics_0.1.3         gtable_0.3.5           spatstat.data_3.1-2   
- [76] data.table_1.15.4      utf8_1.2.4             spatstat.geom_3.3-2   
- [79] RcppAnnoy_0.0.22       ggrepel_0.9.5          RANN_2.6.1            
- [82] pillar_1.9.0           stringr_1.5.1          limma_3.60.4          
- [85] spam_2.10-0            RcppHNSW_0.6.0         later_1.3.2           
- [88] splines_4.4.1          lattice_0.22-6         survival_3.6-4        
- [91] deldir_2.0-4           tidyselect_1.2.1       miniUI_0.1.1.1        
- [94] pbapply_1.7-2          knitr_1.48             git2r_0.35.0          
- [97] gridExtra_2.3          scattermore_1.2        xfun_0.52             
-[100] statmod_1.5.0          matrixStats_1.3.0      stringi_1.8.4         
-[103] lazyeval_0.2.2         yaml_2.3.10            evaluate_0.24.0       
-[106] codetools_0.2-20       tibble_3.2.1           cli_3.6.3             
-[109] uwot_0.2.2             xtable_1.8-4           reticulate_1.38.0     
-[112] munsell_0.5.1          processx_3.8.4         jquerylib_0.1.4       
-[115] Rcpp_1.0.13            globals_0.16.3         spatstat.random_3.3-1 
-[118] png_0.1-8              ggrastr_1.0.2          spatstat.univar_3.0-0 
-[121] parallel_4.4.1         presto_1.0.0           dotCall64_1.1-1       
-[124] listenv_0.9.1          viridisLite_0.4.2      scales_1.3.0          
-[127] ggridges_0.5.6         crayon_1.5.3           leiden_0.4.3.1        
-[130] purrr_1.0.2            rlang_1.1.4            cowplot_1.1.3         </code></pre>
+<pre><code>#&gt; R version 4.4.1 (2024-06-14)
+#&gt; Platform: aarch64-apple-darwin20
+#&gt; Running under: macOS Sonoma 14.1
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; time zone: America/New_York
+#&gt; tzcode source: internal
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] patchwork_1.2.0         tidyr_1.3.1             dplyr_1.1.4            
+#&gt;  [4] ggplot2_3.5.1           pbmc3k.SeuratData_3.1.4 SeuratData_0.2.2.9001  
+#&gt;  [7] Seurat_5.1.0            SeuratObject_5.0.2      sp_2.1-4               
+#&gt; [10] workflowr_1.7.1        
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;   [1] RColorBrewer_1.1-3     rstudioapi_0.16.0      jsonlite_1.8.8        
+#&gt;   [4] magrittr_2.0.3         ggbeeswarm_0.7.2       spatstat.utils_3.1-0  
+#&gt;   [7] farver_2.1.2           rmarkdown_2.27         fs_1.6.4              
+#&gt;  [10] vctrs_0.6.5            ROCR_1.0-11            spatstat.explore_3.3-2
+#&gt;  [13] htmltools_0.5.8.1      sass_0.4.9             sctransform_0.4.1     
+#&gt;  [16] parallelly_1.38.0      KernSmooth_2.23-24     bslib_0.8.0           
+#&gt;  [19] htmlwidgets_1.6.4      ica_1.0-3              plyr_1.8.9            
+#&gt;  [22] plotly_4.10.4          zoo_1.8-12             cachem_1.1.0          
+#&gt;  [25] whisker_0.4.1          igraph_2.0.3           mime_0.12             
+#&gt;  [28] lifecycle_1.0.4        pkgconfig_2.0.3        Matrix_1.7-0          
+#&gt;  [31] R6_2.5.1               fastmap_1.2.0          fitdistrplus_1.2-1    
+#&gt;  [34] future_1.34.0          shiny_1.9.0            digest_0.6.36         
+#&gt;  [37] colorspace_2.1-1       ps_1.7.7               rprojroot_2.0.4       
+#&gt;  [40] tensor_1.5             RSpectra_0.16-2        irlba_2.3.5.1         
+#&gt;  [43] labeling_0.4.3         progressr_0.14.0       fansi_1.0.6           
+#&gt;  [46] spatstat.sparse_3.1-0  mgcv_1.9-1             httr_1.4.7            
+#&gt;  [49] polyclip_1.10-7        abind_1.4-5            compiler_4.4.1        
+#&gt;  [52] withr_3.0.0            fastDummies_1.7.4      highr_0.11            
+#&gt;  [55] MASS_7.3-60.2          rappdirs_0.3.3         tools_4.4.1           
+#&gt;  [58] vipor_0.4.7            lmtest_0.9-40          beeswarm_0.4.0        
+#&gt;  [61] httpuv_1.6.15          future.apply_1.11.2    goftest_1.2-3         
+#&gt;  [64] glue_1.8.0             callr_3.7.6            nlme_3.1-164          
+#&gt;  [67] promises_1.3.0         grid_4.4.1             Rtsne_0.17            
+#&gt;  [70] getPass_0.2-4          cluster_2.1.6          reshape2_1.4.4        
+#&gt;  [73] generics_0.1.3         gtable_0.3.5           spatstat.data_3.1-2   
+#&gt;  [76] data.table_1.15.4      utf8_1.2.4             spatstat.geom_3.3-2   
+#&gt;  [79] RcppAnnoy_0.0.22       ggrepel_0.9.5          RANN_2.6.1            
+#&gt;  [82] pillar_1.9.0           stringr_1.5.1          limma_3.60.4          
+#&gt;  [85] spam_2.10-0            RcppHNSW_0.6.0         later_1.3.2           
+#&gt;  [88] splines_4.4.1          lattice_0.22-6         survival_3.6-4        
+#&gt;  [91] deldir_2.0-4           tidyselect_1.2.1       miniUI_0.1.1.1        
+#&gt;  [94] pbapply_1.7-2          knitr_1.48             git2r_0.35.0          
+#&gt;  [97] gridExtra_2.3          scattermore_1.2        xfun_0.52             
+#&gt; [100] statmod_1.5.0          matrixStats_1.3.0      stringi_1.8.4         
+#&gt; [103] lazyeval_0.2.2         yaml_2.3.10            evaluate_0.24.0       
+#&gt; [106] codetools_0.2-20       tibble_3.2.1           cli_3.6.3             
+#&gt; [109] uwot_0.2.2             xtable_1.8-4           reticulate_1.38.0     
+#&gt; [112] munsell_0.5.1          processx_3.8.4         jquerylib_0.1.4       
+#&gt; [115] Rcpp_1.0.13            globals_0.16.3         spatstat.random_3.3-1 
+#&gt; [118] png_0.1-8              ggrastr_1.0.2          spatstat.univar_3.0-0 
+#&gt; [121] parallel_4.4.1         presto_1.0.0           dotCall64_1.1-1       
+#&gt; [124] listenv_0.9.1          viridisLite_0.4.2      scales_1.3.0          
+#&gt; [127] ggridges_0.5.6         crayon_1.5.3           leiden_0.4.3.1        
+#&gt; [130] purrr_1.0.2            rlang_1.1.4            cowplot_1.1.3</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1509,74 +2123,74 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.4.1 (2024-06-14)
-Platform: aarch64-apple-darwin20
-Running under: macOS Sonoma 14.1
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/New_York
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
- [1] patchwork_1.2.0         tidyr_1.3.1             dplyr_1.1.4            
- [4] ggplot2_3.5.1           pbmc3k.SeuratData_3.1.4 SeuratData_0.2.2.9001  
- [7] Seurat_5.1.0            SeuratObject_5.0.2      sp_2.1-4               
-[10] workflowr_1.7.1        
-
-loaded via a namespace (and not attached):
-  [1] RColorBrewer_1.1-3     rstudioapi_0.16.0      jsonlite_1.8.8        
-  [4] magrittr_2.0.3         ggbeeswarm_0.7.2       spatstat.utils_3.1-0  
-  [7] farver_2.1.2           rmarkdown_2.27         fs_1.6.4              
- [10] vctrs_0.6.5            ROCR_1.0-11            spatstat.explore_3.3-2
- [13] htmltools_0.5.8.1      sass_0.4.9             sctransform_0.4.1     
- [16] parallelly_1.38.0      KernSmooth_2.23-24     bslib_0.8.0           
- [19] htmlwidgets_1.6.4      ica_1.0-3              plyr_1.8.9            
- [22] plotly_4.10.4          zoo_1.8-12             cachem_1.1.0          
- [25] whisker_0.4.1          igraph_2.0.3           mime_0.12             
- [28] lifecycle_1.0.4        pkgconfig_2.0.3        Matrix_1.7-0          
- [31] R6_2.5.1               fastmap_1.2.0          fitdistrplus_1.2-1    
- [34] future_1.34.0          shiny_1.9.0            digest_0.6.36         
- [37] colorspace_2.1-1       ps_1.7.7               rprojroot_2.0.4       
- [40] tensor_1.5             RSpectra_0.16-2        irlba_2.3.5.1         
- [43] labeling_0.4.3         progressr_0.14.0       fansi_1.0.6           
- [46] spatstat.sparse_3.1-0  mgcv_1.9-1             httr_1.4.7            
- [49] polyclip_1.10-7        abind_1.4-5            compiler_4.4.1        
- [52] withr_3.0.0            fastDummies_1.7.4      highr_0.11            
- [55] MASS_7.3-60.2          rappdirs_0.3.3         tools_4.4.1           
- [58] vipor_0.4.7            lmtest_0.9-40          beeswarm_0.4.0        
- [61] httpuv_1.6.15          future.apply_1.11.2    goftest_1.2-3         
- [64] glue_1.8.0             callr_3.7.6            nlme_3.1-164          
- [67] promises_1.3.0         grid_4.4.1             Rtsne_0.17            
- [70] getPass_0.2-4          cluster_2.1.6          reshape2_1.4.4        
- [73] generics_0.1.3         gtable_0.3.5           spatstat.data_3.1-2   
- [76] data.table_1.15.4      utf8_1.2.4             spatstat.geom_3.3-2   
- [79] RcppAnnoy_0.0.22       ggrepel_0.9.5          RANN_2.6.1            
- [82] pillar_1.9.0           stringr_1.5.1          limma_3.60.4          
- [85] spam_2.10-0            RcppHNSW_0.6.0         later_1.3.2           
- [88] splines_4.4.1          lattice_0.22-6         survival_3.6-4        
- [91] deldir_2.0-4           tidyselect_1.2.1       miniUI_0.1.1.1        
- [94] pbapply_1.7-2          knitr_1.48             git2r_0.35.0          
- [97] gridExtra_2.3          scattermore_1.2        xfun_0.52             
-[100] statmod_1.5.0          matrixStats_1.3.0      stringi_1.8.4         
-[103] lazyeval_0.2.2         yaml_2.3.10            evaluate_0.24.0       
-[106] codetools_0.2-20       tibble_3.2.1           cli_3.6.3             
-[109] uwot_0.2.2             xtable_1.8-4           reticulate_1.38.0     
-[112] munsell_0.5.1          processx_3.8.4         jquerylib_0.1.4       
-[115] Rcpp_1.0.13            globals_0.16.3         spatstat.random_3.3-1 
-[118] png_0.1-8              ggrastr_1.0.2          spatstat.univar_3.0-0 
-[121] parallel_4.4.1         presto_1.0.0           dotCall64_1.1-1       
-[124] listenv_0.9.1          viridisLite_0.4.2      scales_1.3.0          
-[127] ggridges_0.5.6         crayon_1.5.3           leiden_0.4.3.1        
-[130] purrr_1.0.2            rlang_1.1.4            cowplot_1.1.3         </code></pre>
+<pre><code>#&gt; R version 4.4.1 (2024-06-14)
+#&gt; Platform: aarch64-apple-darwin20
+#&gt; Running under: macOS Sonoma 14.1
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; time zone: America/New_York
+#&gt; tzcode source: internal
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] patchwork_1.2.0         tidyr_1.3.1             dplyr_1.1.4            
+#&gt;  [4] ggplot2_3.5.1           pbmc3k.SeuratData_3.1.4 SeuratData_0.2.2.9001  
+#&gt;  [7] Seurat_5.1.0            SeuratObject_5.0.2      sp_2.1-4               
+#&gt; [10] workflowr_1.7.1        
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;   [1] RColorBrewer_1.1-3     rstudioapi_0.16.0      jsonlite_1.8.8        
+#&gt;   [4] magrittr_2.0.3         ggbeeswarm_0.7.2       spatstat.utils_3.1-0  
+#&gt;   [7] farver_2.1.2           rmarkdown_2.27         fs_1.6.4              
+#&gt;  [10] vctrs_0.6.5            ROCR_1.0-11            spatstat.explore_3.3-2
+#&gt;  [13] htmltools_0.5.8.1      sass_0.4.9             sctransform_0.4.1     
+#&gt;  [16] parallelly_1.38.0      KernSmooth_2.23-24     bslib_0.8.0           
+#&gt;  [19] htmlwidgets_1.6.4      ica_1.0-3              plyr_1.8.9            
+#&gt;  [22] plotly_4.10.4          zoo_1.8-12             cachem_1.1.0          
+#&gt;  [25] whisker_0.4.1          igraph_2.0.3           mime_0.12             
+#&gt;  [28] lifecycle_1.0.4        pkgconfig_2.0.3        Matrix_1.7-0          
+#&gt;  [31] R6_2.5.1               fastmap_1.2.0          fitdistrplus_1.2-1    
+#&gt;  [34] future_1.34.0          shiny_1.9.0            digest_0.6.36         
+#&gt;  [37] colorspace_2.1-1       ps_1.7.7               rprojroot_2.0.4       
+#&gt;  [40] tensor_1.5             RSpectra_0.16-2        irlba_2.3.5.1         
+#&gt;  [43] labeling_0.4.3         progressr_0.14.0       fansi_1.0.6           
+#&gt;  [46] spatstat.sparse_3.1-0  mgcv_1.9-1             httr_1.4.7            
+#&gt;  [49] polyclip_1.10-7        abind_1.4-5            compiler_4.4.1        
+#&gt;  [52] withr_3.0.0            fastDummies_1.7.4      highr_0.11            
+#&gt;  [55] MASS_7.3-60.2          rappdirs_0.3.3         tools_4.4.1           
+#&gt;  [58] vipor_0.4.7            lmtest_0.9-40          beeswarm_0.4.0        
+#&gt;  [61] httpuv_1.6.15          future.apply_1.11.2    goftest_1.2-3         
+#&gt;  [64] glue_1.8.0             callr_3.7.6            nlme_3.1-164          
+#&gt;  [67] promises_1.3.0         grid_4.4.1             Rtsne_0.17            
+#&gt;  [70] getPass_0.2-4          cluster_2.1.6          reshape2_1.4.4        
+#&gt;  [73] generics_0.1.3         gtable_0.3.5           spatstat.data_3.1-2   
+#&gt;  [76] data.table_1.15.4      utf8_1.2.4             spatstat.geom_3.3-2   
+#&gt;  [79] RcppAnnoy_0.0.22       ggrepel_0.9.5          RANN_2.6.1            
+#&gt;  [82] pillar_1.9.0           stringr_1.5.1          limma_3.60.4          
+#&gt;  [85] spam_2.10-0            RcppHNSW_0.6.0         later_1.3.2           
+#&gt;  [88] splines_4.4.1          lattice_0.22-6         survival_3.6-4        
+#&gt;  [91] deldir_2.0-4           tidyselect_1.2.1       miniUI_0.1.1.1        
+#&gt;  [94] pbapply_1.7-2          knitr_1.48             git2r_0.35.0          
+#&gt;  [97] gridExtra_2.3          scattermore_1.2        xfun_0.52             
+#&gt; [100] statmod_1.5.0          matrixStats_1.3.0      stringi_1.8.4         
+#&gt; [103] lazyeval_0.2.2         yaml_2.3.10            evaluate_0.24.0       
+#&gt; [106] codetools_0.2-20       tibble_3.2.1           cli_3.6.3             
+#&gt; [109] uwot_0.2.2             xtable_1.8-4           reticulate_1.38.0     
+#&gt; [112] munsell_0.5.1          processx_3.8.4         jquerylib_0.1.4       
+#&gt; [115] Rcpp_1.0.13            globals_0.16.3         spatstat.random_3.3-1 
+#&gt; [118] png_0.1-8              ggrastr_1.0.2          spatstat.univar_3.0-0 
+#&gt; [121] parallel_4.4.1         presto_1.0.0           dotCall64_1.1-1       
+#&gt; [124] listenv_0.9.1          viridisLite_0.4.2      scales_1.3.0          
+#&gt; [127] ggridges_0.5.6         crayon_1.5.3           leiden_0.4.3.1        
+#&gt; [130] purrr_1.0.2            rlang_1.1.4            cowplot_1.1.3</code></pre>
 </div>
 </div>
 </div>

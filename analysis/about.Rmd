@@ -52,7 +52,14 @@ This workshop is ideal for:
 
 ### Data Sources
 
-The workshop uses gene expression data from The Cancer Genome Atlas (TCGA), one of the largest and most comprehensive cancer genomics datasets available. This provides students with experience working with real-world, high-dimensional biological data.
+The workshop uses gene expression data from The [Cancer Genome Atlas (TCGA)](https://www.cancer.gov/ccg/research/genome-sequencing/tcga), one of the largest and most comprehensive cancer genomics datasets available. This provides students with experience working with real-world, high-dimensional biological data.
+
+Wait, I am jumping ahead of myself, actually we are using a pre-processed RNAseq Transcript per million (TPM) data from [here](https://osf.io/yeun5).
+
+But if you want to start with the Raw counts file, I have a blog post on how to get the data
+and convert it to TPM in this [blog post](https://divingintogeneticsandgenomics.com/post/how-to-convert-raw-counts-to-tpm-for-tcga-data-and-make-a-heatmap-across-cancer-types/).
+
+The single cell RNAseq visualization part will use the commonly used `PMBC3k` dataset from `SeuratData`.
 
 ### Learning Outcomes
 
@@ -61,8 +68,9 @@ After completing this workshop, participants will be able to:
 1. Apply data visualization best practices
 2. Create publication-quality figures using ggplot2
 3. Analyze and visualize cancer genomics data
-4. Customize plots with appropriate themes, colors, and annotations
+4. Customize plots with appropriate order, themes, colors, and annotations
 5. Choose the right visualization type for different data types and research questions
+6. Create the plots from scratch instead of relying on the `Seurat` wrappers.
 
 ### Workshop Structure
 

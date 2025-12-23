@@ -1,9 +1,19 @@
 ---
-title: "02_practical_ggplot2"
+title: "Practical ggplot2"
+author: "Tommy Tang"
 output: html_document
 date: "2025-10-08"
+editor_options: 
+  chunk_output_type: console
 ---
 
+```{r, include=FALSE}
+# https://bookdown.org/yihui/rmarkdown-cookbook/cache-lazy.html
+knitr::opts_chunk$set(
+  comment = "#>", echo = TRUE, message= FALSE, warning = FALSE,
+  cache = FALSE, cache.lazy= FALSE
+)
+```
 
 # Data visualization with ggplot2
 
@@ -135,8 +145,6 @@ correlation
 ```
 
 The output will be a value between -1 and 1, where:
-
-![](images/cor.png)
 
 * A positive value (closer to 1) indicates a positive correlation (both variables increase together).
 
@@ -368,6 +376,7 @@ The `forcats::fct_reorder()` function takes two arguments:
 
 As a result of this reordering, the levels of the study factor will be rearranged from low to high median EPCAM expression levels. Now, the boxes are arranged from low to high EPCAM expression levels, providing a clearer view of the data distribution.
 
+
 ### Using Violin Plots
 Violin plots combine a boxplot with a kernel density plot, allowing you to visualize both the summary statistics and the entire data distribution.
 
@@ -471,7 +480,37 @@ By specifying `.desc = TRUE`, the bars will be reordered in descending order bas
 
 ### Note on factor levels 
 
-xxxx
+ggplot2 orders the boxes or the bars according to the factor levels.
+
+This means we can the order them to what we want as long as we change the factor levels
+to what we want.
+
+Let me show you how to do that manually without using `fct_reorder`.
+
+```{r}
+# we create a new vector of the study according to the median level of EPCAM
+tcga_new_factor<- tcga_cancer %>%
+  group_by(study) %>%
+  summarise(median_EPCAM = median(EPCAM)) %>%
+  arrange(desc(median_EPCAM))
+
+head(tcga_new_factor)
+
+# this is the new order we need
+# tcga_new_factor$study 
+
+# change the study to the new levels according to our new vector
+tcga_cancer$study<- factor(tcga_cancer$study, levels = tcga_new_factor$study)
+
+# plotting
+ggplot(tcga_cancer, aes(x = study, 
+                        y = EPCAM)) +
+  geom_boxplot(aes(fill = study)) +
+  scale_fill_manual(values = unname(P32)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())
+```
+
 
 ### Conclusion
 In this lesson, we have learned how to create bar plots to visualize median EPCAM expression levels by different cancer study types. We explored the process of reordering bars based on values, allowing us to better compare and interpret the data. The order of the bar depends on the factor levels of the study and we used fct_reorder to accomplish that. Remember that effective data visualization can greatly enhance your ability to communicate insights and make data-driven decisions.

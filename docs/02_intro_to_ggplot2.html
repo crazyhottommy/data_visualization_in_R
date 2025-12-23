@@ -9,10 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Tommy Tang" />
 
 <meta name="date" content="2025-10-08" />
 
-<title>02_practical_ggplot2</title>
+<title>Practical ggplot2</title>
 
 <script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -326,7 +327,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">data_visualization_in_R</a>
+      <a class="navbar-brand" href="index.html">Data visualization in R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -351,7 +352,8 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">02_practical_ggplot2</h1>
+<h1 class="title toc-ignore">Practical ggplot2</h1>
+<h4 class="author">Tommy Tang</h4>
 <h4 class="date">2025-10-08</h4>
 
 </div>
@@ -381,7 +383,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-10-15
+<strong>Last updated:</strong> 2025-12-23
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -419,10 +421,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -515,15 +517,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree9e1856ebf86b04f5c4ee85a9ad613046b1037c42targetblank9e1856ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtreebf3d0619625d841f8929a0aba6a594d26a0ccfa8targetblankbf3d061a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/9e1856ebf86b04f5c4ee85a9ad613046b1037c42" target="_blank">9e1856e</a>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/bf3d0619625d841f8929a0aba6a594d26a0ccfa8" target="_blank">bf3d061</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree9e1856ebf86b04f5c4ee85a9ad613046b1037c42targetblank9e1856ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtreebf3d0619625d841f8929a0aba6a594d26a0ccfa8targetblankbf3d061a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -533,7 +535,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/9e1856ebf86b04f5c4ee85a9ad613046b1037c42" target="_blank">9e1856e</a>.
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/bf3d0619625d841f8929a0aba6a594d26a0ccfa8" target="_blank">bf3d061</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -547,13 +549,18 @@ depends on. Below is the status of the Git repository when the results
 were generated:
 </p>
 <pre><code>
-Untracked files:
-    Untracked:  analysis/01_intro_data_viz.Rmd
-    Untracked:  analysis/02_intro_to_ggplot2.Rmd
-    Untracked:  analysis/03_heatmap_demystified.Rmd
-    Untracked:  analysis/04_practical_scRNAseq_viz.Rmd
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    .claude/
 
 Unstaged changes:
+    Modified:   analysis/01_intro_data_viz.Rmd
+    Modified:   analysis/02_intro_to_ggplot2.Rmd
+    Modified:   analysis/03_heatmap_demystified.Rmd
+    Modified:   analysis/04_practical_scRNAseq_viz.Rmd
+    Modified:   analysis/_site.yml
     Modified:   analysis/about.Rmd
     Modified:   analysis/index.Rmd
 
@@ -571,9 +578,72 @@ have uncommitted changes.
 </div>
 <div id="versions" class="tab-pane fade">
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/02_intro_to_ggplot2.Rmd</code>)
+and HTML (<code>docs/02_intro_to_ggplot2.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/analysis/02_intro_to_ggplot2.Rmd" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+first commit
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/crazyhottommy/data_visualization_in_R/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/02_intro_to_ggplot2.html" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+first commit
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -646,43 +716,26 @@ read_csv function from the readr package. This dataset contains
 information about various genes’ expression levels across different
 samples, including cancer, metastatic, and normal samples.</p>
 <pre class="r"><code>library(readr)
-library(dplyr)</code></pre>
-<pre><code>
-Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>The following objects are masked from &#39;package:stats&#39;:
+library(dplyr)
 
-    filter, lag</code></pre>
-<pre><code>The following objects are masked from &#39;package:base&#39;:
-
-    intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code># Load the TCGA gene expression data
+# Load the TCGA gene expression data
 tcga_data &lt;- read_csv(&quot;~/Downloads/TCGA_cancer_genes_expression.csv&quot;)</code></pre>
-<pre><code>New names:
-• `` -&gt; `...1`</code></pre>
-<pre><code>Rows: 11348 Columns: 25
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): ...1, tcga.tcga_barcode, tcga.cgc_sample_sample_type, study, sampl...
-dbl (20): TACSTD2, VTCN1, MUC1, NECTIN4, FOLH1, FOLR1, CD276, MSLN, CLDN6, E...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Let’s take a look at the first few rows of the dataset to understand
 its structure.</p>
 <pre class="r"><code>head(tcga_data)</code></pre>
-<pre><code># A tibble: 6 × 25
-  ...1      TACSTD2  VTCN1   MUC1 NECTIN4 FOLH1  FOLR1 CD276   MSLN  CLDN6 ERBB2
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 43e715bf…   0.704 0      0.675   0.0862  7.21 0       52.8 0.0667 0.0970  1.88
-2 1a5db9fc…  25.4   0      2.02    0.0728 23.6  0.122   78.8 0.956  0.255   7.78
-3 93b382e4…   1.58  0      0.908   0.699   2.85 1.01   146.  0.0456 0.257   2.91
-4 1f39dadd…   0.270 0.0910 0.0429  0.0165  1.16 0.279   48.5 0.0315 0.247   4.91
-5 8c8c09b9…   0.412 0      0.115   0.0317  2.41 0.0492  42.3 0.270  0.126   1.49
-6 85a86b91…   4.55  4.86   0.0421  0.0683  1.01 0.0225  20.6 0.0134 0.0182 13.5 
-# ℹ 14 more variables: MUC16 &lt;dbl&gt;, DLL3 &lt;dbl&gt;, CEACAM5 &lt;dbl&gt;, PVR &lt;dbl&gt;,
-#   EPCAM &lt;dbl&gt;, PROM1 &lt;dbl&gt;, CD24 &lt;dbl&gt;, EGFR &lt;dbl&gt;, MET &lt;dbl&gt;,
-#   TNFRSF10B &lt;dbl&gt;, tcga.tcga_barcode &lt;chr&gt;,
-#   tcga.cgc_sample_sample_type &lt;chr&gt;, study &lt;chr&gt;, sample_type &lt;chr&gt;</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 25
+#&gt;   ...1      TACSTD2  VTCN1   MUC1 NECTIN4 FOLH1  FOLR1 CD276   MSLN  CLDN6 ERBB2
+#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 43e715bf…   0.704 0      0.675   0.0862  7.21 0       52.8 0.0667 0.0970  1.88
+#&gt; 2 1a5db9fc…  25.4   0      2.02    0.0728 23.6  0.122   78.8 0.956  0.255   7.78
+#&gt; 3 93b382e4…   1.58  0      0.908   0.699   2.85 1.01   146.  0.0456 0.257   2.91
+#&gt; 4 1f39dadd…   0.270 0.0910 0.0429  0.0165  1.16 0.279   48.5 0.0315 0.247   4.91
+#&gt; 5 8c8c09b9…   0.412 0      0.115   0.0317  2.41 0.0492  42.3 0.270  0.126   1.49
+#&gt; 6 85a86b91…   4.55  4.86   0.0421  0.0683  1.01 0.0225  20.6 0.0134 0.0182 13.5 
+#&gt; # ℹ 14 more variables: MUC16 &lt;dbl&gt;, DLL3 &lt;dbl&gt;, CEACAM5 &lt;dbl&gt;, PVR &lt;dbl&gt;,
+#&gt; #   EPCAM &lt;dbl&gt;, PROM1 &lt;dbl&gt;, CD24 &lt;dbl&gt;, EGFR &lt;dbl&gt;, MET &lt;dbl&gt;,
+#&gt; #   TNFRSF10B &lt;dbl&gt;, tcga.tcga_barcode &lt;chr&gt;,
+#&gt; #   tcga.cgc_sample_sample_type &lt;chr&gt;, study &lt;chr&gt;, sample_type &lt;chr&gt;</code></pre>
 <p>Now, you should see a table with multiple columns, where each row
 represents a sample. The columns represent different genes’ expression
 levels, and we also have columns indicating the sample type, study, and
@@ -694,9 +747,9 @@ more.</p>
 filter the dataset to include only these samples and exclude normal and
 metastatic samples.</p>
 <pre class="r"><code>table(tcga_data$sample_type)</code></pre>
-<pre><code>
-    cancer metastatic     normal 
-     10021        394        740 </code></pre>
+<pre><code>#&gt; 
+#&gt;     cancer metastatic     normal 
+#&gt;      10021        394        740</code></pre>
 <pre class="r"><code># Filter the data to include only cancer samples
 tcga_cancer &lt;- tcga_data %&gt;%
   filter(sample_type == &quot;cancer&quot;)</code></pre>
@@ -725,7 +778,7 @@ class="uri">https://ggplot2.tidyverse.org/reference/geom_point.html</a></p>
 # Create a scatter plot
 ggplot(tcga_cancer, aes(x = EPCAM, y = CEACAM5)) +
   geom_point()</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In the code above:</p>
 <ul>
 <li><p>We use ggplot() to initialize a new ggplot2 plot.</p></li>
@@ -754,9 +807,8 @@ direction of the linear relationship between two variables.</p>
 <pre class="r"><code># Calculate the Pearson correlation coefficient
 correlation &lt;- cor(tcga_cancer$EPCAM, tcga_cancer$CEACAM5)
 correlation</code></pre>
-<pre><code>[1] 0.6324328</code></pre>
+<pre><code>#&gt; [1] 0.6324328</code></pre>
 <p>The output will be a value between -1 and 1, where:</p>
-<p><img src="images/cor.png" /></p>
 <ul>
 <li><p>A positive value (closer to 1) indicates a positive correlation
 (both variables increase together).</p></li>
@@ -782,17 +834,17 @@ whether the correlation is significantly different from zero.</p>
 <pre class="r"><code># Perform a correlation hypothesis test
 cor_test_result &lt;- cor.test(tcga_cancer$EPCAM, tcga_cancer$CEACAM5)
 cor_test_result</code></pre>
-<pre><code>
-    Pearson&#39;s product-moment correlation
-
-data:  tcga_cancer$EPCAM and tcga_cancer$CEACAM5
-t = 81.722, df = 10019, p-value &lt; 2.2e-16
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- 0.6205372 0.6440374
-sample estimates:
-      cor 
-0.6324328 </code></pre>
+<pre><code>#&gt; 
+#&gt;  Pearson&#39;s product-moment correlation
+#&gt; 
+#&gt; data:  tcga_cancer$EPCAM and tcga_cancer$CEACAM5
+#&gt; t = 81.722, df = 10019, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true correlation is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.6205372 0.6440374
+#&gt; sample estimates:
+#&gt;       cor 
+#&gt; 0.6324328</code></pre>
 <p>The output will provide various statistics, including the t-value,
 degrees of freedom, and the p-value.</p>
 <div id="interpretation-1" class="section level4">
@@ -830,8 +882,44 @@ we can add a linear regression line to our scatter plot using
 ggplot(tcga_cancer, aes(x = EPCAM, y = CEACAM5)) +
   geom_point() +
   geom_smooth(method = &quot;lm&quot;)</code></pre>
-<pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-10-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The <code>geom_smooth()</code> function with
 <code>method = "lm"</code> fits a linear regression line to the data
 points, helping us visualize the trend more clearly.</p>
@@ -869,8 +957,44 @@ samples.</p>
 <pre class="r"><code># Create a basic histogram for EPCAM gene expression
 ggplot(tcga_cancer, aes(x = EPCAM)) +
   geom_histogram()</code></pre>
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
+Past versions of unnamed-chunk-11-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-11-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-11-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>In this code:</p>
 <ul>
 <li><p>We use <code>ggplot()</code> to initialize a new ggplot2
@@ -899,7 +1023,44 @@ detail.</p>
 <pre class="r"><code># Create a histogram with 50 bins
 ggplot(tcga_cancer, aes(x = EPCAM)) +
   geom_histogram(bins = 50)</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
+Past versions of unnamed-chunk-12-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-12-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="customizing-bin-borders" class="section level4">
 <h4>Customizing Bin Borders</h4>
@@ -909,7 +1070,44 @@ distinct.</p>
 <pre class="r"><code># Create a histogram with white bin borders
 ggplot(tcga_cancer, aes(x = EPCAM)) +
   geom_histogram(bins = 50, color = &quot;white&quot;)</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-13-1">
+Past versions of unnamed-chunk-13-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-13-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-13-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Changing the bin border color to white makes it easier to distinguish
 between adjacent bins.</p>
 </div>
@@ -945,7 +1143,44 @@ of the EPCAM gene expression across different cancer types.</p>
 
 ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
   geom_boxplot()</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-14-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>In this code:</p>
 <ul>
 <li><p>We use <code>ggplot()</code> to initialize the plot.</p></li>
@@ -964,8 +1199,45 @@ and remove the x-axis label using the <code>theme</code> function.</p>
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/test-1.png" width="672" style="display: block; margin: auto;" />
-Now, the x-axis labels are more legible.</p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/test-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-test-1">
+Past versions of test-1.png
+</button>
+</p>
+<div id="fig-test-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/test-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now, the x-axis labels are more legible.</p>
 </div>
 <div id="adding-color-to-boxplots" class="section level3">
 <h3>Adding Color to Boxplots</h3>
@@ -975,14 +1247,51 @@ to the boxplots by mapping the color aesthetic to the study.</p>
   geom_boxplot(aes(color = study)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-15-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Alternatively, you can use <code>fill</code> to color the boxes
 instead of the outlines:</p>
 <pre class="r"><code>ggplot(tcga_cancer, aes(x = study, y = EPCAM)) +
   geom_boxplot(aes(fill = study)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>By default, ggplot2 uses a default color palette, but you can specify
 colors manually if needed.</p>
 </div>
@@ -992,33 +1301,70 @@ colors manually if needed.</p>
 you can use the Polychrome package.</p>
 <pre class="r"><code># there are total 32 cancer types
 length(unique(tcga_cancer$study))</code></pre>
-<pre><code>[1] 32</code></pre>
+<pre><code>#&gt; [1] 32</code></pre>
 <p>Here’s how to create a custom color palette for 32 cancer types:</p>
 <pre class="r"><code># install.packages(&quot;Polychrome&quot;)
 library(Polychrome)
 
 # There are a total of 32 cancer types
 length(unique(tcga_cancer$study))</code></pre>
-<pre><code>[1] 32</code></pre>
+<pre><code>#&gt; [1] 32</code></pre>
 <pre class="r"><code># Create a custom color palette with Polychrome
 P32 &lt;- createPalette(32, c(&quot;#FF0000&quot;, &quot;#00FF00&quot;, &quot;#0000FF&quot;), range = c(30, 80))
 
 P32</code></pre>
-<pre><code>      NC1       NC2       NC3       NC4       NC5       NC6       NC7       NC8 
-&quot;#FB0D3B&quot; &quot;#32E50D&quot; &quot;#2200FC&quot; &quot;#E8B8C4&quot; &quot;#FF00EC&quot; &quot;#16C8FA&quot; &quot;#FEBA0D&quot; &quot;#0D5A16&quot; 
-      NC9      NC10      NC11      NC12      NC13      NC14      NC15      NC16 
-&quot;#97162A&quot; &quot;#60358B&quot; &quot;#B9CE42&quot; &quot;#00DDC2&quot; &quot;#FD0D9F&quot; &quot;#FE7800&quot; &quot;#CE55AA&quot; &quot;#CA62FE&quot; 
-     NC17      NC18      NC19      NC20      NC21      NC22      NC23      NC24 
-&quot;#805616&quot; &quot;#5C8794&quot; &quot;#7E94FB&quot; &quot;#B6CDA3&quot; &quot;#E3B5FD&quot; &quot;#FD9F81&quot; &quot;#6D3551&quot; &quot;#53C469&quot; 
-     NC25      NC26      NC27      NC28      NC29      NC30      NC31      NC32 
-&quot;#FD5171&quot; &quot;#E4C27C&quot; &quot;#FD80A6&quot; &quot;#006CA8&quot; &quot;#FC81FC&quot; &quot;#661CBF&quot; &quot;#777162&quot; &quot;#A8C5F9&quot; </code></pre>
+<pre><code>#&gt;       NC1       NC2       NC3       NC4       NC5       NC6       NC7       NC8 
+#&gt; &quot;#FB0D3B&quot; &quot;#32E50D&quot; &quot;#2200FC&quot; &quot;#E8B8C4&quot; &quot;#FF00EC&quot; &quot;#16C8FA&quot; &quot;#FEBA0D&quot; &quot;#0D5A16&quot; 
+#&gt;       NC9      NC10      NC11      NC12      NC13      NC14      NC15      NC16 
+#&gt; &quot;#97162A&quot; &quot;#60358B&quot; &quot;#B9CE42&quot; &quot;#00DDC2&quot; &quot;#FD0D9F&quot; &quot;#FE7800&quot; &quot;#CE55AA&quot; &quot;#CA62FE&quot; 
+#&gt;      NC17      NC18      NC19      NC20      NC21      NC22      NC23      NC24 
+#&gt; &quot;#805616&quot; &quot;#5C8794&quot; &quot;#7E94FB&quot; &quot;#B6CDA3&quot; &quot;#E3B5FD&quot; &quot;#FD9F81&quot; &quot;#6D3551&quot; &quot;#53C469&quot; 
+#&gt;      NC25      NC26      NC27      NC28      NC29      NC30      NC31      NC32 
+#&gt; &quot;#FD5171&quot; &quot;#E4C27C&quot; &quot;#FD80A6&quot; &quot;#006CA8&quot; &quot;#FC81FC&quot; &quot;#661CBF&quot; &quot;#777162&quot; &quot;#A8C5F9&quot;</code></pre>
 <p>You see the <a href="https://en.wikipedia.org/wiki/Web_colors">hex
 code</a> for the colors.</p>
 <p>Now, we have a custom color palette P32 with 32 unique colors. You
 can visualize the colors using <code>swatch(P32)</code> in the polychrom
 package.</p>
 <pre class="r"><code>swatch(P32)</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-19-1">
+Past versions of unnamed-chunk-19-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-19-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-19-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="applying-custom-color-palette" class="section level3">
 <h3>Applying Custom Color Palette</h3>
@@ -1030,8 +1376,45 @@ map the colors manually to the study variable.</p>
   scale_fill_manual(values = unname(P32)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" />
-Note, you need to remove the names of the named color vector using
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-20-1">
+Past versions of unnamed-chunk-20-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-20-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-20-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Note, you need to remove the names of the named color vector using
 <code>unname</code>.</p>
 <p>Now, the boxplot colors are based on your custom palette, making it
 more visually appealing and distinct.</p>
@@ -1048,7 +1431,44 @@ within your <code>aes()</code> mapping.</p>
   scale_fill_manual(values = unname(P32)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-21-1">
+Past versions of unnamed-chunk-21-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-21-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-21-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>The <code>forcats::fct_reorder()</code> function takes two
 arguments:</p>
 <ul>
@@ -1075,7 +1495,7 @@ distribution.</p>
   scale_fill_manual(values = unname(P32)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In this code, we replaced <code>geom_boxplot</code> with
 <code>geom_violin</code> to create a violin plot. The width of the
 violin plots is scaled for better visibility.</p>
@@ -1118,20 +1538,20 @@ EPCAM_median &lt;- tcga_cancer %&gt;%
 
 # Display the summary table
 EPCAM_median</code></pre>
-<pre><code># A tibble: 32 × 2
-   study median_EPCAM
-   &lt;chr&gt;        &lt;dbl&gt;
- 1 ACC          4.83 
- 2 BLCA        81.1  
- 3 BRCA       162.   
- 4 CESC        75.9  
- 5 CHOL       251.   
- 6 COAD       778.   
- 7 DLBC         0.578
- 8 ESCA       189.   
- 9 GBM          0.307
-10 HNSC        24.7  
-# ℹ 22 more rows</code></pre>
+<pre><code>#&gt; # A tibble: 32 × 2
+#&gt;    study median_EPCAM
+#&gt;    &lt;chr&gt;        &lt;dbl&gt;
+#&gt;  1 ACC          4.83 
+#&gt;  2 BLCA        81.1  
+#&gt;  3 BRCA       162.   
+#&gt;  4 CESC        75.9  
+#&gt;  5 CHOL       251.   
+#&gt;  6 COAD       778.   
+#&gt;  7 DLBC         0.578
+#&gt;  8 ESCA       189.   
+#&gt;  9 GBM          0.307
+#&gt; 10 HNSC        24.7  
+#&gt; # ℹ 22 more rows</code></pre>
 <p>This table now shows the median EPCAM expression levels for each
 cancer study type, making it easier to compare across different types of
 cancer.</p>
@@ -1148,7 +1568,44 @@ ggplot(EPCAM_median, aes(x = study, y = median_EPCAM)) +
   geom_bar(stat = &quot;identity&quot;) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-24-1">
+Past versions of unnamed-chunk-24-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-24-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-24-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>In this code:</p>
 <ul>
 <li><p>We use <code>ggplot()</code> to initialize the plot.</p></li>
@@ -1178,7 +1635,44 @@ ggplot(EPCAM_median, aes(x = study %&gt;%
   geom_bar(stat = &quot;identity&quot;) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-25-1">
+Past versions of unnamed-chunk-25-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-25-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/8c9b351c376cb6d863fa368c275865a6ceeec5b6/docs/figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-25-1.png" target="_blank">8c9b351</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>In this code:</p>
 <p>We use <code>forcats::fct_reorder()</code> within <code>aes()</code>
 to reorder the study variable based on the <code>median_EPCAM</code>
@@ -1201,13 +1695,48 @@ ggplot(EPCAM_median, aes(x = study %&gt;%
   geom_bar(stat = &quot;identity&quot;) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
         axis.title.x = element_blank())</code></pre>
-<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>By specifying <code>.desc = TRUE</code>, the bars will be reordered
 in descending order based on the median EPCAM values.</p>
 </div>
 <div id="note-on-factor-levels" class="section level3">
 <h3>Note on factor levels</h3>
-<p>xxxx</p>
+<p>ggplot2 orders the boxes or the bars according to the factor
+levels.</p>
+<p>This means we can the order them to what we want as long as we change
+the factor levels to what we want.</p>
+<p>Let me show you how to do that manually without using
+<code>fct_reorder</code>.</p>
+<pre class="r"><code># we create a new vector of the study according to the median level of EPCAM
+tcga_new_factor&lt;- tcga_cancer %&gt;%
+  group_by(study) %&gt;%
+  summarise(median_EPCAM = median(EPCAM)) %&gt;%
+  arrange(desc(median_EPCAM))
+
+head(tcga_new_factor)</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 2
+#&gt;   study median_EPCAM
+#&gt;   &lt;chr&gt;        &lt;dbl&gt;
+#&gt; 1 READ          809.
+#&gt; 2 COAD          778.
+#&gt; 3 UCEC          348.
+#&gt; 4 THCA          342.
+#&gt; 5 STAD          320.
+#&gt; 6 LUAD          306.</code></pre>
+<pre class="r"><code># this is the new order we need
+# tcga_new_factor$study 
+
+# change the study to the new levels according to our new vector
+tcga_cancer$study&lt;- factor(tcga_cancer$study, levels = tcga_new_factor$study)
+
+# plotting
+ggplot(tcga_cancer, aes(x = study, 
+                        y = EPCAM)) +
+  geom_boxplot(aes(fill = study)) +
+  scale_fill_manual(values = unname(P32)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_blank())</code></pre>
+<p><img src="figure/02_intro_to_ggplot2.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="conclusion-3" class="section level3">
 <h3>Conclusion</h3>
@@ -1227,52 +1756,52 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.4.1 (2024-06-14)
-Platform: aarch64-apple-darwin20
-Running under: macOS Sonoma 14.1
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/New_York
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] Polychrome_1.5.4 ggplot2_3.5.1    dplyr_1.1.4      readr_2.1.5     
-[5] vembedr_0.1.5    workflowr_1.7.1 
-
-loaded via a namespace (and not attached):
- [1] gtable_0.3.5         xfun_0.52            bslib_0.8.0         
- [4] processx_3.8.4       lattice_0.22-6       callr_3.7.6         
- [7] tzdb_0.4.0           vctrs_0.6.5          tools_4.4.1         
-[10] ps_1.7.7             generics_0.1.3       curl_5.2.1          
-[13] parallel_4.4.1       tibble_3.2.1         fansi_1.0.6         
-[16] highr_0.11           pkgconfig_2.0.3      Matrix_1.7-0        
-[19] scatterplot3d_0.3-44 assertthat_0.2.1     lifecycle_1.0.4     
-[22] compiler_4.4.1       farver_2.1.2         stringr_1.5.1       
-[25] git2r_0.35.0         munsell_0.5.1        getPass_0.2-4       
-[28] httpuv_1.6.15        htmltools_0.5.8.1    sass_0.4.9          
-[31] yaml_2.3.10          later_1.3.2          pillar_1.9.0        
-[34] crayon_1.5.3         jquerylib_0.1.4      whisker_0.4.1       
-[37] cachem_1.1.0         nlme_3.1-164         tidyselect_1.2.1    
-[40] digest_0.6.36        stringi_1.8.4        forcats_1.0.0       
-[43] labeling_0.4.3       splines_4.4.1        rprojroot_2.0.4     
-[46] fastmap_1.2.0        grid_4.4.1           colorspace_2.1-1    
-[49] cli_3.6.3            magrittr_2.0.3       utf8_1.2.4          
-[52] withr_3.0.0          scales_1.3.0         promises_1.3.0      
-[55] bit64_4.0.5          rmarkdown_2.27       httr_1.4.7          
-[58] bit_4.0.5            hms_1.1.3            evaluate_0.24.0     
-[61] knitr_1.48           mgcv_1.9-1           rlang_1.1.4         
-[64] Rcpp_1.0.13          glue_1.8.0           rstudioapi_0.16.0   
-[67] vroom_1.6.5          jsonlite_1.8.8       R6_2.5.1            
-[70] fs_1.6.4            </code></pre>
+<pre><code>#&gt; R version 4.4.1 (2024-06-14)
+#&gt; Platform: aarch64-apple-darwin20
+#&gt; Running under: macOS Sonoma 14.1
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; time zone: America/New_York
+#&gt; tzcode source: internal
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt; [1] Polychrome_1.5.4 ggplot2_3.5.1    dplyr_1.1.4      readr_2.1.5     
+#&gt; [5] vembedr_0.1.5    workflowr_1.7.1 
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] gtable_0.3.5         xfun_0.52            bslib_0.8.0         
+#&gt;  [4] processx_3.8.4       lattice_0.22-6       callr_3.7.6         
+#&gt;  [7] tzdb_0.4.0           vctrs_0.6.5          tools_4.4.1         
+#&gt; [10] ps_1.7.7             generics_0.1.3       curl_5.2.1          
+#&gt; [13] parallel_4.4.1       tibble_3.2.1         fansi_1.0.6         
+#&gt; [16] highr_0.11           pkgconfig_2.0.3      Matrix_1.7-0        
+#&gt; [19] scatterplot3d_0.3-44 assertthat_0.2.1     lifecycle_1.0.4     
+#&gt; [22] compiler_4.4.1       farver_2.1.2         stringr_1.5.1       
+#&gt; [25] git2r_0.35.0         munsell_0.5.1        getPass_0.2-4       
+#&gt; [28] httpuv_1.6.15        htmltools_0.5.8.1    sass_0.4.9          
+#&gt; [31] yaml_2.3.10          later_1.3.2          pillar_1.9.0        
+#&gt; [34] crayon_1.5.3         jquerylib_0.1.4      whisker_0.4.1       
+#&gt; [37] cachem_1.1.0         nlme_3.1-164         tidyselect_1.2.1    
+#&gt; [40] digest_0.6.36        stringi_1.8.4        forcats_1.0.0       
+#&gt; [43] labeling_0.4.3       splines_4.4.1        rprojroot_2.0.4     
+#&gt; [46] fastmap_1.2.0        grid_4.4.1           colorspace_2.1-1    
+#&gt; [49] cli_3.6.3            magrittr_2.0.3       utf8_1.2.4          
+#&gt; [52] withr_3.0.0          scales_1.3.0         promises_1.3.0      
+#&gt; [55] bit64_4.0.5          rmarkdown_2.27       httr_1.4.7          
+#&gt; [58] bit_4.0.5            hms_1.1.3            evaluate_0.24.0     
+#&gt; [61] knitr_1.48           mgcv_1.9-1           rlang_1.1.4         
+#&gt; [64] Rcpp_1.0.13          glue_1.8.0           rstudioapi_0.16.0   
+#&gt; [67] vroom_1.6.5          jsonlite_1.8.8       R6_2.5.1            
+#&gt; [70] fs_1.6.4</code></pre>
 </div>
 </div>
 </div>

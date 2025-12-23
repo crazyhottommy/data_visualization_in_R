@@ -1,7 +1,7 @@
 name: "data_visualization_in_R"
 output_dir: ../docs
 navbar:
-  title: "data_visualization_in_R"
+  title: "Data visualization in R"
   left:
   - text: Home
     href: index.html

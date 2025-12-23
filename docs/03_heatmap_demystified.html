@@ -9,10 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Tommy Tang" />
 
 <meta name="date" content="2025-10-08" />
 
-<title>03_heatmap_demystified</title>
+<title>Heatmap Demystified</title>
 
 <script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -325,7 +326,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">data_visualization_in_R</a>
+      <a class="navbar-brand" href="index.html">Data visualization in R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -350,7 +351,8 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">03_heatmap_demystified</h1>
+<h1 class="title toc-ignore">Heatmap Demystified</h1>
+<h4 class="author">Tommy Tang</h4>
 <h4 class="date">2025-10-08</h4>
 
 </div>
@@ -359,7 +361,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -370,8 +372,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -380,13 +382,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-11-02
+<strong>Last updated:</strong> 2025-12-23
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>data_visualization_in_R/</code>
@@ -409,18 +411,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -511,15 +516,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree8c9b351c376cb6d863fa368c275865a6ceeec5b6targetblank8c9b351a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtreebf3d0619625d841f8929a0aba6a594d26a0ccfa8targetblankbf3d061a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/8c9b351c376cb6d863fa368c275865a6ceeec5b6" target="_blank">8c9b351</a>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/bf3d0619625d841f8929a0aba6a594d26a0ccfa8" target="_blank">bf3d061</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtree8c9b351c376cb6d863fa368c275865a6ceeec5b6targetblank8c9b351a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomcrazyhottommydatavisualizationinRtreebf3d0619625d841f8929a0aba6a594d26a0ccfa8targetblankbf3d061a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -529,7 +534,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/8c9b351c376cb6d863fa368c275865a6ceeec5b6" target="_blank">8c9b351</a>.
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/tree/bf3d0619625d841f8929a0aba6a594d26a0ccfa8" target="_blank">bf3d061</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -544,8 +549,19 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    .claude/
+
+Unstaged changes:
+    Modified:   analysis/01_intro_data_viz.Rmd
+    Modified:   analysis/02_intro_to_ggplot2.Rmd
+    Modified:   analysis/03_heatmap_demystified.Rmd
+    Modified:   analysis/04_practical_scRNAseq_viz.Rmd
+    Modified:   analysis/_site.yml
+    Modified:   analysis/about.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -591,6 +607,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/crazyhottommy/data_visualization_in_R/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/03_heatmap_demystified.html" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+<td>
+update lesson 4
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -652,47 +685,10 @@ lead to completely wrong biological interpretations.</p>
 </div>
 <div id="load-the-libraries" class="section level3">
 <h3>Load the libraries</h3>
-<pre class="r"><code>library(ComplexHeatmap)</code></pre>
-<pre><code>Loading required package: grid</code></pre>
-<pre><code>========================================
-ComplexHeatmap version 2.20.0
-Bioconductor page: http://bioconductor.org/packages/ComplexHeatmap/
-Github page: https://github.com/jokergoo/ComplexHeatmap
-Documentation: http://jokergoo.github.io/ComplexHeatmap-reference
-
-If you use it in published research, please cite either one:
-- Gu, Z. Complex Heatmap Visualization. iMeta 2022.
-- Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
-    genomic data. Bioinformatics 2016.
-
-
-The new InteractiveComplexHeatmap package can directly export static 
-complex heatmaps into an interactive Shiny app with zero effort. Have a try!
-
-This message can be suppressed by:
-  suppressPackageStartupMessages(library(ComplexHeatmap))
-========================================</code></pre>
-<pre class="r"><code>library(stats)        # for base heatmap()
-library(gplots)       # for heatmap.2()</code></pre>
-<pre><code>
-Attaching package: &#39;gplots&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:stats&#39;:
-
-    lowess</code></pre>
-<pre class="r"><code>library(circlize)     # for color functions</code></pre>
-<pre><code>========================================
-circlize version 0.4.16
-CRAN page: https://cran.r-project.org/package=circlize
-Github page: https://github.com/jokergoo/circlize
-Documentation: https://jokergoo.github.io/circlize_book/book/
-
-If you use it in published research, please cite:
-Gu, Z. circlize implements and enhances circular visualization
-  in R. Bioinformatics 2014.
-
-This message can be suppressed by:
-  suppressPackageStartupMessages(library(circlize))
-========================================</code></pre>
+<pre class="r"><code>library(ComplexHeatmap)
+library(stats)        # for base heatmap()
+library(gplots)       # for heatmap.2()
+library(circlize)     # for color functions</code></pre>
 </div>
 <div id="create-dummy-data-to-illustrate-key-concepts"
 class="section level3">
@@ -706,16 +702,16 @@ l2 &lt;- c(3,1,3,1,3,1,3,1)          # Low expression, same pattern as h2
 mat &lt;- rbind(h1,h2,l1,l2)
 colnames(mat) &lt;- paste0(&quot;timepoint_&quot;, 1:8)
 mat</code></pre>
-<pre><code>   timepoint_1 timepoint_2 timepoint_3 timepoint_4 timepoint_5 timepoint_6
-h1          10          20          10          20          10          20
-h2          20          10          20          10          20          10
-l1           1           3           1           3           1           3
-l2           3           1           3           1           3           1
-   timepoint_7 timepoint_8
-h1          10          20
-h2          20          10
-l1           1           3
-l2           3           1</code></pre>
+<pre><code>#&gt;    timepoint_1 timepoint_2 timepoint_3 timepoint_4 timepoint_5 timepoint_6
+#&gt; h1          10          20          10          20          10          20
+#&gt; h2          20          10          20          10          20          10
+#&gt; l1           1           3           1           3           1           3
+#&gt; l2           3           1           3           1           3           1
+#&gt;    timepoint_7 timepoint_8
+#&gt; h1          10          20
+#&gt; h2          20          10
+#&gt; l1           1           3
+#&gt; l2           3           1</code></pre>
 </div>
 <div id="visualize-the-expression-patterns" class="section level3">
 <h3>Visualize the expression patterns</h3>
@@ -727,7 +723,7 @@ for (i in 1:nrow(mat)) {
 }
 
 legend(1, 35, rownames(mat), col = 1:4, lwd = 3, cex = 0.7)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>Key Observation</strong>: Notice that h1 and l1 have the SAME
 pattern (just different scales), as do h2 and l2. Ideally, we want h1
 and l1 to cluster together, and h2 and l2 to cluster together.</p>
@@ -740,13 +736,52 @@ and l1 to cluster together, and h2 and l2 to cluster together.</p>
 <pre class="r"><code># Calculate pairwise distances using default Euclidean distance
 d_euclidean &lt;- dist(mat)
 d_euclidean</code></pre>
-<pre><code>          h1        h2        l1
-h2 28.284271                    
-l1 38.470768 40.496913          
-l2 40.496913 38.470768  5.656854</code></pre>
+<pre><code>#&gt;           h1        h2        l1
+#&gt; h2 28.284271                    
+#&gt; l1 38.470768 40.496913          
+#&gt; l2 40.496913 38.470768  5.656854</code></pre>
+<pre class="r"><code>sqrt(sum((mat[1, ] -  mat[2,])^2))</code></pre>
+<pre><code>#&gt; [1] 28.28427</code></pre>
 <pre class="r"><code># Visualize the clustering based on Euclidean distance
 plot(hclust(d_euclidean), main = &quot;Clustering with Euclidean Distance&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-6-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Problem</strong>: With Euclidean distance, h1 clusters with
 h2 (both high values) and l1 clusters with l2 (both low values),
 ignoring the actual expression patterns!</p>
@@ -759,7 +794,7 @@ class="section level2">
 <h3>Making a basic heatmap</h3>
 <pre class="r"><code># ComplexHeatmap - no scaling by default
 Heatmap(mat, cluster_columns = FALSE, name = &quot;Expression&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>Observation</strong>: The clustering follows the Euclidean
 distance pattern we saw above.</p>
 </div>
@@ -768,38 +803,75 @@ distance pattern we saw above.</p>
 <pre class="r"><code># Scale rows (genes) - center and scale to unit variance
 scaled_mat &lt;- t(scale(t(mat)))
 scaled_mat</code></pre>
-<pre><code>   timepoint_1 timepoint_2 timepoint_3 timepoint_4 timepoint_5 timepoint_6
-h1  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143
-h2   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143
-l1  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143
-l2   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143
-   timepoint_7 timepoint_8
-h1  -0.9354143   0.9354143
-h2   0.9354143  -0.9354143
-l1  -0.9354143   0.9354143
-l2   0.9354143  -0.9354143
-attr(,&quot;scaled:center&quot;)
-h1 h2 l1 l2 
-15 15  2  2 
-attr(,&quot;scaled:scale&quot;)
-      h1       h2       l1       l2 
-5.345225 5.345225 1.069045 1.069045 </code></pre>
+<pre><code>#&gt;    timepoint_1 timepoint_2 timepoint_3 timepoint_4 timepoint_5 timepoint_6
+#&gt; h1  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143
+#&gt; h2   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143
+#&gt; l1  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143
+#&gt; l2   0.9354143  -0.9354143   0.9354143  -0.9354143   0.9354143  -0.9354143
+#&gt;    timepoint_7 timepoint_8
+#&gt; h1  -0.9354143   0.9354143
+#&gt; h2   0.9354143  -0.9354143
+#&gt; l1  -0.9354143   0.9354143
+#&gt; l2   0.9354143  -0.9354143
+#&gt; attr(,&quot;scaled:center&quot;)
+#&gt; h1 h2 l1 l2 
+#&gt; 15 15  2  2 
+#&gt; attr(,&quot;scaled:scale&quot;)
+#&gt;       h1       h2       l1       l2 
+#&gt; 5.345225 5.345225 1.069045 1.069045</code></pre>
 <pre class="r"><code># Now look at distances after scaling
 d_scaled &lt;- dist(scaled_mat)
 d_scaled</code></pre>
-<pre><code>         h1       h2       l1
-h2 5.291503                  
-l1 0.000000 5.291503         
-l2 5.291503 0.000000 5.291503</code></pre>
+<pre><code>#&gt;          h1       h2       l1
+#&gt; h2 5.291503                  
+#&gt; l1 0.000000 5.291503         
+#&gt; l2 5.291503 0.000000 5.291503</code></pre>
 <pre class="r"><code># Clustering after scaling
 plot(hclust(d_scaled), main = &quot;Clustering After Scaling&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-10-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Magic!</strong> Now h1 and l1 cluster together, and h2 and l2
 cluster together because we’ve removed the scale differences and focused
 on patterns.</p>
 <pre class="r"><code># Heatmap with pre-scaled data
 Heatmap(scaled_mat, cluster_columns = FALSE, name = &quot;Scaled\nExpression&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="alternative-using-correlation-based-distance"
 class="section level3">
@@ -809,22 +881,59 @@ patterns:</p>
 <pre class="r"><code># Calculate correlation between genes
 gene_cor &lt;- cor(t(mat))
 gene_cor</code></pre>
-<pre><code>   h1 h2 l1 l2
-h1  1 -1  1 -1
-h2 -1  1 -1  1
-l1  1 -1  1 -1
-l2 -1  1 -1  1</code></pre>
+<pre><code>#&gt;    h1 h2 l1 l2
+#&gt; h1  1 -1  1 -1
+#&gt; h2 -1  1 -1  1
+#&gt; l1  1 -1  1 -1
+#&gt; l2 -1  1 -1  1</code></pre>
 <pre class="r"><code># Use 1 - correlation as distance
 d_correlation &lt;- as.dist(1 - cor(t(mat)))
 d_correlation</code></pre>
-<pre><code>   h1 h2 l1
-h2  2      
-l1  0  2   
-l2  2  0  2</code></pre>
+<pre><code>#&gt;    h1 h2 l1
+#&gt; h2  2      
+#&gt; l1  0  2   
+#&gt; l2  2  0  2</code></pre>
 <pre class="r"><code># Clustering with correlation distance
 hc_cor &lt;- hclust(d_correlation)
 plot(hc_cor, main = &quot;Clustering with Correlation Distance&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-14-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Perfect!</strong> Same result as scaling - genes with similar
 patterns cluster together.</p>
 </div>
@@ -835,10 +944,84 @@ patterns cluster together.</p>
 <h3>Base R heatmap() - DEFAULT: scale = “row”</h3>
 <pre class="r"><code># Base heatmap with default scaling
 heatmap(mat, Colv = NA, scale = &quot;row&quot;, main = &quot;heatmap() with scale=&#39;row&#39;&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-15-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># Base heatmap without scaling
 heatmap(mat, Colv = NA, scale = &quot;none&quot;, main = &quot;heatmap() with scale=&#39;none&#39;&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-16-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Critical Point</strong>: The clustering is IDENTICAL in both
 heatmaps above! The <code>scale</code> parameter only affects the color
 representation.</p>
@@ -848,11 +1031,85 @@ representation.</p>
 <pre class="r"><code># heatmap.2 with default (no scaling)
 heatmap.2(mat, trace = &quot;none&quot;, Colv = NA, dendrogram = &quot;row&quot;, 
           scale = &quot;none&quot;, main = &quot;heatmap.2() scale=&#39;none&#39;&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
+Past versions of unnamed-chunk-17-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-17-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-17-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># heatmap.2 with row scaling for colors only
 heatmap.2(mat, trace = &quot;none&quot;, Colv = NA, dendrogram = &quot;row&quot;, 
           scale = &quot;row&quot;, main = &quot;heatmap.2() scale=&#39;row&#39;&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
+Past versions of unnamed-chunk-18-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-18-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-18-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="using-custom-distance-in-heatmap.2" class="section level3">
 <h3>Using custom distance in heatmap.2()</h3>
@@ -862,14 +1119,88 @@ heatmap.2(mat, trace = &quot;none&quot;, Colv = NA, dendrogram = &quot;row&quot;
           hclust = function(x) hclust(x, method = &#39;complete&#39;), 
           distfun = function(x) as.dist(1 - cor(t(x))),
           main = &quot;Correlation Distance + No Scaling&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-19-1">
+Past versions of unnamed-chunk-19-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-19-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-19-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># Use correlation distance + row scaling for colors
 heatmap.2(mat, trace = &quot;none&quot;, Colv = NA, dendrogram = &quot;row&quot;,
           scale = &quot;row&quot;,
           hclust = function(x) hclust(x, method = &#39;complete&#39;), 
           distfun = function(x) as.dist(1 - cor(t(x))),
           main = &quot;Correlation Distance + Row Scaling&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-20-1">
+Past versions of unnamed-chunk-20-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-20-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-20-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="complexheatmap-the-modern-approach" class="section level2">
@@ -878,14 +1209,88 @@ heatmap.2(mat, trace = &quot;none&quot;, Colv = NA, dendrogram = &quot;row&quot;
 control:</p>
 <pre class="r"><code># Using pre-scaled data with ComplexHeatmap
 Heatmap(scaled_mat, cluster_columns = FALSE, name = &quot;Pre-scaled&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-21-1">
+Past versions of unnamed-chunk-21-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-21-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-21-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># Using correlation distance with ComplexHeatmap
 Heatmap(mat, 
         cluster_columns = FALSE,
         clustering_distance_rows = function(x) as.dist(1 - cor(t(x))),
         name = &quot;Expression&quot;,
         column_title = &quot;Correlation-based Clustering&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-22-1">
+Past versions of unnamed-chunk-22-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-22-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-22-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="the-outlier-problem" class="section level2">
 <h2>The Outlier Problem</h2>
@@ -894,23 +1299,23 @@ mat_outlier &lt;- mat
 mat_outlier[1,1] &lt;- 1000  # Extreme outlier
 
 Heatmap(mat_outlier, cluster_columns = FALSE, name = &quot;With Outlier&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>Problem</strong>: The outlier dominates the color scale,
 making all other values look the same!</p>
 <div id="solution-custom-color-mapping" class="section level3">
 <h3>Solution: Custom color mapping</h3>
 <pre class="r"><code># Check data quantiles to inform color mapping
 quantile(mat, c(0, 0.1, 0.5, 0.9, 1.0))</code></pre>
-<pre><code>  0%  10%  50%  90% 100% 
- 1.0  1.0  6.5 20.0 20.0 </code></pre>
+<pre><code>#&gt;   0%  10%  50%  90% 100% 
+#&gt;  1.0  1.0  6.5 20.0 20.0</code></pre>
 <pre class="r"><code># Create custom color function based on data distribution
 col_fun &lt;- colorRamp2(c(1, 10, 20), c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))
 
 # Apply to outlier data
 Heatmap(mat_outlier, cluster_columns = FALSE, col = col_fun, name = &quot;Fixed Colors&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>Heatmap(mat_outlier, cluster_columns = FALSE, col = col_fun, name = &quot;Fixed Colors&quot;)</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-24-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-25-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="summary-critical-decision-points" class="section level2">
@@ -1002,21 +1407,21 @@ tcga_data &lt;- read_csv(&quot;~/Downloads/TCGA_cancer_genes_expression.csv&quot
 
 # Explore the structure
 head(tcga_data)</code></pre>
-<pre><code># A tibble: 6 × 25
-  ...1      TACSTD2  VTCN1   MUC1 NECTIN4 FOLH1  FOLR1 CD276   MSLN  CLDN6 ERBB2
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 43e715bf…   0.704 0      0.675   0.0862  7.21 0       52.8 0.0667 0.0970  1.88
-2 1a5db9fc…  25.4   0      2.02    0.0728 23.6  0.122   78.8 0.956  0.255   7.78
-3 93b382e4…   1.58  0      0.908   0.699   2.85 1.01   146.  0.0456 0.257   2.91
-4 1f39dadd…   0.270 0.0910 0.0429  0.0165  1.16 0.279   48.5 0.0315 0.247   4.91
-5 8c8c09b9…   0.412 0      0.115   0.0317  2.41 0.0492  42.3 0.270  0.126   1.49
-6 85a86b91…   4.55  4.86   0.0421  0.0683  1.01 0.0225  20.6 0.0134 0.0182 13.5 
-# ℹ 14 more variables: MUC16 &lt;dbl&gt;, DLL3 &lt;dbl&gt;, CEACAM5 &lt;dbl&gt;, PVR &lt;dbl&gt;,
-#   EPCAM &lt;dbl&gt;, PROM1 &lt;dbl&gt;, CD24 &lt;dbl&gt;, EGFR &lt;dbl&gt;, MET &lt;dbl&gt;,
-#   TNFRSF10B &lt;dbl&gt;, tcga.tcga_barcode &lt;chr&gt;,
-#   tcga.cgc_sample_sample_type &lt;chr&gt;, study &lt;chr&gt;, sample_type &lt;chr&gt;</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 25
+#&gt;   ...1      TACSTD2  VTCN1   MUC1 NECTIN4 FOLH1  FOLR1 CD276   MSLN  CLDN6 ERBB2
+#&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 43e715bf…   0.704 0      0.675   0.0862  7.21 0       52.8 0.0667 0.0970  1.88
+#&gt; 2 1a5db9fc…  25.4   0      2.02    0.0728 23.6  0.122   78.8 0.956  0.255   7.78
+#&gt; 3 93b382e4…   1.58  0      0.908   0.699   2.85 1.01   146.  0.0456 0.257   2.91
+#&gt; 4 1f39dadd…   0.270 0.0910 0.0429  0.0165  1.16 0.279   48.5 0.0315 0.247   4.91
+#&gt; 5 8c8c09b9…   0.412 0      0.115   0.0317  2.41 0.0492  42.3 0.270  0.126   1.49
+#&gt; 6 85a86b91…   4.55  4.86   0.0421  0.0683  1.01 0.0225  20.6 0.0134 0.0182 13.5 
+#&gt; # ℹ 14 more variables: MUC16 &lt;dbl&gt;, DLL3 &lt;dbl&gt;, CEACAM5 &lt;dbl&gt;, PVR &lt;dbl&gt;,
+#&gt; #   EPCAM &lt;dbl&gt;, PROM1 &lt;dbl&gt;, CD24 &lt;dbl&gt;, EGFR &lt;dbl&gt;, MET &lt;dbl&gt;,
+#&gt; #   TNFRSF10B &lt;dbl&gt;, tcga.tcga_barcode &lt;chr&gt;,
+#&gt; #   tcga.cgc_sample_sample_type &lt;chr&gt;, study &lt;chr&gt;, sample_type &lt;chr&gt;</code></pre>
 <pre class="r"><code>dim(tcga_data)</code></pre>
-<pre><code>[1] 11348    25</code></pre>
+<pre><code>#&gt; [1] 11348    25</code></pre>
 </div>
 <div id="data-preparation" class="section level3">
 <h3>Data preparation</h3>
@@ -1026,27 +1431,27 @@ cancer-associated genes - Sample metadata including cancer type
 across 25 columns (21 genes + 4 metadata columns)</p>
 <pre class="r"><code># Check the column names
 colnames(tcga_data)</code></pre>
-<pre><code> [1] &quot;...1&quot;                        &quot;TACSTD2&quot;                    
- [3] &quot;VTCN1&quot;                       &quot;MUC1&quot;                       
- [5] &quot;NECTIN4&quot;                     &quot;FOLH1&quot;                      
- [7] &quot;FOLR1&quot;                       &quot;CD276&quot;                      
- [9] &quot;MSLN&quot;                        &quot;CLDN6&quot;                      
-[11] &quot;ERBB2&quot;                       &quot;MUC16&quot;                      
-[13] &quot;DLL3&quot;                        &quot;CEACAM5&quot;                    
-[15] &quot;PVR&quot;                         &quot;EPCAM&quot;                      
-[17] &quot;PROM1&quot;                       &quot;CD24&quot;                       
-[19] &quot;EGFR&quot;                        &quot;MET&quot;                        
-[21] &quot;TNFRSF10B&quot;                   &quot;tcga.tcga_barcode&quot;          
-[23] &quot;tcga.cgc_sample_sample_type&quot; &quot;study&quot;                      
-[25] &quot;sample_type&quot;                </code></pre>
+<pre><code>#&gt;  [1] &quot;...1&quot;                        &quot;TACSTD2&quot;                    
+#&gt;  [3] &quot;VTCN1&quot;                       &quot;MUC1&quot;                       
+#&gt;  [5] &quot;NECTIN4&quot;                     &quot;FOLH1&quot;                      
+#&gt;  [7] &quot;FOLR1&quot;                       &quot;CD276&quot;                      
+#&gt;  [9] &quot;MSLN&quot;                        &quot;CLDN6&quot;                      
+#&gt; [11] &quot;ERBB2&quot;                       &quot;MUC16&quot;                      
+#&gt; [13] &quot;DLL3&quot;                        &quot;CEACAM5&quot;                    
+#&gt; [15] &quot;PVR&quot;                         &quot;EPCAM&quot;                      
+#&gt; [17] &quot;PROM1&quot;                       &quot;CD24&quot;                       
+#&gt; [19] &quot;EGFR&quot;                        &quot;MET&quot;                        
+#&gt; [21] &quot;TNFRSF10B&quot;                   &quot;tcga.tcga_barcode&quot;          
+#&gt; [23] &quot;tcga.cgc_sample_sample_type&quot; &quot;study&quot;                      
+#&gt; [25] &quot;sample_type&quot;</code></pre>
 <pre class="r"><code># Check unique cancer types
 unique(tcga_data$study) %&gt;% length()</code></pre>
-<pre><code>[1] 33</code></pre>
+<pre><code>#&gt; [1] 33</code></pre>
 <pre class="r"><code># Check sample types
 table(tcga_data$sample_type)</code></pre>
-<pre><code>
-    cancer metastatic     normal 
-     10021        394        740 </code></pre>
+<pre><code>#&gt; 
+#&gt;     cancer metastatic     normal 
+#&gt;      10021        394        740</code></pre>
 </div>
 <div id="focus-on-tumor-samples-only" class="section level3">
 <h3>Focus on tumor samples only</h3>
@@ -1058,7 +1463,7 @@ tumor_data &lt;- tcga_data %&gt;%
 
 # Check dimensions
 dim(tumor_data)</code></pre>
-<pre><code>[1] 10021    25</code></pre>
+<pre><code>#&gt; [1] 10021    25</code></pre>
 </div>
 <div id="calculate-median-expression-per-gene-per-cancer-type"
 class="section level3">
@@ -1075,30 +1480,19 @@ gene_cols &lt;- setdiff(colnames(tumor_data),
 median_expr &lt;- tumor_data %&gt;%
   group_by(study) %&gt;%
   summarise(across(all_of(gene_cols), median, na.rm = TRUE)) %&gt;%
-  tibble::column_to_rownames(&quot;study&quot;)</code></pre>
-<pre><code>Warning: There was 1 warning in `summarise()`.
-ℹ In argument: `across(all_of(gene_cols), median, na.rm = TRUE)`.
-ℹ In group 1: `study = &quot;ACC&quot;`.
-Caused by warning:
-! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
-Supply arguments directly to `.fns` through an anonymous function instead.
+  tibble::column_to_rownames(&quot;study&quot;)
 
-  # Previously
-  across(a:b, mean, na.rm = TRUE)
-
-  # Now
-  across(a:b, \(x) mean(x, na.rm = TRUE))</code></pre>
-<pre class="r"><code># Check the result
+# Check the result
 dim(median_expr)</code></pre>
-<pre><code>[1] 32 20</code></pre>
+<pre><code>#&gt; [1] 32 20</code></pre>
 <pre class="r"><code>head(median_expr[, 1:5])</code></pre>
-<pre><code>         TACSTD2       VTCN1        MUC1     NECTIN4     FOLH1
-ACC    0.3954876  0.00000000   0.1818273  0.03067656 2.0874243
-BLCA 661.8630353  3.65963370  47.4768280 94.27139557 0.8555821
-BRCA 261.0299500 53.59716929 182.3543318 44.73170660 1.6821121
-CESC 859.9931404  2.77101295  93.1439374 85.31153260 0.6291784
-CHOL  45.1263235 65.36620629  35.4881279 17.96765276 1.9197128
-COAD   9.5038335  0.05293064  44.1769646  9.43587246 0.7486478</code></pre>
+<pre><code>#&gt;          TACSTD2       VTCN1        MUC1     NECTIN4     FOLH1
+#&gt; ACC    0.3954876  0.00000000   0.1818273  0.03067656 2.0874243
+#&gt; BLCA 661.8630353  3.65963370  47.4768280 94.27139557 0.8555821
+#&gt; BRCA 261.0299500 53.59716929 182.3543318 44.73170660 1.6821121
+#&gt; CESC 859.9931404  2.77101295  93.1439374 85.31153260 0.6291784
+#&gt; CHOL  45.1263235 65.36620629  35.4881279 17.96765276 1.9197128
+#&gt; COAD   9.5038335  0.05293064  44.1769646  9.43587246 0.7486478</code></pre>
 </div>
 <div id="apply-log2-transformation" class="section level3">
 <h3>Apply log2 transformation</h3>
@@ -1110,13 +1504,13 @@ log2_expr &lt;- log2(median_expr + 1)
 
 # Check the distribution
 summary(log2_expr[, 1:3])</code></pre>
-<pre><code>    TACSTD2           VTCN1              MUC1      
- Min.   :0.1194   Min.   :0.00000   Min.   :0.241  
- 1st Qu.:1.2457   1st Qu.:0.09181   1st Qu.:1.682  
- Median :4.0726   Median :0.43380   Median :4.802  
- Mean   :4.7057   Mean   :1.43016   Mean   :4.267  
- 3rd Qu.:8.0418   3rd Qu.:2.23702   3rd Qu.:5.718  
- Max.   :9.7499   Max.   :6.05238   Max.   :8.482  </code></pre>
+<pre><code>#&gt;     TACSTD2           VTCN1              MUC1      
+#&gt;  Min.   :0.1194   Min.   :0.00000   Min.   :0.241  
+#&gt;  1st Qu.:1.2457   1st Qu.:0.09181   1st Qu.:1.682  
+#&gt;  Median :4.0726   Median :0.43380   Median :4.802  
+#&gt;  Mean   :4.7057   Mean   :1.43016   Mean   :4.267  
+#&gt;  3rd Qu.:8.0418   3rd Qu.:2.23702   3rd Qu.:5.718  
+#&gt;  Max.   :9.7499   Max.   :6.05238   Max.   :8.482</code></pre>
 </div>
 <div id="create-the-heatmap" class="section level3">
 <h3>Create the heatmap</h3>
@@ -1136,7 +1530,44 @@ Heatmap(as.matrix(log2_expr),
           title = &quot;Expression&quot;,
           direction = &quot;vertical&quot;
         ))</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-30-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-31-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-31-1">
+Past versions of unnamed-chunk-31-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-31-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-31-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="scale-by-gene-for-pattern-comparison" class="section level3">
 <h3>Scale by gene for pattern comparison</h3>
@@ -1158,7 +1589,44 @@ Heatmap(scaled_expr,
           title = &quot;Z-score&quot;,
           direction = &quot;vertical&quot;
         ))</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-31-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-32-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-32-1">
+Past versions of unnamed-chunk-32-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-32-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/crazyhottommy/data_visualization_in_R/blob/bf3d0619625d841f8929a0aba6a594d26a0ccfa8/docs/figure/03_heatmap_demystified.Rmd/unnamed-chunk-32-1.png" target="_blank">bf3d061</a>
+</td>
+<td>
+crazyhottommy
+</td>
+<td>
+2025-11-02
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="add-annotations-for-biological-context" class="section level3">
 <h3>Add annotations for biological context</h3>
@@ -1207,32 +1675,32 @@ Heatmap(scaled_expr,
           title = &quot;Expression\nZ-score&quot;,
           direction = &quot;vertical&quot;
         ))</code></pre>
-<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-32-1.png" width="1056" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03_heatmap_demystified.Rmd/unnamed-chunk-33-1.png" width="1056" style="display: block; margin: auto;" /></p>
 </div>
 <div id="biological-validation-examples" class="section level3">
 <h3>Biological validation examples</h3>
 <p>Let’s verify some known biology in our heatmap:</p>
 <pre class="r"><code># FOLH1 (prostate-specific membrane antigen) - should be high in prostate cancer
 prostate_folh1 &lt;- tumor_data %&gt;%
-  filter(study == &quot;TCGA-PRAD&quot;) %&gt;%
+  filter(study == &quot;PRAD&quot;) %&gt;%
   summarise(median_FOLH1 = median(FOLH1, na.rm = TRUE))
 
 # MSLN (mesothelin) - should be high in mesothelioma
 meso_msln &lt;- tumor_data %&gt;%
-  filter(study == &quot;TCGA-MESO&quot;) %&gt;%
+  filter(study == &quot;MESO&quot;) %&gt;%
   summarise(median_MSLN = median(MSLN, na.rm = TRUE))
 
 # ERBB2 (HER2) - often amplified in breast cancer
 breast_erbb2 &lt;- tumor_data %&gt;%
-  filter(study == &quot;TCGA-BRCA&quot;) %&gt;%
+  filter(study == &quot;BRCA&quot;) %&gt;%
   summarise(median_ERBB2 = median(ERBB2, na.rm = TRUE))
 
 cat(&quot;FOLH1 in Prostate Cancer:&quot;, prostate_folh1$median_FOLH1, &quot;\n&quot;)</code></pre>
-<pre><code>FOLH1 in Prostate Cancer: NA </code></pre>
+<pre><code>#&gt; FOLH1 in Prostate Cancer: 242.0992</code></pre>
 <pre class="r"><code>cat(&quot;MSLN in Mesothelioma:&quot;, meso_msln$median_MSLN, &quot;\n&quot;)</code></pre>
-<pre><code>MSLN in Mesothelioma: NA </code></pre>
+<pre><code>#&gt; MSLN in Mesothelioma: 549.3863</code></pre>
 <pre class="r"><code>cat(&quot;ERBB2 in Breast Cancer:&quot;, breast_erbb2$median_ERBB2, &quot;\n&quot;)</code></pre>
-<pre><code>ERBB2 in Breast Cancer: NA </code></pre>
+<pre><code>#&gt; ERBB2 in Breast Cancer: 76.24836</code></pre>
 </div>
 <div id="key-insights-from-tcga-heatmap" class="section level3">
 <h3>Key insights from TCGA heatmap</h3>
@@ -1277,57 +1745,57 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.4.1 (2024-06-14)
-Platform: aarch64-apple-darwin20
-Running under: macOS Sonoma 14.1
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/New_York
-tzcode source: internal
-
-attached base packages:
-[1] grid      stats     graphics  grDevices utils     datasets  methods  
-[8] base     
-
-other attached packages:
-[1] tidyr_1.3.1           dplyr_1.1.4           readr_2.1.5          
-[4] circlize_0.4.16       gplots_3.1.3.1        ComplexHeatmap_2.20.0
-[7] workflowr_1.7.1      
-
-loaded via a namespace (and not attached):
- [1] shape_1.4.6.1       rjson_0.2.22        xfun_0.52          
- [4] bslib_0.8.0         GlobalOptions_0.1.2 caTools_1.18.2     
- [7] processx_3.8.4      tzdb_0.4.0          callr_3.7.6        
-[10] generics_0.1.3      Cairo_1.6-2         vctrs_0.6.5        
-[13] tools_4.4.1         ps_1.7.7            bitops_1.0-8       
-[16] stats4_4.4.1        parallel_4.4.1      tibble_3.2.1       
-[19] fansi_1.0.6         highr_0.11          cluster_2.1.6      
-[22] pkgconfig_2.0.3     KernSmooth_2.23-24  RColorBrewer_1.1-3 
-[25] S4Vectors_0.42.1    lifecycle_1.0.4     compiler_4.4.1     
-[28] stringr_1.5.1       git2r_0.35.0        getPass_0.2-4      
-[31] codetools_0.2-20    clue_0.3-65         httpuv_1.6.15      
-[34] htmltools_0.5.8.1   sass_0.4.9          yaml_2.3.10        
-[37] later_1.3.2         pillar_1.9.0        crayon_1.5.3       
-[40] jquerylib_0.1.4     whisker_0.4.1       cachem_1.1.0       
-[43] magick_2.8.5        iterators_1.0.14    foreach_1.5.2      
-[46] gtools_3.9.5        tidyselect_1.2.1    digest_0.6.36      
-[49] stringi_1.8.4       purrr_1.0.2         rprojroot_2.0.4    
-[52] fastmap_1.2.0       colorspace_2.1-1    cli_3.6.3          
-[55] magrittr_2.0.3      utf8_1.2.4          withr_3.0.0        
-[58] promises_1.3.0      bit64_4.0.5         rmarkdown_2.27     
-[61] httr_1.4.7          matrixStats_1.3.0   bit_4.0.5          
-[64] hms_1.1.3           png_0.1-8           GetoptLong_1.0.5   
-[67] evaluate_0.24.0     knitr_1.48          IRanges_2.38.1     
-[70] doParallel_1.0.17   rlang_1.1.4         Rcpp_1.0.13        
-[73] glue_1.8.0          BiocGenerics_0.50.0 vroom_1.6.5        
-[76] rstudioapi_0.16.0   jsonlite_1.8.8      R6_2.5.1           
-[79] fs_1.6.4           </code></pre>
+<pre><code>#&gt; R version 4.4.1 (2024-06-14)
+#&gt; Platform: aarch64-apple-darwin20
+#&gt; Running under: macOS Sonoma 14.1
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+#&gt; 
+#&gt; locale:
+#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; 
+#&gt; time zone: America/New_York
+#&gt; tzcode source: internal
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] grid      stats     graphics  grDevices utils     datasets  methods  
+#&gt; [8] base     
+#&gt; 
+#&gt; other attached packages:
+#&gt; [1] tidyr_1.3.1           dplyr_1.1.4           readr_2.1.5          
+#&gt; [4] circlize_0.4.16       gplots_3.1.3.1        ComplexHeatmap_2.20.0
+#&gt; [7] workflowr_1.7.1      
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] shape_1.4.6.1       rjson_0.2.22        xfun_0.52          
+#&gt;  [4] bslib_0.8.0         GlobalOptions_0.1.2 caTools_1.18.2     
+#&gt;  [7] processx_3.8.4      tzdb_0.4.0          callr_3.7.6        
+#&gt; [10] generics_0.1.3      Cairo_1.6-2         vctrs_0.6.5        
+#&gt; [13] tools_4.4.1         ps_1.7.7            bitops_1.0-8       
+#&gt; [16] stats4_4.4.1        parallel_4.4.1      tibble_3.2.1       
+#&gt; [19] fansi_1.0.6         highr_0.11          cluster_2.1.6      
+#&gt; [22] pkgconfig_2.0.3     KernSmooth_2.23-24  RColorBrewer_1.1-3 
+#&gt; [25] S4Vectors_0.42.1    lifecycle_1.0.4     compiler_4.4.1     
+#&gt; [28] stringr_1.5.1       git2r_0.35.0        getPass_0.2-4      
+#&gt; [31] codetools_0.2-20    clue_0.3-65         httpuv_1.6.15      
+#&gt; [34] htmltools_0.5.8.1   sass_0.4.9          yaml_2.3.10        
+#&gt; [37] later_1.3.2         pillar_1.9.0        crayon_1.5.3       
+#&gt; [40] jquerylib_0.1.4     whisker_0.4.1       cachem_1.1.0       
+#&gt; [43] magick_2.8.5        iterators_1.0.14    foreach_1.5.2      
+#&gt; [46] gtools_3.9.5        tidyselect_1.2.1    digest_0.6.36      
+#&gt; [49] stringi_1.8.4       purrr_1.0.2         rprojroot_2.0.4    
+#&gt; [52] fastmap_1.2.0       colorspace_2.1-1    cli_3.6.3          
+#&gt; [55] magrittr_2.0.3      utf8_1.2.4          withr_3.0.0        
+#&gt; [58] promises_1.3.0      bit64_4.0.5         rmarkdown_2.27     
+#&gt; [61] httr_1.4.7          matrixStats_1.3.0   bit_4.0.5          
+#&gt; [64] hms_1.1.3           png_0.1-8           GetoptLong_1.0.5   
+#&gt; [67] evaluate_0.24.0     knitr_1.48          IRanges_2.38.1     
+#&gt; [70] doParallel_1.0.17   rlang_1.1.4         Rcpp_1.0.13        
+#&gt; [73] glue_1.8.0          BiocGenerics_0.50.0 vroom_1.6.5        
+#&gt; [76] rstudioapi_0.16.0   jsonlite_1.8.8      R6_2.5.1           
+#&gt; [79] fs_1.6.4</code></pre>
 </div>
 </div>
 </div>

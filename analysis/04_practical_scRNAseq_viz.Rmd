@@ -1,11 +1,19 @@
 ---
 title: "Practical Single-Cell RNA-seq Visualization with ggplot2"
-author: "Your Name"
+author: "Tommy Tang"
 date: "2025-10-08"
 output: workflowr::wflow_html
 editor_options:
   chunk_output_type: console
 ---
+
+```{r, include=FALSE}
+# https://bookdown.org/yihui/rmarkdown-cookbook/cache-lazy.html
+knitr::opts_chunk$set(
+  comment = "#>", echo = TRUE, message= FALSE, warning = FALSE,
+  cache = FALSE, cache.lazy= FALSE
+)
+```
 
 ## Introduction
 
@@ -99,6 +107,14 @@ qc_data <- pbmc3k@meta.data %>%
                names_to = "metric",
                values_to = "value")
 
+qc_data_wide<- pbmc3k@meta.data %>%
+  select(nCount_RNA, nFeature_RNA, percent.mt) %>%
+  mutate(cell_id = rownames(.))
+
+  
+head(qc_data_wide)
+head(qc_data)
+
 p2 <- ggplot(qc_data, aes(x = metric, y = value, fill = metric)) +
   geom_violin(scale = "width", trim = TRUE) +
   geom_jitter(size = 0.1, alpha = 0.3, width = 0.2) +
@@ -189,6 +205,7 @@ p2 <- ggplot(hvf_data, aes(x = mean, y = variance.standardized)) +
   geom_point(aes(color = variable), alpha = 0.5, size = 0.8) +
   scale_color_manual(values = c("grey70", "red"),
                      labels = c("Non-variable", "Variable")) +
+  scale_x_log10() +
   geom_text(data = hvf_data %>% filter(gene %in% top10_genes),
             aes(label = gene), size = 3, nudge_y = 0.5) +
   labs(title = "ggplot2 version",
@@ -279,6 +296,14 @@ p2 <- ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
 
 # Display side by side
 p1 + p2
+
+
+ggplot(pca_embeddings, aes(x = PC1, y = PC2)) +
+  geom_point(aes(color = seurat_annotations), alpha = 0.5, size = 0.8) +
+  labs(title = "ggplot2 version",
+       x = "PC 1", y = "PC 2") +
+  theme_bw() +
+  coord_fixed() 
 ```
 
 **What we learned:**
@@ -364,7 +389,9 @@ feature_data <- FetchData(pbmc3k, vars = c("umap_1", "umap_2", genes))
 feature_long <- feature_data %>%
   pivot_longer(cols = all_of(genes),
                names_to = "gene",
-               values_to = "expression")
+               values_to = "expression") %>%
+  # change the levels according to the order we specified
+  mutate(gene = factor(gene, levels = genes)) 
 
 p2 <- ggplot(feature_long, aes(x = umap_1, y = umap_2, color = expression)) +
   geom_point(alpha = 0.6, size = 0.5) +
@@ -462,7 +489,8 @@ violin_data <- FetchData(pbmc3k, vars = c("seurat_clusters", selected_genes))
 violin_long <- violin_data %>%
   pivot_longer(cols = all_of(selected_genes),
                names_to = "gene",
-               values_to = "expression")
+               values_to = "expression") %>%
+  mutate(gene = factor(gene, levels = selected_genes))
 
 p2 <- ggplot(violin_long, aes(x = seurat_clusters, y = expression, fill = seurat_clusters)) +
   geom_violin(scale = "width", trim = TRUE) +
@@ -477,11 +505,16 @@ print(p1)
 print(p2)
 ```
 
+**Note** if you see inconsistence of the ggplot2 version vs the Seurat version,
+see this [github issue](https://github.com/satijalab/seurat/issues/5756). Seurat adds random
+noise before plotting the violin plot.
+
 **What we learned:**
 
 - Combined cluster identity with gene expression using `FetchData()`
 - Used `pivot_longer()` to reshape for faceting
 - `scales = "free_y"` allows different y-axis scales per facet (useful when genes have different expression ranges)
+
 
 ### Visualization 10: Marker Gene Heatmap
 
@@ -521,7 +554,7 @@ heatmap_long <- heatmap_data %>%
 
 # Create ordered factors for proper display
 heatmap_long$cell <- factor(heatmap_long$cell, levels = unique(heatmap_data$cell))
-heatmap_long$gene <- factor(heatmap_long$gene, levels = markers_to_plot)
+heatmap_long$gene <- factor(heatmap_long$gene, levels = rev(top3_markers$gene))
 
 p2 <- ggplot(heatmap_long, aes(x = cell, y = gene, fill = expression)) +
   geom_tile() +
@@ -579,7 +612,8 @@ dotplot_summary <- dotplot_data %>%
     avg_expression = mean(expression),
     pct_expressed = sum(expression > 0) / n() * 100,
     .groups = "drop"
-  )
+  ) %>%
+  mutate(gene = factor(gene, levels = selected_genes))
 
 p2 <- ggplot(dotplot_summary, aes(x = gene, y = seurat_clusters)) +
   geom_point(aes(size = pct_expressed, color = avg_expression)) +
@@ -602,6 +636,21 @@ p1 / p2
 - Used `group_by()` and `summarize()` to compute averages and percentages
 - Mapped two variables to aesthetics: `size` and `color`
 - This demonstrates how ggplot2 gives you control over the calculation
+
+**Bonus**
+
+ggplot2 is great but lacks native clustering implementation.
+Instead, we can use `Complexheatmap` for the same visualization task but adding 
+the clustering on the fly.
+
+read my blog posts:
+
+* [clustered dotplot for single-cell RNAseq](https://divingintogeneticsandgenomics.com/post/clustered-dotplot-for-single-cell-rnaseq/)
+
+* [How to make a multi-group dotplot for single-cell RNAseq data](https://divingintogeneticsandgenomics.com/post/how-to-make-a-multi-group-dotplot-for-single-cell-rnaseq-data/)
+
+You may also take a look at the R package [scCustomize](https://samuel-marsh.github.io/scCustomize/articles/Gene_Expression_Plotting.html#custom-dotplots) which implements those functions.
+
 
 ## Assign Cell Type Identity
 

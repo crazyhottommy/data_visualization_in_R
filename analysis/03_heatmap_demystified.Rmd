@@ -1,8 +1,19 @@
 ---
-title: "03_heatmap_demystified"
+title: "Heatmap Demystified"
+author: "Tommy Tang"
 output: html_document
 date: "2025-10-08"
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r, include=FALSE}
+# https://bookdown.org/yihui/rmarkdown-cookbook/cache-lazy.html
+knitr::opts_chunk$set(
+  comment = "#>", echo = TRUE, message= FALSE, warning = FALSE,
+  cache = FALSE, cache.lazy= FALSE
+)
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -64,6 +75,9 @@ legend(1, 35, rownames(mat), col = 1:4, lwd = 3, cex = 0.7)
 # Calculate pairwise distances using default Euclidean distance
 d_euclidean <- dist(mat)
 d_euclidean
+
+sqrt(sum((mat[1, ] -  mat[2,])^2))
+
 ```
 
 ```{r}
@@ -456,17 +470,17 @@ Let's verify some known biology in our heatmap:
 ```{r}
 # FOLH1 (prostate-specific membrane antigen) - should be high in prostate cancer
 prostate_folh1 <- tumor_data %>%
-  filter(study == "TCGA-PRAD") %>%
+  filter(study == "PRAD") %>%
   summarise(median_FOLH1 = median(FOLH1, na.rm = TRUE))
 
 # MSLN (mesothelin) - should be high in mesothelioma
 meso_msln <- tumor_data %>%
-  filter(study == "TCGA-MESO") %>%
+  filter(study == "MESO") %>%
   summarise(median_MSLN = median(MSLN, na.rm = TRUE))
 
 # ERBB2 (HER2) - often amplified in breast cancer
 breast_erbb2 <- tumor_data %>%
-  filter(study == "TCGA-BRCA") %>%
+  filter(study == "BRCA") %>%
   summarise(median_ERBB2 = median(ERBB2, na.rm = TRUE))
 
 cat("FOLH1 in Prostate Cancer:", prostate_folh1$median_FOLH1, "\n")
